@@ -1,13 +1,51 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+<html th:lang="${lang}" lang="vi" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
-    <title>GoonamVina</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="#{meta.home.title}">Goonam Vina</title>
+    <meta name="description" th:content="#{meta.home.description}"/>
+    <meta name="keywords" th:content="#{meta.home.keywords}"/>
+    <link rel="canonical" href="https://goonamvina.com/"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:site_name" th:content="#{site.name}"/>
+    <meta property="og:title" th:content="#{meta.home.title}"/>
+    <meta property="og:description" th:content="#{meta.home.description}"/>
+    <meta property="og:url" content="https://goonamvina.com/"/>
+    <meta property="og:image" content="https://goonamvina.com/images/goonamvinabanner.jpeg"/>
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:title" th:content="#{meta.home.title}"/>
+    <meta name="twitter:description" th:content="#{meta.home.description}"/>
+    <meta name="twitter:image" content="https://goonamvina.com/images/goonamvinabanner.jpeg"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" type="text/css" th:href="@{css/homepage.css}"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
 
+    <style>
+        .home-gm{background:linear-gradient(135deg,#1a1a1a 0%,#2c2c2c 60%,#3a3a3a 100%);color:#fff;padding:60px 20px;margin:40px 0;border-radius:8px}
+        .home-gm-inner{max-width:1100px;margin:0 auto;display:flex;gap:40px;align-items:center;flex-wrap:wrap}
+        .home-gm-text{flex:1 1 340px}
+        .home-gm-label{display:inline-block;font-size:13px;letter-spacing:2px;text-transform:uppercase;color:#c9a14a;border:1px solid #c9a14a;padding:4px 12px;border-radius:20px;margin-bottom:14px}
+        .home-gm-title{font-size:40px;font-weight:800;margin:6px 0;letter-spacing:1px}
+        .home-gm-title .gm-g{color:#c9a14a}
+        .home-gm-slogan{font-size:18px;color:#e0e0e0;margin-bottom:14px;font-style:italic}
+        .home-gm-desc{font-size:15px;line-height:1.7;color:#cfcfcf;margin-bottom:22px}
+        .home-gm-actions{display:flex;gap:14px;flex-wrap:wrap}
+        .home-gm-btn{display:inline-block;padding:12px 24px;border-radius:6px;font-weight:600;text-decoration:none;transition:.2s}
+        .home-gm-btn-primary{background:#c9a14a;color:#1a1a1a}
+        .home-gm-btn-primary:hover{background:#e0b75c}
+        .home-gm-btn-outline{border:1px solid #fff;color:#fff}
+        .home-gm-btn-outline:hover{background:#fff;color:#1a1a1a}
+        .home-gm-media{flex:1 1 340px}
+        .home-gm-media img{width:100%;height:auto;border-radius:8px;display:block}
+        .home-gm-cats{max-width:1100px;margin:24px auto 0;display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:18px}
+        .home-gm-cat{background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,.08);text-decoration:none;color:#222}
+        .home-gm-cat img{width:100%;height:150px;object-fit:cover;display:block}
+        .home-gm-cat span{display:block;padding:12px 14px;font-weight:600}
+        .home-gm-cats-title{max-width:1100px;margin:30px auto 0;font-size:20px;color:#fff;text-align:center}
+        @media(max-width:600px){.home-gm-title{font-size:30px}}
+    </style>
 </head>
 <body>
 
@@ -58,6 +96,36 @@
                     <div class="service-images">
                         <img src="images/dichvu/c.jpg" alt="Dịch vụ 1" class="service-image">
                         <img src="images/dichvu/k.jpg" alt="Dịch vụ 2" class="service-image">
+                    </div>
+                </section>
+
+                <section class="home-gm" data-aos="fade-up">
+                    <div class="home-gm-inner">
+                        <div class="home-gm-text">
+                            <span class="home-gm-label" th:text="#{home.googenmetal.label}">Thương hiệu của Goonam Vina</span>
+                            <h2 class="home-gm-title"><span class="gm-g">Googen</span> Metal</h2>
+                            <p class="home-gm-slogan" th:text="#{home.googenmetal.slogan}">Nghệ thuật từ kim loại - Kỹ thuật Hàn Quốc</p>
+                            <p class="home-gm-desc" th:text="#{home.googenmetal.description}"></p>
+                            <div class="home-gm-actions">
+                                <a href="/googenmetal" class="home-gm-btn home-gm-btn-primary" th:text="#{home.googenmetal.cta.explore}">Khám phá Googen Metal</a>
+                                <a href="/contact" class="home-gm-btn home-gm-btn-outline" th:text="#{home.googenmetal.cta.quote}">Yêu cầu báo giá</a>
+                            </div>
+                        </div>
+                        <div class="home-gm-media">
+                            <a href="/googenmetal">
+                                <img src="/images/googenmetalbanner.jpeg" th:alt="#{home.googenmetal.title}" alt="Googen Metal">
+                            </a>
+                        </div>
+                    </div>
+                    <h3 class="home-gm-cats-title" th:if="${metalCategoryList != null and !metalCategoryList.isEmpty()}"
+                        th:text="#{home.googenmetal.products.title}">Danh mục sản phẩm Googen Metal</h3>
+                    <div class="home-gm-cats" th:if="${metalCategoryList != null and !metalCategoryList.isEmpty()}">
+                        <a th:each="category : ${metalCategoryList}"
+                           th:href="@{/googenmetal/{slug}(slug=${category.slug})}" class="home-gm-cat">
+                            <img th:src="@{'/uploads/images/' + ${category.imageMC}}"
+                                 th:alt="${lang == 'vi' ? category.nameVi : category.nameEn}" alt="">
+                            <span th:text="${lang == 'vi' ? category.nameVi : category.nameEn}"></span>
+                        </a>
                     </div>
                 </section>
 

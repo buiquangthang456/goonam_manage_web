@@ -1,9 +1,22 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<html th:lang="${lang}" lang="vi" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GoogenMetal</title>
+    <title th:text="#{meta.googenmetal.title}">Googen Metal</title>
+    <meta name="description" th:content="#{meta.googenmetal.description}"/>
+    <meta name="keywords" th:content="#{meta.googenmetal.keywords}"/>
+    <link rel="canonical" href="https://goonamvina.com/googenmetal"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:site_name" th:content="#{site.name}"/>
+    <meta property="og:title" th:content="#{meta.googenmetal.title}"/>
+    <meta property="og:description" th:content="#{meta.googenmetal.description}"/>
+    <meta property="og:url" content="https://goonamvina.com/googenmetal"/>
+    <meta property="og:image" content="https://goonamvina.com/images/googenmetalbanner.jpeg"/>
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:title" th:content="#{meta.googenmetal.title}"/>
+    <meta name="twitter:description" th:content="#{meta.googenmetal.description}"/>
+    <meta name="twitter:image" content="https://goonamvina.com/images/googenmetalbanner.jpeg"/>
 
     <link rel="stylesheet" type="text/css" th:href="@{css/homepage.css}"/>
     <link rel="stylesheet" type="text/css" th:href="@{css/goonammetals.css}"/>
@@ -47,7 +60,8 @@
             <h2 th:text="#{googenmetal.products_title}">Sản phẩm kim loại của chúng tôi</h2>
             <div class="gm-product-grid">
                 <div class="gm-product-item" th:each="category : ${metalCategoryList}">
-                    <img th:src="@{'/uploads/images/' + ${category.imageMC}}"  alt="Metal Railings">
+                    <img th:src="@{'/uploads/images/' + ${category.imageMC}}"
+                         th:alt="${lang == 'vi' ? category.nameVi : category.nameEn}" alt="">
                     <h3 th:text="${lang == 'vi' ? category.nameVi : category.nameEn}"></h3>
                     <p th:text="${lang == 'vi' ? category.descriptionVi : category.descriptionEn}"></p>
                     <a th:href="@{/googenmetal/{slug}(slug=${category.slug})}" class="gm-product-link" th:text="#{googenmetal.learn_more}">Tìm hiểu thêm</a>
@@ -124,6 +138,7 @@
 });
 </script>
 <script src="/js/changelanguage.js"></script>
+<div th:replace="~{layout/floating-contact :: widget}"></div>
 </body>
 
 </html>

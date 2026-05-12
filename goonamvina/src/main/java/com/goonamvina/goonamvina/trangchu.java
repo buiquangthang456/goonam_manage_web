@@ -1,9 +1,10 @@
 package com.goonamvina.goonamvina;
 
+import com.goonamvina.goonamvina.model.MetalCategory;
 import com.goonamvina.goonamvina.model.ProductCategory;
-import com.goonamvina.goonamvina.model.ProductSubCategory;
 import com.goonamvina.goonamvina.model.ProjectCategory;
 import com.goonamvina.goonamvina.service.*;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,13 +29,24 @@ public class trangchu {
 
     @Autowired
     private ProductService productService;
+
+    @Autowired
+    private MetalCategoryService metalCategoryService;
+
     @GetMapping("/")
-    public String hello(Model model) {
+    public String hello(Model model, HttpServletRequest request) {
+        String lang = request.getLocale() != null ? request.getLocale().getLanguage() : "vi";
+        model.addAttribute("lang", lang);
+
         List<ProductCategory> productCategoryList = pcService.getAllPC();
         model.addAttribute("productCategoryList", productCategoryList);
 
         List<ProjectCategory> projectCategoryList = projectCategoryService.getAllProjectCategory();
         model.addAttribute("projectCategoryList", projectCategoryList);
+
+        List<MetalCategory> metalCategoryList = metalCategoryService.getAllMetalCategory();
+        model.addAttribute("metalCategoryList", metalCategoryList);
+
         return "trangchu";
     }
 }
