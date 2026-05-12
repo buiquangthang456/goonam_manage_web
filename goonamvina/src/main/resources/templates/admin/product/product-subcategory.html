@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+  <meta charset="UTF-8">
+  <title>Add Sub Products</title>
+  <link rel="stylesheet" type="text/css" th:href="@{/css-admin/addproduct.css}"/>
+  <link rel="stylesheet" type="text/css" th:href="@{/css-admin/dashboard.css}"/>
+</head>
+<body>
+<div class="dashboard">
+  <div th:replace="admin/layout-admin/sidebar :: sidebarFragment"></div>
+  <div class="main-content">
+    <header>
+      <button class="toggle-btn" id="toggle-btn">&#9776;</button>
+      <h1 th:text="${psc.id != null} ? 'Edit Sub Product Category' : 'Add a New Sub Product Category'"></h1>
+      <div class="user-info">
+        <span>Welcome, [User]</span>
+        <a href="/admin/logout" class="btn">Logout</a>
+      </div>
+    </header>
+    <section class="content">
+      <!-- Thêm phần hiển thị thông báo lỗi -->
+      <div th:if="${error}" class="alert alert-danger">
+        <p th:text="${error}"></p>
+      </div>
+      <div th:if="${message}" class="alert alert-success">
+        <p th:text="${message}"></p>
+      </div>
+
+      <div class="product-form">
+        <h2>Add a New Sub Product</h2>
+        <form id="product-form" th:action="@{${psc.id != null} ? '/admin/update-psc/' + ${psc.id} : '/admin/product-subcategory'}" th:object="${psc}" method="POST" enctype="multipart/form-data">
+          <input type="hidden" name="id" th:value="${psc.id}">
+          <div class="form-group">
+            <label for="product-name-vi">Sub Product Name (Vietnamese)</label>
+            <input type="text" id="product-name-vi" name="nameVi"
+                   th:field="*{nameVi}"
+                   th:attr="readonly=${psc.nameVi == 'Cửa thép/Cửa thép chống cháy'}"
+                   required>
+            <div th:if="${#fields.hasErrors('nameVi')}" class="error-message">
+              <p th:errors="*{nameVi}"></p>
+            </div>
+          </div>
+
+          <!-- Sub Product Name (English) -->
+          <div class="form-group">
+            <label for="product-name-en">Sub Product Name (English)</label>
+            <input type="text" id="product-name-en" name="nameEn"
+                   th:field="*{nameEn}"
+                   th:attr="readonly=${psc.nameEn == 'Steel Door/Fireproof Steel Door'}"
+                   required>
+            <div th:if="${#fields.hasErrors('nameEn')}" class="error-message">
+              <p th:errors="*{nameEn}"></p>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="pc">Product Category</label>
+            <select id="pc" name="productCategory.id"  required>
+              <option value="" th:if="${psc.productCategory == null}">Select a category</option>
+              <option th:each="pcList : ${pc}" th:value="${pcList.id}" th:text="${#locale.language.equals('vi') ? pcList.nameVi : pcList.nameEn}" class="select__infor-item"></option>
+            </select>
+            <div th:if="${#fields.hasErrors('productCategory')}" class="error-message">
+              <p th:errors="*{productCategory}"></p>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="psc-image">Upload Image</label>
+            <input type="file" id="psc-image"  name="psc-image" accept="image/*" th:attr="required=${psc.imagePSC == null}">
+            <div th:if="${psc.imagePSC != null}">
+              <label>Current Image:</label>
+              <img th:src="@{'/uploads/images/' + ${psc.imagePSC}}" alt="PSC Image" style="width: 100px; height: auto;"/>
+            </div>
+          </div>
+          <button type="submit" class="btn" th:text="${psc.id != null} ? 'Update Sub Product Category' : 'Add Sub Product Category'"></button>
+        </form>
+      </div>
+      <div class="products-table">
+        <h2>Sub Product List</h2>
+        <table id="products-table">
+          <thead>
+          <tr>
+            <th>Sub Category Name (Vietnamese)</th>
+            <th>Sub Category Name (English)</th>
+            <th>Category</th>
+            <th>Image</th>
+            <th>Action</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr th:each="psc : ${pscList}">
+            <td th:text="${psc.nameVi}"></td>
+            <td th:text="${psc.nameEn}"></td>
+            <td th:text="${psc.productCategory.nameVi}"></td>
+            <td><img th:src="@{/uploads/images/} + ${psc.imagePSC}" alt="No Image" style="max-width: 100px;"/></td>
+            <td>
+              <a th:href="@{'/admin/edit-psc/' + ${psc.id}}">Edit</a> |
+              <a th:href="@{'/admin/delete-psc/' + ${psc.id}}" onclick="return confirm('Are you sure?')">Delete</a>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </div>
+</div>
+<script src="/js-admin/admin.js"></script>
+</body>
+</html>

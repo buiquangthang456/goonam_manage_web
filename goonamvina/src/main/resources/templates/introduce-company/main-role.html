@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+  <meta charset="UTF-8">
+  <title>GoonamVina</title>
+  <link rel="stylesheet" type="text/css" th:href="@{/css/main-role.css}"/>
+  <link rel="stylesheet" type="text/css" th:href="@{/css/homepage.css}"/>
+</head>
+<body>
+
+<header layout:include="layout/menu :: header"></header>
+<main>
+  <section class="our-team">
+    <div class="container">
+      <h2 th:text="#{team.title}">Nhân sự chủ chốt</h2>
+      <div class="team-members">
+        <div class="team-member">
+          <img src="/images/banlanhdao/nguoihanquoc.jpg" alt="Byun Hee Man" class="member-photo">
+          <h3 th:text="#{team.member1.name}">Byun HeeMan</h3>
+          <p th:text="#{team.member1.position}">Giám đốc</p>
+          <p th:text="#{team.member1.description}">Với nhiều năm kinh nghiệm trong ngành, anh Buyn Hee Man luôn dẫn dắt đội ngũ với tinh thần trách nhiệm và sáng tạo.</p>
+        </div>
+        <div class="team-member">
+          <img src="/images/banlanhdao/daominhtuan.jpg" alt="Đào Minh Tuấn" class="member-photo">
+          <h3 th:text="#{team.member2.name}">Đào Minh Tuấn</h3>
+          <p th:text="#{team.member2.position}">Phó giám đốc</p>
+          <p th:text="#{team.member2.description}">Anh Tuấn luôn đảm bảo các sản phẩm của chúng tôi đạt tiêu chuẩn chất lượng cao nhất.</p>
+        </div>
+        <!-- Thêm các thành viên khác ở đây nếu cần -->
+      </div>
+    </div>
+  </section>
+</main>
+<footer layout:include="layout/footer :: footer">
+</footer>
+<script src="/js/script.js"></script>
+<script src="/js/changelanguage.js"></script>
+</body>
+</html>

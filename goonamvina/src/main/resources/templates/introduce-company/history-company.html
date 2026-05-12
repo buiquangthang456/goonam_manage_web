@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+  <meta charset="UTF-8">
+  <title th:text="#{history.title}">Lịch Sử Công Ty</title>
+  <link rel="stylesheet" type="text/css" th:href="@{/css/homepage.css}"/>
+  <link rel="stylesheet" type="text/css" th:href="@{/css/history.css}"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+</head>
+<body>
+
+<header layout:include="layout/menu :: header"></header>
+
+<main>
+  <div class="container">
+    <!-- Tiêu đề chính -->
+    <h1 class="timeline-title" data-aos="fade-up" th:text="#{history.title}">Lịch Sử Công Ty</h1>
+
+    <!-- Timeline Vertical -->
+    <ul class="timeline">
+      <li class="timeline-event" data-aos="fade-right">
+        <div class="event-date">2003</div>
+        <div class="event-content" data-aos="fade-left" data-aos-duration="1500">
+          <div class="icon">
+            <i class="fas fa-building"></i>
+          </div>
+          <h3 th:text="#{history.event.2003.title}">Thành lập công ty</h3>
+          <p th:text="#{history.event.2003.description}">Goonam Vina được thành lập tại Việt Nam và có tên là Poong Chang Vina.</p>
+        </div>
+        <div class="event-image" data-aos="fade-left" data-aos-delay="500">
+          <img src="/images/history/2003.jpg" alt="Thành lập công ty">
+        </div>
+      </li>
+
+      <li class="timeline-event" data-aos="fade-left">
+        <div class="event-date">2005</div>
+        <div class="event-content" data-aos="fade-right" data-aos-duration="1500">
+          <div class="icon">
+            <i class="fas fa-globe"></i>
+          </div>
+          <h3 th:text="#{history.event.2005.title}">Mở rộng thị trường quốc tế</h3>
+          <p th:text="#{history.event.2005.description}">Đổi tên thành Goonam Vina và mở rộng ra Đông Nam Á.</p>
+        </div>
+        <div class="event-image" data-aos="fade-right" data-aos-delay="500">
+          <img src="/images/history/2005.jpg" alt="Mở rộng thị trường quốc tế">
+        </div>
+      </li>
+
+      <li class="timeline-event" data-aos="fade-right">
+        <div class="event-date">2011</div>
+        <div class="event-content" data-aos="fade-left" data-aos-duration="1500">
+          <div class="icon">
+            <i class="fas fa-sync-alt"></i>
+          </div>
+          <h3 th:text="#{history.event.2011.title}">Tái cấu trúc công ty</h3>
+          <p th:text="#{history.event.2011.description}">Goonamvina thực hiện quá trình tái cấu trúc toàn diện nhằm nâng cao hiệu quả hoạt động.</p>
+        </div>
+        <div class="event-image" data-aos="fade-left" data-aos-delay="500">
+          <img src="/images/history/2011.jpg" alt="Tái cấu trúc công ty">
+        </div>
+      </li>
+
+<!--      <li class="timeline-event" data-aos="fade-left">-->
+<!--        <div class="event-date">2020</div>-->
+<!--        <div class="event-content" data-aos="fade-right" data-aos-duration="1500">-->
+<!--          <div class="icon">-->
+<!--            <i class="fas fa-fire-extinguisher"></i>-->
+<!--          </div>-->
+<!--          <h3 th:text="#{history.event.2020.title}">Sản phẩm cửa chống cháy</h3>-->
+<!--          <p th:text="#{history.event.2020.description}">Cửa chống cháy đáp ứng tiêu chuẩn mới của luật Phòng cháy chữa cháy (PCCC).</p>-->
+<!--        </div>-->
+<!--        <div class="event-image" data-aos="fade-right" data-aos-delay="500">-->
+<!--          <img src="/images/history/2020.jpg" alt="Sản phẩm cửa chống cháy">-->
+<!--        </div>-->
+<!--      </li>-->
+
+      <li class="timeline-event" data-aos="fade-right">
+        <div class="event-date">2024</div>
+        <div class="event-content" data-aos="fade-left" data-aos-duration="1500">
+          <div class="icon">
+            <i class="fas fa-industry"></i>
+          </div>
+          <h3 th:text="#{history.event.2024.title}">Ra mắt thương hiệu Googen Metal</h3>
+          <p th:text="#{history.event.2024.description}">Thương hiệu Googen Metal ra đời, cung cấp sản phẩm kim loại cho ngành công nghiệp.</p>
+        </div>
+        <div class="event-image" data-aos="fade-left" data-aos-delay="500">
+          <img src="/images/history/2024.jpg" alt="Ra mắt Googen Metal">
+        </div>
+      </li>
+    </ul>
+  </div>
+</main>
+
+<footer layout:include="layout/footer :: footer"></footer>
+
+<script src="/js/script.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+
+<script>
+  AOS.init({
+    duration: 1000, // Thời gian cho animation
+    once: true, // Animation chỉ chạy một lần
+  });
+</script>
+<script src="/js/changelanguage.js"></script>
+</body>
+</html>

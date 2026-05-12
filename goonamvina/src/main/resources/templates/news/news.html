@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <title>GoonamVina</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/news.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/homepage.css}"/>
+</head>
+<body>
+
+<header layout:include="layout/menu :: header"></header>
+<main>
+    <div id="category-news">
+        <h2 th:text="#{project.news}"></h2>
+        <div class="news-item" th:each="news : ${newsList}">
+            <img th:src="@{'/uploads/images/' + ${news.imageName}}" alt="News 1">
+            <div class="news-details">
+                <a th:href="@{/news/{id}(id=${news.id})}">
+                    <h3 th:text="${lang == 'vi' ? news.titleVi : news.titleEn}"></h3>
+                </a>
+                <p th:text="${lang == 'vi' ? news.shortContentVi : news.shortContentEn}"></p>
+                <a th:href="@{/news/{slug}(slug=${news.slug})}" class="news-button" th:text="${lang == 'vi' ? 'Đọc thêm' : 'Read more'}"></a>
+            </div>
+        </div>
+
+        <!-- Thêm các mục tin tức khác tương tự -->
+    </div>
+    <div class="load-more-container">
+        <button class="load-more-button" id="load-more-button-news" th:text="#{load.more}" ></button>
+    </div>
+</main>
+<footer layout:include="layout/footer :: footer"></footer>
+<script src="/js/script.js"></script>
+<script src="/js/load-more-news.js"></script>
+<script src="/js/changelanguage.js"></script>
+</body>
+</html>

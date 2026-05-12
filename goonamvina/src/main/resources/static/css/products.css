@@ -1,0 +1,421 @@
+ body {
+     font-family: Arial, sans-serif;
+     margin: 0;
+     padding: 0;
+     transition: margin-left 0.3s ease;
+ }
+ h2{
+    font-size:1.5em;
+    color:crimson;
+    text-align:center;
+}
+.title-otherproduct{
+text-align:center;
+}
+h4{
+        color:crimson;
+        text-align: center;
+        padding-right: 115px;
+}
+.title-product {
+    text-align: center;
+    margin-left: 230px;
+    margin-top: -50px;
+}
+.hidden {
+    display: none;
+}
+.navigate-buttons{
+    text-align: center;
+    margin: 20px;
+}
+/* Styling chung cho các nút */
+.button-custom {
+    background-color: #ffffff; /* Màu nền trắng */
+    color: #d32f2f; /* Màu chữ đỏ */
+    border: 2px solid #d32f2f; /* Đường viền màu đỏ */
+    padding: 10px 20px; /* Khoảng cách trong của nút */
+    font-size: 16px; /* Kích thước chữ */
+    font-weight: bold;
+    border-radius: 25px; /* Bo tròn góc nút */
+    cursor: pointer; /* Thêm con trỏ chuột khi hover */
+    transition: all 0.3s ease; /* Hiệu ứng mượt mà khi hover */
+    margin-right: 10px; /* Khoảng cách giữa các nút */
+}
+
+.button-custom:hover {
+    background-color: #d32f2f; /* Nền đỏ khi hover */
+    color: #ffffff; /* Chữ trắng khi hover */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Thêm hiệu ứng đổ bóng khi hover */
+    transform: translateY(-2px); /* Hiệu ứng di chuyển nhẹ khi hover */
+}
+
+/* Tùy chỉnh khi button được click */
+.button-custom:active {
+    transform: translateY(1px); /* Hiệu ứng khi nhấn nút */
+    box-shadow: none; /* Tắt shadow khi nhấn */
+}
+ .products-list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 columns layout */
+     justify-content: center;
+     flex-wrap: wrap;
+     gap: 20px;
+     padding: 43px;
+     background-color: rgb(245, 242, 242);
+ }
+ .product-details {
+     background: #f8f9fa; /* Màu nền nhạt hơn */
+         padding: 15px; /* Giảm bớt padding để không gian gọn gàng hơn */
+         border-radius: 10px; /* Giữ nguyên góc bo tròn */
+         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Tăng độ bóng để tạo chiều sâu */
+         font-family: 'Arial', sans-serif; /* Đổi lại font chữ để dễ đọc */
+         color: #333; /* Màu chữ trung tính */
+         line-height: 1.6; /* Khoảng cách giữa các dòng */
+ }
+ .product-details p {
+  white-space: pre-line; /* Bảo toàn các xuống dòng trong nội dung */
+   line-height: 1.6; /* Tăng khoảng cách giữa các dòng để dễ đọc */
+     margin: 8px 0; /* Giảm khoảng cách giữa các đoạn văn */
+     font-size: 16px; /* Kích thước chữ vừa phải */
+ }
+ .product-details p:first-child {
+     font-weight: bold; /* Làm nổi bật tên sản phẩm */
+     font-size: 18px; /* Kích thước chữ lớn hơn cho tên sản phẩm */
+     color: #000; /* Đổi màu chữ để tạo sự nổi bật */
+ }
+ .product-details p:nth-child(2) {
+     font-style: italic; /* Kiểu chữ nghiêng cho phần mô tả */
+     color: #666; /* Màu chữ nhẹ nhàng hơn */
+ }
+
+ .product-item {
+     background-color: #f0f0f0;
+     border-radius: 8px;
+     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+     overflow: hidden;
+     text-align: center;
+    padding: 15px;
+    max-width: 350px; /* Thu nhỏ chiều rộng tối đa */
+     margin: 10px auto;
+ }
+
+ .product-item:hover {
+     transform: scale(1.02);
+     box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+ }
+
+.product-item img {
+ width: 100%; /* Chiếm toàn bộ chiều rộng của khung chứa */
+     height: auto; /* Giữ nguyên tỉ lệ của hình ảnh */
+     object-fit: contain; /* Hiển thị toàn bộ hình ảnh mà không bị cắt xén */
+     max-height: 300px; /* Giới hạn chiều cao tối đa của hình ảnh */
+     margin-bottom: 20px;
+}
+
+ .product-buttons {
+     display: flex;
+     flex-direction: column;
+     gap: 10px;
+      margin-top: 10px;
+ }
+
+ .product-button {
+     padding: 10px 20px;
+     background-color: #fff;
+     color: #333;
+     border: none;
+     border-radius: 6px;
+     cursor: pointer;
+     transition: background-color 0.3s;
+ }
+
+ .product-button:hover {
+     background-color: #ddd;
+ }
+
+
+/* Overlay lớp phủ tối */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Màu tối với độ trong suốt */
+    z-index: 999; /* Đặt trên các thành phần khác */
+}
+
+/* Bảng màu hiển thị ở giữa màn hình */
+.color-picker-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1001; /* Đặt trên lớp overlay */
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
+    max-width: 600px;
+    width: 100%;
+}
+/* Vùng hiển thị các màu */
+.color-picker-body {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 cột */
+    gap: 10px;
+    max-height: 400px; /* Giới hạn chiều cao của bảng màu */
+    overflow-y: auto; /* Cuộn nếu quá nhiều màu */
+}
+/* Mỗi ô màu */
+.color-box {
+    position: relative;
+    width: 100%;
+    padding: 5px;
+    text-align: center;
+}
+
+.color-box img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+}
+.color-box p {
+    margin-top: 5px;
+    font-size: 12px;
+    color: #333;
+}
+.color-select-button {
+    background-color: #d32f2f;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+.color-select-button:hover {
+    background-color: #c82333;
+        transform: translateY(-2px);
+    box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.15);
+}
+.page-button {
+    padding: 8px 16px;
+    background-color: #6c757d; /* Màu nền xám */
+    color: #fff; /* Màu chữ trắng */
+    border: none; /* Bỏ viền */
+    border-radius: 5px; /* Bo tròn góc */
+    cursor: pointer; /* Con trỏ dạng bàn tay khi hover */
+    transition: background-color 0.3s, transform 0.3s; /* Hiệu ứng chuyển đổi */
+    font-weight: bold;
+    margin: 0 5px; /* Khoảng cách giữa các nút */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Đổ bóng nhẹ */
+}
+
+.page-button:hover {
+    background-color: #5a6268; /* Màu nền khi hover */
+    transform: translateY(-2px); /* Hiệu ứng nổi lên khi hover */
+}
+
+.page-button:active {
+    background-color: #494e53; /* Màu nền khi nhấn */
+    transform: translateY(0); /* Hiệu ứng nhấn xuống khi click */
+}
+
+.page-button:disabled {
+    background-color: #c0c0c0; /* Màu nền cho nút bị disable */
+    cursor: not-allowed; /* Con trỏ không thể click */
+}
+.close-picker-button {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    float: right;
+}
+
+.close-picker-button:hover {
+    background-color: #c82333;
+    transform: translateY(-2px);
+}
+
+.color-picker-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+
+/* Đảm bảo các nút không bị quá gần nhau */
+.page-button, .close-picker-button {
+    margin: 0 5px;
+}
+/* Ẩn lớp phủ và bảng màu khi không hiển thị */
+.hidden {
+    display: none;
+}
+.selected-colors {
+    margin-bottom: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.color-tag {
+    background-color: #d32f2f;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 20px;
+    display: inline-flex;
+    align-items: center;
+    font-size: 14px;
+}
+
+.remove-color-button {
+    background: none;
+    border: none;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+.remove-color-button:hover {
+    color: #ff4c4c;
+}
+.color-checkbox {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    transform: scale(1.5); /* Làm lớn checkbox */
+    cursor: pointer;
+}
+ footer {
+     background-color: #545658;
+     color: #f8f9fa;
+     padding: 2em;
+     border-top: 1px solid #495057;
+ }
+
+ .footer-content {
+     max-width: 1200px;
+     margin: 0 auto;
+     text-align: center;
+ }
+
+ .footer-title {
+     font-size: 1.5em;
+     margin-bottom: 1em;
+ }
+
+ .footer-sections {
+     display: flex;
+     justify-content: space-between;
+     align-items: flex-start;
+ }
+
+ .load-more-container {
+     text-align: center;
+     margin: 20px 0;
+ }
+
+ .load-more-button {
+ font-weight:bold;
+     padding: 10px 20px;
+     background-color: #9b9b9b;
+     color: #fff;
+     border: none;
+     border-radius: 6px;
+     cursor: pointer;
+     transition: background-color 0.3s;
+ }
+ .load-more-button:hover {
+     background-color: #d32f2f;
+ }
+
+ .company-info {
+     flex: 1;
+     text-align: left;
+     margin-right: 1em;
+ }
+
+ .company-info p {
+     margin: 0.5em 0;
+ }
+
+ .company-info a {
+     color: #17a2b8;
+     text-decoration: none;
+ }
+
+ .company-info a:hover {
+     text-decoration: underline;
+ }
+
+ .map-container {
+     flex: 1;
+     text-align: right;
+ }
+
+ .map-container iframe {
+     max-width: 100%;
+     height: 200px;
+     border: none;
+ }
+
+
+
+@media only screen and (max-width: 1199.98px) {
+.title-product {
+    text-align: center;
+    margin-left: 333px;
+    margin-top: -60px;
+}
+  .products-list {
+      display: grid;
+      grid-template-columns: repeat(1, 1fr);
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      padding: 43px;
+      background-color: rgb(245, 242, 242);
+  }
+
+.product-item {
+    background-color: #f0f0f0;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    text-align: center;
+    padding: 15px;
+    max-width: 670px;
+    margin: 10px auto;
+}
+     .footer-content {
+         flex-direction: column;
+         text-align: center;
+     }
+
+     .footer-sections {
+         flex-direction: column;
+     }
+
+     .map-container iframe {
+         width: 100%;
+         height: 200px; /* Thu nhỏ kích thước của bản đồ */
+     }
+ }
+ @media (max-width: 480px) {
+     .products-list {
+         grid-template-columns: 1fr; /* 1 column layout for mobile phones */
+     }
+ }

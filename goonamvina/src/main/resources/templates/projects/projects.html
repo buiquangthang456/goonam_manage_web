@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <title>GoonamVina</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/project.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/homepage.css}"/>
+</head>
+<body>
+
+<header layout:include="layout/menu :: header"></header>
+
+    <main>
+        <div id="category-project">
+            <h2 th:text="${lang == 'vi' ? projectCategory.nameVi : projectCategory.nameEn}"></h2>
+            <div class="project-item" th:each="project : ${projectList}">
+                <img th:src="@{'/uploads/images/' + ${project.imageProject}}" alt="Dự án">
+                <div class="project-details">
+                    <h3>
+                        <span th:text="#{project.title1}"></span>
+                        <span th:text="${lang == 'vi' ? project.nameVi : project.nameEn}"></span>
+                    </h3>
+                    <p>
+                        <span th:text="#{project.investor}"></span>
+                        <span th:text="${lang == 'vi' ? project.investorVi : project.investorEn}"></span>
+                    </p>
+                    <p>
+                        <span th:text="#{project.description}"></span>
+                        <span th:text="${lang == 'vi' ? project.descriptionVi : project.descriptionEn}"></span>
+                    </p>
+                    <p>
+                        <span th:text="#{project.startYear}"></span>
+                        <span th:text="${project.startYear}"></span>
+                    </p>
+                    <p>
+                        <span th:text="#{project.completionYear}"></span>
+                        <span th:text="${project.completionYear}"></span>
+                    </p>
+                    <p>
+                        <span th:text="#{project.location}"></span>
+                        <span th:text="${lang == 'vi' ? project.locationVi : project.locationEn}"></span>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="load-more-container">
+            <button class="load-more-button" id="load-more-button-project" th:text="${lang == 'vi' ? 'Xem thêm' : 'Load more'}"></button>
+        </div>
+    </main>
+
+
+        <!-- Add more project items as needed -->
+
+<footer layout:include="layout/footer :: footer"></footer>
+<script src="/js/script.js"></script>
+<script src="/js/load-more-projects.js"></script>
+<script src="/js/changelanguage.js"></script>
+</body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+  <meta charset="UTF-8">
+  <title>GoonamVina</title>
+  <link rel="stylesheet" type="text/css" th:href="@{/css-admin/postnews.css}"/>
+  <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+  <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+  <link rel="stylesheet" type="text/css" th:href="@{/css-admin/dashboard.css}"/>
+</head>
+<body>
+<div class="dashboard">
+  <div th:replace="admin/layout-admin/sidebar :: sidebarFragment"></div>
+  <div class="main-content">
+    <header>
+      <button class="toggle-btn" id="toggle-btn">&#9776;</button>
+      <div class="news-form">
+        <h1 th:text="${news?.id != null} ? 'Edit News' : 'Add a New News Post'"></h1>
+        <form th:action="@{/admin/search-postnews}" method="get">
+          <input type="text" name="keyword" placeholder="Search for news..." th:value="${keyword}">
+          <button type="submit" class="btn">Search</button>
+        </form>
+      </div>
+      <div class="user-info">
+        <span>Welcome, [User]</span>
+        <a href="/admin/logout" class="btn">Logout</a>
+      </div>
+    </header>
+    <section class="content">
+      <div class="news-form"th:if="${news != null}">
+
+        <form id="news-form" th:action="@{${news?.id != null} ? '/admin/update-news/' + ${news.id} : '/admin/post-news'}"
+              th:object="${news}" method="POST" enctype="multipart/form-data">
+          <input type="hidden" th:field="*{id}">
+
+          <div class="form-group">
+            <label for="titleVi">Title (Vietnamese)</label>
+            <input type="text" id="titleVi" th:field="*{titleVi}" name="titleVi" required>
+          </div>
+          <!-- Title in English -->
+          <div class="form-group">
+            <label for="titleEn">Title (English)</label>
+            <input type="text" id="titleEn" th:field="*{titleEn}" name="titleEn" required>
+          </div>
+
+          <!-- Short Content in Vietnamese -->
+          <div class="form-group">
+            <label for="shortContentVi">Short Content (Vietnamese)</label>
+            <textarea id="shortContentVi" name="shortContentVi" th:field="*{shortContentVi}" rows="5" maxlength="1000" required></textarea>
+            <div th:if="${#fields.hasErrors('shortContentVi')}" th:errors="*{shortContentVi}" class="alert alert-danger"></div>
+          </div>
+          <!-- Short Content in English -->
+          <div class="form-group">
+            <label for="shortContentEn">Short Content (English)</label>
+            <textarea id="shortContentEn" name="shortContentEn" th:field="*{shortContentEn}" rows="5" maxlength="1000" required></textarea>
+            <div th:if="${#fields.hasErrors('shortContentEn')}" th:errors="*{shortContentEn}" class="alert alert-danger"></div>
+          </div>
+
+          <div class="form-group">
+            <label for="contentVi">Content (Vietnamese)</label>
+            <div id="editorVi" style="height: 200px;" th:text="*{contentVi}"></div>
+            <textarea id="contentVi" name="contentVi" th:field="*{contentVi}"  hidden required></textarea>
+          </div>
+          <!-- Content in English -->
+          <div class="form-group">
+            <label for="contentEn">Content (English)</label>
+            <div id="editorEn" style="height: 200px;" th:text="*{contentEn}"></div>
+            <textarea id="contentEn" name="contentEn" th:field="*{contentEn}" hidden required></textarea>
+          </div>
+          <div class="form-group">
+            <label for="news-image">Upload Image</label>
+            <input type="file" id="news-image" name="news-image" accept="image/*" th:attr="required=${news.imageName == null}">
+            <div th:if="${news.imageName != null}">
+              <label>Current Image:</label>
+              <img th:src="@{'/uploads/images/' + ${news.imageName}}" alt="News Image" style="width: 100px; height: auto;"/>
+            </div>
+          </div>
+          <button type="submit" class="btn" th:text="${news.id != null} ? 'Update News' : 'Add News'"></button>
+        </form>
+      </div>
+
+      <div class="news-table">
+        <h2>News List</h2>
+        <table id="news-table">
+          <thead>
+          <tr>
+            <th>Title</th>
+            <th>Short Content</th>
+            <th>Content</th>
+            <th>Image</th>
+            <th>Action</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr th:each="news : ${newsList}">
+            <td th:text="${news.titleVi}"></td> <!-- Display the Vietnamese title -->
+            <td th:text="${news.shortContentVi}"></td> <!-- Display the Vietnamese short content -->
+            <td th:text="${news.contentVi}"></td> <!-- Display the Vietnamese content -->
+            <td>
+              <img th:src="@{'/uploads/images/' + ${news.imageName}}" alt="News Image" style="width: 100px; height: auto;"/>
+            </td>
+            <td>
+              <a th:href="@{'/admin/edit-news/' + ${news.id}}">Edit</a> |
+              <a th:href="@{'/admin/delete-news/' + ${news.id}}" onclick="return confirm('Are you sure?')">Delete</a>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </div>
+</div>
+
+
+<script src="/js-admin/admin.js"></script>
+<script src="/js-admin/paste-image.js"></script>
+</body>
+</html>

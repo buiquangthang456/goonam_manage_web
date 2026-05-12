@@ -1,0 +1,285 @@
+
+html {
+    scroll-behavior: smooth;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.container p{
+text-align:center;}
+.vc-nav__expand {
+    background: url(/images/i-arrow-up.svg/) no-repeat center center / 27px;
+    display: inline-block;
+    height: 44px;
+    right: 0;
+    position: absolute;
+    top: 0px;
+    transition: transform 0.25s;
+    width: 75px;
+    z-index: 1;
+}
+.gm-slideshow-container {
+    position: relative;
+    width: 60%; /* Giảm kích thước tổng thể của khung chứa */
+    margin: 20px auto;
+    overflow: hidden;
+    border-radius: 20px; /* Làm tròn góc ảnh nhiều hơn */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4); /* Tăng hiệu ứng đổ bóng */
+}
+
+.gm-slideshow-img {
+    width: 100%;
+    height:460px;
+    display: none;
+    filter: grayscale(50%) contrast(120%); /* Thêm hiệu ứng nghệ thuật */
+    transition: filter 0.5s ease, transform 0.5s ease;
+    border-radius: 15px;
+}
+
+/* Hiển thị ảnh đầu tiên */
+.gm-slideshow-img:first-child {
+    display: block;
+}
+/* Hiệu ứng khi hover */
+.gm-slideshow-img:hover {
+    filter: grayscale(0%) contrast(100%); /* Bỏ hiệu ứng grayscale khi hover */
+    transform: scale(1.05); /* Phóng to ảnh nhẹ khi hover */
+}
+
+.gm-hero {
+    background: url('/static/images/lazer/lazer4.jpg') no-repeat center center/cover;
+    background: linear-gradient(135deg, rgb(152 161 170 / 80%), rgb(7 7 7)), url('/images/lazer/lazer4.jpg') no-repeat center center/cover;
+    color: #fff;
+    padding: 130px 0;
+    text-align: center;
+}
+
+.gm-hero-content h1 {
+    font-size: 2.5em;
+    margin-bottom: 0.5em;
+}
+
+.gm-hero-content p {
+    font-size: 1.2em;
+    margin-bottom: 2em;
+}
+
+.gm-cta-button {
+     padding: 0.75em 1.5em;
+        background-color: #ff9900;
+        background-image: linear-gradient(90deg, #575757, #FF0000);
+        color: #fff;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+}
+
+.gm-cta-button:hover {
+    background-image: linear-gradient(135deg, #FF0000,#DDDDDD );
+}
+
+.gm-about,
+.gm-products,
+.gm-projects {
+    padding: 2em 0;
+    opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+.gm-about.visible,
+.gm-products.visible,
+.gm-projects.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.gm-products h2,
+.gm-projects h2,
+.gm-about h2 {
+    text-align: center;
+    margin-bottom: 1em;
+}
+
+.gm-product-grid,
+.gm-projects-grid {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 2em;
+}
+
+.gm-product-item,
+.gm-project-item {
+    background-color: #fff;
+    padding: 1.5em;
+    margin: 1em;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 300px; /* Đặt giới hạn cho kích thước */
+    flex-basis: 300px; /* Đảm bảo kích thước các item đồng đều */
+    flex-grow: 1; /* Cho phép các item mở rộng khi cần thiết */
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.gm-product-item:hover,
+.gm-project-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.gm-product-item img,
+.gm-project-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 0.5em;
+     transition: transform 0.3s ease;
+}
+
+
+
+
+.gm-product-item:hover img,
+.gm-project-item:hover img {
+    transform: scale(1.05); /* Phóng to hình ảnh khi hover */
+    transition: transform 0.3s ease; /* Thêm hiệu ứng chuyển động mượt mà */
+}
+.gm-product-link {
+    display: inline-block;
+    margin-top: 0.5em;
+    padding: 0.5em 1em;
+    background-color: #525b65;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+
+.gm-product-link:hover {
+    background-color: #d32f2f;
+}
+
+.gm-project-item p {
+    margin-top: 0.5em;
+    font-size: 0.9em;
+    color: #666;
+}
+
+.gm-footer {
+    padding: 2em 0;
+    background-color: #545658;
+    color: #fff;
+    text-align: center;
+}
+
+.gm-footer a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.gm-footer a:hover {
+    text-decoration: underline;
+}
+
+.gm-social-links {
+    margin-top: 1em;
+}
+
+.gm-social-links a {
+    margin: 0 10px;
+    display: inline-block;
+}
+
+.gm-social-links img {
+    width: 24px;
+    height: 24px;
+}
+@media only screen and (max-width: 1199.98px) {
+    .mobile-menu {
+        display: block;
+        position: relative;
+        left: -20px;
+        top: -33px;
+    }
+   header {
+           position: fixed;
+           top: 0;
+           width: 100%;
+           z-index: 1000;
+           padding: 0;
+           box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+           transition: all 0.5s cubic-bezier(0.25, 0.8, 0.5, 1);
+           transform: translateY(0);
+           opacity: 1;
+           height: 65px;
+       }
+    main {
+       padding-top: 68px;
+    }
+    .logo-mobile {
+        display: block;
+        position: relative;
+        top: -25px;
+        left: 98px;
+        /* width: 81px; */
+    }
+    .logo {
+        left: -5px;
+        max-width: 180px;
+        height: auto;
+        position: relative;
+        bottom: 20px;
+    }
+    .gm-slideshow-img {
+        width: 100%;
+         height: auto;
+        display: none;
+        filter: grayscale(50%) contrast(120%);
+        transition: filter 0.5s ease, transform 0.5s ease;
+        border-radius: 15px;
+    }
+   li a {
+              font-weight: bold;
+                      text-align: left;
+                      text-decoration: none;
+                      color: #fff;
+                      text-decoration: none;
+                      padding: 1em 1em;
+                      display: block;
+                      transition: background-color 0.3s ease;
+                      /* text-align: center; */
+                      font-size: 1rem;
+   }
+
+   .menu-toggle {
+           display: block;
+           background-color: #333;
+           color: #fff;
+           border: none;
+           font-size: 2em;
+           cursor: pointer;
+           margin-left: 20px;
+           padding: 10px;
+       }
+
+    .gm-hero-content h1 {
+        font-size: 1.5em;
+    }
+.gm-hero-content p {
+    font-size: 1em;
+    margin-bottom: 2em;
+}
+    .gm-cta-button {
+        font-size: 1em;
+    }
+
+    .gm-product-item,
+    .gm-project-item {
+        margin: 1em 0;
+    }
+}

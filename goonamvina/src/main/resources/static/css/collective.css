@@ -1,0 +1,224 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+}
+.operating-policy {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2em;
+    text-align: center;
+}
+
+.operating-policy h1 {
+    font-size: 2.5em;
+    color: #d32f2f;
+    margin-bottom: 0.5em;
+}
+
+.operating-policy h2 {
+    font-size: 1.8em;
+    color: #666;
+    margin-bottom: 1em;
+}
+
+.operating-policy h3 {
+    font-size: 1.5em;
+    color: #333;
+    margin-bottom: 2em;
+}
+
+.operating-policy .highlight {
+    color: #d32f2f;
+    font-weight: bold;
+}
+
+.policy-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5em;
+}
+.letter-highlight {
+    font-size: 3em;
+    font-weight: bold;
+    color: #d32f2f;
+}
+/* Hiệu ứng xuất hiện từ từ cho chữ */
+@keyframes typing {
+    from {
+        width: 0;
+    }
+    to {
+        width: 100%;
+    }
+}
+
+@keyframes blink-caret {
+    from, to {
+        border-color: transparent;
+    }
+    50% {
+        border-color: #d32f2f;
+    }
+}
+
+.typing-effect {
+    font-size: 1.1em;
+    font-weight: normal;
+    color: #333;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 0.15em solid #d32f2f;
+    width: 100%; /* Thiết lập độ rộng ban đầu */
+    animation: typing 3s steps(40, end), blink-caret 0.75s step-end infinite;
+}
+.policy-item .content p {
+    font-size: 1.1em;
+    color: #333;
+    margin-bottom: 0.5em;
+    text-align: justify;
+    text-indent: 2em;
+    line-height: 1.5;
+}
+.policy-item .content h4 {
+    font-size: 1.5em;
+    color: #d32f2f;
+    margin-bottom: 0.5em;
+    display: flex;
+    align-items: center;
+}
+.number-with-border {
+    border: 2px solid #d32f2f;
+    border-radius: 20px;
+    font-size: 4em;
+    color: #d32f2f;
+    padding: 0.2em 0.5em;
+    margin-right: 1.5em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 80px; /* Đảm bảo kích thước tối thiểu cho hộp số */
+    height: 140px; /* Chiều cao hộp số */
+}
+.policy-item {
+    display: flex;
+    background-color: #fff;
+    border: 2px solid #d32f2f;
+    padding: 1.5em;
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+    align-items: center; /* Đảm bảo căn giữa chiều dọc */
+}
+
+.policy-item .number {
+    font-size: 4em;
+    color: #d32f2f;
+    position: absolute;
+    top: 35px;
+    left: 10px;
+    font-weight: bold;
+}
+
+.policy-item .content {
+    flex-grow: 1;
+    text-align: left;
+}
+
+.policy-item h4 {
+    font-size: 1.5em;
+    color: #d32f2f;
+}
+
+.policy-item p {
+    font-size: 1.1em;
+    color: #333;
+    margin-bottom: 0.5em;
+    text-align: justify;
+    text-indent: 2em;
+}
+.policy-item:nth-child(odd):last-child {
+    grid-column: 1 / span 2; /* Chiếm cả 2 cột và căn giữa trong hàng cuối */
+    justify-self: center; /* Căn giữa theo chiều ngang */
+    width: 50%; /* Đảm bảo nó không mở rộng toàn bộ chiều rộng hàng */
+}
+/* Phần video */
+.video-container {
+    margin-top: 3em;
+    text-align: center;
+}
+
+/* Hiệu ứng AOS */
+[data-aos] {
+    opacity: 0;
+    transition-property: transform, opacity;
+}
+
+[data-aos].aos-animate {
+    opacity: 1;
+}
+
+/* Tối ưu trên mobile */
+@media only screen and (max-width: 1199.98px) {
+   .policy-section {
+           display: flex;
+           flex-direction: column;
+           gap: 1.5em;
+       }
+
+       .policy-item {
+           width: 100%; /* Đảm bảo mục chiếm toàn bộ chiều rộng */
+           margin: 0 auto; /* Căn giữa mục */
+           padding: 1em;
+           display: flex;
+           flex-direction: column;
+           align-items: center; /* Căn giữa nội dung bên trong mục */
+           border: 2px solid #d32f2f;
+           border-radius: 10px;
+       }
+
+       .number-with-border {
+
+           text-align: center;
+           width: 80px;
+           height: 80px;
+           display: flex;
+           font-size: 2.5em;
+       }
+
+       .policy-item .content {
+           text-align: center; /* Căn giữa nội dung văn bản */
+       }
+
+       .policy-item h4 {
+           font-size: 1.5em;
+           color: #d32f2f;
+       }
+
+       .policy-item p {
+           font-size: 1.1em;
+           color: #333;
+           margin-bottom: 0.5em;
+           text-align: justify;
+           text-indent: 2em;
+       }
+     .policy-item:nth-child(odd):last-child {
+             grid-column: initial; /* Loại bỏ việc chiếm cả 2 cột */
+             justify-self: initial; /* Loại bỏ căn giữa bất thường */
+             width: 100%; /* Đảm bảo mục cuối cùng chiếm toàn bộ chiều rộng */
+         }
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .footer-sections {
+        flex-direction: column;
+    }
+
+    .map-container iframe {
+        width: 100%;
+        height: 200px;
+    }
+}

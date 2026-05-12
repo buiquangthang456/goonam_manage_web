@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <title>GoonamVina</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/products-list.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/homepage.css}"/>
+
+</head>
+<body>
+
+<header layout:include="layout/menu :: header"></header>
+<main>
+    <section class="product-categories">
+        <div class="category-item" th:each="pc : ${pcList}">
+            <h2 th:text="${#locale.language.equals('vi') ? pc.nameVi : pc.nameEn}"></h2>
+            <img th:src="@{'/uploads/images/' + ${pc.imagePC}}" alt="Cửa">
+            <button ><a th:href="@{/subproductcategory/{slug}(slug=${pc.slug})}" th:text="#{button.viewmore}"></a></button>
+        </div>
+    </section>
+</main>
+<footer layout:include="layout/footer :: footer"></footer>
+<script src="/js/script.js"></script>
+<script src="/js/changelanguage.js"></script>
+</body>
+</html>

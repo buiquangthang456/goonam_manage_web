@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <title>GoonamVina</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css-admin/dashboard.css}"/>
+
+</head>
+<body>
+<div class="dashboard">
+    <div th:replace="admin/layout-admin/sidebar :: sidebarFragment"></div>
+    <div class="main-content">
+        <header>
+            <button class="toggle-btn" id="toggle-btn">&#9776;</button>
+            <h1>Dashboard</h1>
+            <div class="user-info">
+                <span th:text="'Welcome, ' + ${user.username}"> </span>
+                <a href="/admin/logout" class="btn">Logout</a>
+            </div>
+        </header>
+        <section class="content">
+            <div class="welcome-message">
+                <h2>Welcome to the GoonamVina Dashboard</h2>
+                <p>Here you can manage your content, view statistics, and more.</p>
+            </div>
+            <div class="dashboard-cards">
+                <div class="card">
+                    <h3>Recent Activity</h3>
+                    <p>View recent updates and changes.</p>
+                </div>
+                <div class="card">
+                    <h3>Quick Actions</h3>
+                    <p>Create new posts, manage categories, and more.</p>
+                </div>
+                <div class="card">
+                    <h3>Statistics</h3>
+                    <p>View your site's performance and analytics.</p>
+                    <ul>
+                        <li>Products: 120</li>
+                        <li>Projects: 45</li>
+                        <li>News Posts: 30</li>
+                        <li>Users: 10</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+<script src="/js-admin/admin.js"></script>
+</body>
+</html>

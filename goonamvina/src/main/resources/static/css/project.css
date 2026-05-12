@@ -1,0 +1,162 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    transition: margin-left 0.3s ease;
+}
+
+
+
+main {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+}
+
+.project-item {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #ccc;
+    padding: 20px 0;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-item.hidden {
+    display: none;
+}
+
+.project-item:hover {
+    transform: scale(1.02);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.project-item img {
+    width: 200px;
+    height: auto;
+    margin-right: 20px;
+}
+
+.project-details {
+    text-align: left;
+}
+
+.project-details h3 {
+    margin: 0 0 10px 0;
+    font-size: 1.5em;
+    color: #333;
+}
+
+.project-details p {
+    margin: 5px 0;
+    font-size: 14px;
+    color: #666;
+}
+
+.load-more-container {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.load-more-button {
+    padding: 10px 20px;
+    background-color: #9b9b9b;;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.load-more-button:hover {
+    background-color: #d32f2f;;
+}
+
+footer {
+    background-color: #343a40;
+    color: #f8f9fa;
+    padding: 2em;
+    border-top: 1px solid #495057;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.footer-title {
+    font-size: 1.5em;
+    margin-bottom: 1em;
+}
+
+.footer-sections {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.company-info {
+    flex: 1;
+    text-align: left;
+    margin-right: 1em;
+}
+
+.company-info p {
+    margin: 0.5em 0;
+}
+
+.company-info a {
+    color: #17a2b8;
+    text-decoration: none;
+}
+
+.company-info a:hover {
+    text-decoration: underline;
+}
+
+.map-container {
+    flex: 1;
+    text-align: right;
+}
+
+.map-container iframe {
+    max-width: 100%;
+    height: 200px;
+    border: none;
+}
+
+
+
+@media only screen and (max-width: 1199.98px) {
+
+
+    .project-details {
+        width: 100%;
+        margin-bottom: 1em;
+    }
+
+
+    .project-item {
+        display: inline-block;
+
+    }
+
+    #category-project{
+        width: 100%;
+    }
+
+
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .footer-sections {
+        flex-direction: column;
+    }
+
+    .map-container iframe {
+        width: 100%;
+        height: 200px; /* Thu nhỏ kích thước của bản đồ */
+    }
+}

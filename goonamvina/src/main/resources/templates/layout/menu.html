@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <title>GoonamVina</title>
+</head>
+
+<body>
+<div layout:fragment="header">
+    <!--    <header>-->
+    <div class="top-bar">
+        <div class="logo-container">
+            <a href="/">
+                <img th:src="${#locale.language == 'vi' ? '/images/a-vi.png' : '/images/a-en.png'}"
+                     alt="Goonavina Logo" class="logo">
+            </a>
+        </div>
+
+        <!-- Tên công ty, thay đổi theo ngôn ngữ -->
+        <div class="company-name">
+            <h1 th:text="#{goonamvina.title}"></h1>
+        </div>
+
+        <!-- Logo bên phải, thay đổi theo ngôn ngữ -->
+        <div class="right-logo-container">
+            <a href="/googenmetal">
+                <img th:src="${#locale.language == 'vi' ? '/images/b-vi.png' : '/images/b-en.png'}"
+                     alt="GoogenMetal Logo" class="right-logo">
+            </a>
+        </div>
+    </div>
+
+    <button class="menu-toggle" id="menu-toggle">☰</button>
+    <div class="logo-mobile">
+        <a href="/"><img th:src=${"/images/c.png"} alt="Goonavina Logo" class="logo"></a>
+        <div class="language-toggle">
+            <input type="checkbox" id="language-switch1" class="language-switch">
+            <label for="language-switch" class="toggle">
+                <span class="toggle-vn">VN</span>
+                <span class="toggle-en">EN</span>
+            </label>
+        </div>
+    </div>
+    <nav class="main-nav" id="main-nav">
+        <ul class="main-menu">
+            <li><a href="/" th:text="#{menu.home}">TRANG CHỦ</a></li>
+            <li class="dropdown">
+                <a href="#" th:text="#{menu.about}">GIỚI THIỆU</a>
+
+                <ul class="dropdown-menu">
+                    <li><a href="/history" th:text="#{menu.introduction.company-history}">LỊCH SỬ CÔNG TY</a></li>
+                    <li><a href="/collective" th:text="#{menu.introduction.collective}">TẬP THỂ CHÚNG TÔI</a></li>
+                    <li><a href="/main-role" th:text="#{menu.introduction.main-role}">NHÂN SỰ CHỦ CHỐT</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="/products-list" th:text="#{menu.products}">SẢN PHẨM</a>
+                <ul class="dropdown-menu">
+                    <li class="dropdown" th:each="category : ${productCategoryList}">
+                        <a th:href="@{'/subproductcategory/' + ${category.slug}}"
+                           th:text="${#locale.language.equals('vi') ? category.nameVi : category.nameEn}"> </a>
+
+                        <ul class="dropdown-menu nested-menu">
+                            <li th:each="subCategory : ${category.subProductCategories}">
+                                <a th:href="@{'/products/' + ${subCategory.slug}}"
+                                   th:text="${#locale.language.equals('vi') ? subCategory.nameVi : subCategory.nameEn}"></a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><a href="/googenmetal" th:text="#{menu.productcategories.metal}">KIM LOẠI</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="/googenmetal" class="custom-logo-text">
+                    <span class="googen-text">Googen</span>
+                    <span class="metal-text">Metal</span>
+                </a>
+            </li>
+            <li class="dropdown">
+                <a href="/projects" th:text="#{menu.projects}">DỰ ÁN</a>
+                <ul class="dropdown-menu">
+                    <li th:each="projectcategory : ${projectCategoryList}">
+                        <a th:href="@{'/projects/' + ${projectcategory.slug}}"
+                           th:text="${#locale.language.equals('vi') ? projectcategory.nameVi : projectcategory.nameEn}"></a>
+                    </li>
+                </ul>
+            </li>
+            <li><a href="/news" th:text="#{menu.news}">TIN TỨC</a></li>
+            <li><a href="/contact"  th:text="#{menu.contact}">LIÊN HỆ</a></li>
+            <div class="language-toggle">
+                <input type="checkbox" id="language-switch" class="language-switch" />
+                <label for="language-switch" class="toggle">
+                    <span class="toggle-vn">VN</span>
+                    <span class="toggle-en">EN</span>
+                </label>
+            </div>
+        </ul>
+
+    </nav>
+    <!--    </header>-->
+    <div id ="nav-mobile"class="mobile-menu">
+        <div></div>
+        <nav>
+            <ul class=""style ="">
+                <li><a href="/" th:text="#{menu.home}">TRANG CHỦ</a></li>
+                <li>
+                    <a href="#" th:text="#{menu.about}">GIỚI THIỆU</a>
+                    <i class="vc-nav__expand jsExpand "></i>
+                    <ul class="hidden">
+                        <li><a href="/history" th:text="#{menu.introduction.company-history}">LỊCH SỬ CÔNG TY</a></li>
+                        <li><a href="/collective" th:text="#{menu.introduction.collective}">TẬP THỂ CHÚNG TÔI</a></li>
+                        <li><a href="/main-role" th:text="#{menu.introduction.main-role}">NHÂN SỰ CHỦ CHỐT</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="/products-list" th:text="#{menu.products}">SẢN PHẨM</a>
+                    <i class="vc-nav__expand jsExpand "></i>
+                    <ul >
+                        <li class="dropdown" th:each="category : ${productCategoryList}">
+                            <a th:href="@{'/subproductcategory/' + ${category.slug}}"
+                               th:text="${#locale.language.equals('vi') ? category.nameVi : category.nameEn}"> </a>  <i class="vc-nav__expand jsExpand "></i> <!-- Nút mở/đóng -->
+
+                            <ul >
+                                <li th:each="subCategory : ${category.subProductCategories}">
+                                    <a th:href="@{'/products/' + ${subCategory.slug}}"
+                                       th:text="${#locale.language.equals('vi') ? subCategory.nameVi : subCategory.nameEn}"></a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li><a href="/googenmetal" th:text="#{menu.productcategories.metal}"></a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="/googenmetal" class="custom-logo-text">
+                        <span class="googen-text">Googen</span>
+                        <span class="metal-text">Metal</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/projects" th:text="#{menu.projects}">DỰ ÁN</a>
+                    <i class="vc-nav__expand jsExpand "></i>
+                    <ul >
+                        <li th:each="projectcategory : ${projectCategoryList}">
+                            <a th:href="@{'/projects/' + ${projectcategory.slug}}"
+                               th:text="${#locale.language.equals('vi') ? projectcategory.nameVi : projectcategory.nameEn}"></a>
+                        </li>
+                    </ul>
+                </li>
+                <li><a href="/news"  th:text="#{menu.news}">TIN TỨC</a></li>
+                <li><a href="/contact" th:text="#{menu.contact}">LIÊN HỆ</a></li>
+            </ul>
+
+        </nav>
+    </div>
+</div>
+</body>
+
+
+</html>

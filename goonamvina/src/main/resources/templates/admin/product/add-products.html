@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+  <meta charset="UTF-8">
+  <title>GoonamVina</title>
+  <link rel="stylesheet" type="text/css" th:href="@{/css-admin/addproduct.css}"/>
+  <link rel="stylesheet" type="text/css" th:href="@{/css-admin/dashboard.css}"/>
+</head>
+<body>
+<div class="dashboard">
+  <div th:replace="admin/layout-admin/sidebar :: sidebarFragment"></div>
+  <div class="main-content">
+    <header>
+      <button class="toggle-btn" id="toggle-btn">&#9776;</button>
+      <!-- Form tìm kiếm sản phẩm -->
+      <div class="product-search" th:if="${product != null}">
+        <h1 th:text="${product.id != null} ? 'Edit Product' : 'Add a New Product'"></h1>
+        <form th:action="@{/admin/search-products}" method="get">
+          <input type="text" name="keyword" placeholder="Search for products or categories..." th:value="${keyword}">
+          <button type="submit" class="btn">Search</button>
+        </form>
+      </div>
+
+      <div class="user-info">
+        <span>Welcome, [User]</span>
+        <a href="/admin/logout" class="btn">Logout</a>
+      </div>
+    </header>
+    <section class="content">
+
+      <div class="product-form " th:if="${product != null}">
+        <h2 th:text="${product.id != null} ? 'Edit Product' : 'Add a New Product'"></h2>
+        <form id="product-form" th:action="@{${product.id != null} ? '/admin/update-product/' + ${product.id} : '/admin/add-product'}"
+              th:object="${product}" method="POST" enctype="multipart/form-data">
+          <input type="hidden" th:field="*{id}" />
+          <div class="form-group">
+            <label for="product-name-vi">Product Name (Vi)</label>
+            <input type="text" id="product-name-vi" th:field="*{nameVi}" required>
+          </div>
+          <div class="form-group">
+            <label for="product-name-en">Product Name (En)</label>
+            <input type="text" id="product-name-en" th:field="*{nameEn}" required>
+          </div>
+          <div class="form-group">
+            <label for="category">Sub Category</label>
+            <select id="category" th:field="*{productSubCategory.id}" required>
+              <option value="">Select a category</option>
+              <option th:each="psc : ${psc}" th:value="${psc.id}" th:text="${psc.nameVi}"
+                      th:selected="${psc.id == product.productSubCategory?.id}"></option>
+            </select>
+          </div>
+          <div id="finishTypeViGroup" class="form-group">
+            <label for="finishTypeVi">Finish Type Vi (Tiếng Việt)</label>
+            <select id="finishTypeVi" th:field="*{finishTypeVi}">
+              <option value="">Select a finish type</option>
+              <option value="Sơn đơn màu">Sơn đơn màu</option>
+              <option value="Sơn giả gỗ">Sơn giả gỗ</option>
+              <option value="Dán laminate">Dán laminate</option>
+            </select>
+          </div>
+          <div id="finishTypeEnGroup" class="form-group">
+            <label for="finishTypeEn">Finish Type (Tiếng Anh)</label>
+            <select id="finishTypeEn" th:field="*{finishTypeEn}">
+              <option value="">Select a finish type</option>
+              <option value="Solid Color Paint">Solid Color Paint</option>
+              <option value="Wood Grain Paint">Wood Grain Paint</option>
+              <option value="Laminate Coating">Laminate Coating</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="description-vi">Description (Vi)</label>
+            <textarea id="description-vi" th:field="*{descriptionVi}" rows="5" required></textarea>
+            <div th:if="${#fields.hasErrors('descriptionVi')}" th:errors="*{descriptionVi}" class="error-message"></div>
+          </div>
+
+          <div class="form-group">
+            <label for="description-en">Description (En)</label>
+            <textarea id="description-en" th:field="*{descriptionEn}" rows="5" required></textarea>
+            <div th:if="${#fields.hasErrors('descriptionEn')}" th:errors="*{descriptionEn}" class="error-message"></div>
+
+          </div>
+
+          <div class="form-group">
+            <label for="product-image">Upload Image</label>
+            <input type="file" id="product-image" name="product-image" accept="image/*"
+                   th:attr="required=${product.imageP == null}">
+            <div th:if="${product.imageP != null}">
+              <label>Current Image:</label>
+              <img th:src="@{'/uploads/images/' + ${product.imageP}}" alt="Product Image" style="width: 100px; height: auto;"/>
+            </div>
+          </div>
+          <button type="submit" class="btn" th:text="${product.id != null} ? 'Update Product' : 'Add Product'"></button>
+
+        </form>
+      </div>
+
+      <div class="products-table">
+        <h2>Product List</h2>
+        <table id="products-table">
+          <thead>
+          <tr>
+            <th>Product NameVi (Tiếng Việt)</th>
+            <th>Product NameEn (Tiếng Anh)</th>
+            <th>Category</th>
+            <th>DescriptionVi (Tiếng Việt)</th>
+            <th>DescriptionVi (Tiếng Anh)</th>
+            <th>Image</th>
+            <th>Action</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr th:each="product : ${products}">
+            <td th:text="${product.nameVi}"></td>
+            <td th:text="${product.nameEn}"></td>
+            <td th:text="${product.productSubCategory.nameVi}"></td>
+            <td th:text="${product.descriptionVi}"></td>
+            <td th:text="${product.descriptionEn}"></td>
+            <td>
+              <img th:src="@{'/uploads/images/' + ${product.imageP}}" alt="No Image" style="max-width: 100px;"/>
+            </td>
+            <td>
+              <a th:href="@{'/admin/edit-product/' + ${product.id}}">Edit</a> |
+              <a th:href="@{'/admin/delete-product/' + ${product.id}}" onclick="return confirm('Are you sure?')">Delete</a>
+            </td>
+          </tr>
+          <tr th:if="${products != null and products.isEmpty()}">
+            <td colspan="5">No products found.</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </div>
+</div>
+<script src="/js-admin/admin.js"></script>
+<script src="/js-admin/cuathepchongchay.js"></script>
+</body>
+</html>

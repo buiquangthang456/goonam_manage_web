@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <title>GoonamVina</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css-admin/productcategory.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css-admin/dashboard.css}"/>
+
+</head>
+<body>
+<div class="dashboard">
+    <div th:replace="admin/layout-admin/sidebar :: sidebarFragment"></div>
+    <div class="main-content">
+        <header>
+            <button class="toggle-btn" id="toggle-btn">&#9776;</button>
+            <h1 th:text="${metal_category.id != null} ? 'Edit Metal Category' : 'Add a New Metal Category'"></h1>
+            <div class="user-info">
+                <span>Welcome, [User]</span>
+                <a href="/admin/logout" class="btn">Logout</a>
+            </div>
+        </header>
+        <section class="content">
+            <!-- Thêm phần hiển thị thông báo lỗi -->
+            <div th:if="${error}" class="alert alert-danger">
+                <p th:text="${error}"></p>
+            </div>
+            <div th:if="${message}" class="alert alert-success">
+                <p th:text="${message}"></p>
+            </div>
+
+
+
+            <div class="category-form">
+                <h2 th:text="${metal_category.id != null} ? 'Edit Metal Category' : 'Add a New Metal Category'"></h2>
+                <form id="category-form" th:action="@{${metal_category.id != null} ? '/admin/update-metalcategory/' + ${metal_category.id} : '/admin/metal-category'}"
+                      th:object="${metal_category}" method="POST" enctype="multipart/form-data">
+                    <input type="hidden" th:field="*{id}" />
+                    <div class="form-group">
+                        <label for="metal-name-vi">Category Name (Vietnamese)</label>
+                        <input type="text" id="metal-name-vi" th:field="*{nameVi}" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="metal-name-en">Category Name (English)</label>
+                        <input type="text" id="metal-name-en" th:field="*{nameEn}" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="category-description-vi">Description (Vietnamese)</label>
+                        <textarea id="category-description-vi" th:field="*{descriptionVi}" rows="5" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="category-description-en">Description (English)</label>
+                        <textarea id="category-description-en" th:field="*{descriptionEn}" rows="5" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="metal-image">Upload Image</label>
+                        <input type="file" id="metal-image" name="metal-image" accept="image/*" th:attr="required=${metal_category.imageMC == null}">
+                        <div th:if="${metal_category.imageMC != null}">
+                            <label>Current Image:</label>
+                            <img th:src="@{'/uploads/images/' + ${metal_category.imageMC}}" alt="Metal Category Image" style="width: 100px; height: auto;"/>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn" th:text="${metal_category.id != null} ? 'Update Category' : 'Add Category'"></button>
+                </form>
+            </div>
+            <div class="category-table">
+                <h2>Category List</h2>
+                <table id="category-table">
+                    <thead>
+                    <tr>
+                        <th>Category Name</th>
+                        <th>Description</th>
+                        <th>Image</th>
+                        <th>Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="category : ${metal_categories}">
+                        <td th:text="${category.nameVi}"></td>
+                        <td th:text="${category.descriptionVi}"></td>
+                        <td>
+                            <img th:src="@{'/uploads/images/' + ${category.imageMC}}" alt="No Image" style="max-width: 100px;"/>
+                        </td>
+                        <td>
+                            <a th:href="@{'/admin/edit-metalcategory/' + ${category.id}}">Edit</a> |
+                            <a th:href="@{'/admin/delete-metalcategory/' + ${category.id}}" onclick="return confirm('Are you sure?')">Delete</a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+</div>
+<script src="/js-admin/admin.js"></script>
+</body>
+</html>

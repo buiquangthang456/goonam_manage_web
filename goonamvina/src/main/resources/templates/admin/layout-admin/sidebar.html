@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:fragment="sidebarFragment" class="sidebar" id="sidebar">
+    <h2>GoonamVina</h2>
+    <ul>
+        <li><a href="/admin/dashboard">Dashboard</a></li>
+        <li><a href="/admin/media">Media</a></li>
+        <li><a href="/admin/post-news">Posts News</a></li>
+        <li><a href="#">Products</a>
+            <ul class="submenu">
+                <li><a href="/admin/product-category">Products Category</a></li>
+                <li><a href="/admin/product-subcategory">Sub Products Category</a></li>
+                <li><a href="/admin/add-product">Add Products</a></li>
+            </ul>
+        </li>
+        <li><a href="#">Projects</a>
+            <ul class="submenu">
+                <li><a href="/admin/project-category">Projects Category</a></li>
+                <li><a href="/admin/add-project">Add Projects</a></li>
+            </ul>
+        </li>
+        <li><a href="#">Metal</a>
+            <ul class="submenu">
+                <li><a href="/admin/metal-category">Metal Category</a></li>
+                <li><a href="/admin/add-metal">Add Metal</a></li>
+            </ul>
+        </li>
+        <li><a href="/admin/user">Users</a></li>
+        <li><a href="/admin/reply">Reply</a></li> <!-- Thêm mục Reply -->
+        <li><a href="/admin/trash">Trash Bin</a></li>
+        <li><a href="#">Settings</a></li>
+    </ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <title>GoonamVina</title>
+</head>
+<body>
+<div class="footer-content" layout:fragment="footer" >
+    <h2 class="footer-title" th:text="#{contact.companyName}">CÔNG TY TNHH GOONAM VINA</h2>
+    <div class="footer-sections">
+        <div class="company-info">
+            <p>MST: 0302862880</p>
+
+            <p><strong th:text="#{contact.address}">Địa chỉ:</strong> <span th:text="#{contact.address.detail}">Lô 18, Đường số 4, Khu công nghiệp trong Khu chế xuất Linh Trung 2, Phường Bình Chiểu, Thành phố Thủ Đức, Thành phố Hồ Chí Minh</span></p>
+            <p><strong th:text="#{contact.email}">Email:</strong> <a href="mailto:info@goonamvina.com">info@goonamvina.com</a></p>
+            <p><strong th:text="#{contact.phone}">Điện thoại:</strong> +84 28 3729 0496 -7- 8</p>
+            <p><strong th:text="#{contact.hotline}">Hotline:</strong> <span th:text="#{contact.hotline.detail}">0974 647 949 (Tổng Giám đốc Byun Hee Man) - 0902 84 27 84 (Phó Tổng Giám Đốc Đào Minh Tuấn)</span></p>
+        </div>
+        <div class="map-container">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3917.9454806192575!2d106.71609937451855!3d10.891748057057105!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3174d7f2df48b809%3A0x8e49f1b5c9de1178!2sC%C3%94NG%20TY%20GOONAM%20VINA!5e0!3m2!1svi!2s!4v1722869663141!5m2!1svi!2s" width="600" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,130 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    transition: margin-left 0.3s ease;
+}
+
+
+
+.our-team {
+    padding: 2em 0;
+    background-color: #f9f9f9;
+    text-align: center;
+}
+
+.our-team h2 {
+    font-size: 2.5em;
+    margin-bottom: 1em;
+    color: #333;
+}
+
+.team-members {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2em;
+}
+
+.team-member {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 1em;
+    max-width: 300px;
+    text-align: center;
+}
+
+.member-photo {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1; /* Đảm bảo hình ảnh luôn có tỷ lệ 1:1 */
+    border-radius: 50%; /* Tạo hình tròn */
+    margin-bottom: 1em;
+    object-fit: cover; /* Đảm bảo hình ảnh không bị biến dạng */
+}
+
+.team-member h3 {
+    font-size: 1.5em;
+    margin: 0.5em 0;
+}
+
+.team-member p {
+    color: #666;
+}
+footer {
+    background-color: #343a40; /* Màu nền tối giống với màu của header */
+    color: #f8f9fa; /* Màu chữ sáng để nổi bật trên nền tối */
+    padding: 2em; /* Khoảng cách trong footer */
+    border-top: 1px solid #495057; /* Đường viền trên footer */
+}
+
+.footer-content {
+    max-width: 1200px; /* Đặt chiều rộng tối đa cho phần nội dung */
+    margin: 0 auto; /* Căn giữa phần nội dung */
+    text-align: center; /* Căn giữa tiêu đề */
+}
+
+.footer-title {
+    font-size: 1.5em; /* Kích thước chữ tiêu đề */
+    margin-bottom: 1em; /* Khoảng cách dưới tiêu đề */
+}
+
+.footer-sections {
+    display: flex; /* Dùng Flexbox để sắp xếp các phần tử bên trong */
+    justify-content: space-between; /* Căn giữa nội dung và đều nhau */
+    align-items: flex-start; /* Căn chỉnh các phần tử bên trên cùng */
+}
+
+.company-info {
+    flex: 1; /* Chiếm hết chiều rộng có sẵn */
+    text-align: left; /* Căn chỉnh chữ sang trái */
+    margin-right: 1em; /* Khoảng cách bên phải để tách khỏi bản đồ */
+}
+
+.company-info p {
+    margin: 0.5em 0; /* Khoảng cách giữa các đoạn */
+}
+
+.company-info a {
+    color: #17a2b8; /* Màu liên kết sáng để nổi bật trên nền tối */
+    text-decoration: none; /* Bỏ gạch chân cho liên kết */
+}
+
+.company-info a:hover {
+    text-decoration: underline; /* Gạch chân khi di chuột qua liên kết */
+}
+
+.map-container {
+    flex: 1; /* Chiếm hết chiều rộng có sẵn */
+    text-align: right; /* Căn chỉnh bản đồ sang phải */
+}
+
+.map-container iframe {
+    max-width: 100%; /* Đảm bảo bản đồ không vượt quá chiều rộng của phần tử chứa */
+    height: 200px; /* Thu nhỏ chiều cao của bản đồ */
+    border: none; /* Bỏ đường viền cho iframe */
+}
+
+@media (max-width: 768px) {
+
+
+
+
+
+
+
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .footer-sections {
+        flex-direction: column;
+    }
+
+    .map-container iframe {
+        width: 100%;
+        height: 200px; /* Thu nhỏ kích thước của bản đồ */
+    }
+}

@@ -1,0 +1,102 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    transition: margin-left 0.3s ease;
+}
+
+
+
+main {
+    max-width: 1200px;
+    margin: 20px auto;
+
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.contact-info,
+.contact-form {
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.contact-info h1,
+.contact-form h2 {
+    font-size: 2em;
+    color: #f10b0b;
+    margin-bottom: 20px;
+    text-align: center;
+}
+.contact-title {
+    color: #f10b0b;
+    font-size: 1.5em;
+    margin-bottom: 1em;
+    text-align:center;
+}
+.contact-info p {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 10px;
+    line-height: 1.6;
+}
+
+.contact-form form {
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-form label {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.contact-form input,
+.contact-form textarea {
+    font-size: 16px;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.contact-form button {
+    font-size: 16px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #9b9b9b;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.contact-form button:hover {
+    background-color: #f10b0b;
+}
+
+
+
+
+
+
+@media only screen and (max-width: 1199.98px) {
+
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .footer-sections {
+        flex-direction: column;
+    }
+
+    .map-container iframe {
+        width: 100%;
+        height: 200px; /* Thu nhỏ kích thước của bản đồ */
+    }
+}

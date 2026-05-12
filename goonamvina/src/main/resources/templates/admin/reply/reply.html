@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+  <meta charset="UTF-8">
+  <title>Reply Dashboard</title>
+  <link rel="stylesheet" type="text/css" th:href="@{/css-admin/dashboard.css}"/>
+  <link rel="stylesheet" type="text/css" th:href="@{/css-admin/reply.css}"/>
+  <meta name="csrf-token" th:content="${_csrf.token}"/>
+</head>
+<body>
+<div class="dashboard">
+  <div th:replace="admin/layout-admin/sidebar :: sidebarFragment"></div>
+  <div class="main-content">
+    <header>
+      <button class="toggle-btn" id="toggle-btn">&#9776;</button>
+      <h1>Reply Dashboard</h1>
+      <div class="user-info">
+        <span>Welcome, [User]</span>
+        <a href="/admin/logout" class="btn">Logout</a>
+      </div>
+    </header>
+    <section class="content">
+      <div class="reply-table-wrapper">
+        <table class="reply-table">
+          <thead>
+          <tr>
+            <th>Tên</th>
+            <th>Email</th>
+            <th>Nội dung</th>
+            <th>Trạng thái</th>
+            <th>Hành động</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr th:each="feedback : ${feedbacks}">
+            <td th:text="${feedback.name}"></td>
+            <td th:text="${feedback.email}"></td>
+            <td th:text="${feedback.message}"></td>
+            <td>
+    <span th:classappend="'status ' + ${feedback.status.name().toLowerCase()}">
+        <span th:text="${feedback.status}"></span>
+    </span>
+            </td>
+            <td>
+              <button class="reply-button">Trả lời</button>
+              <button class="spam-button" th:onclick="'moveToTrash(' + ${feedback.id} + ')'">Spam</button>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </div>
+</div>
+<!-- Modal for reply -->
+<div id="replyModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h2>Trả lời</h2>
+    <form th:action="@{/admin/reply/test-email}" id="replyForm" method="POST">
+      <label for="replyMessage">Nội dung phản hồi:</label>
+      <textarea id="replyMessage" name="replyMessage" rows="4" required></textarea>
+      <input type="hidden" id="replyEmail" name="replyEmail">
+      <button type="submit">Gửi</button>
+    </form>
+  </div>
+</div>
+<script src="/js-admin/admin.js"></script>
+<script src="/js-admin/reply.js"></script>
+<script src="/js-admin/reply-spam.js"></script>
+
+</body>
+</html>

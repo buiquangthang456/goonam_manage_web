@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>GoonamVina</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" type="text/css" th:href="@{css/homepage.css}"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+
+</head>
+<body>
+
+<header layout:include="layout/menu :: header" ></header>
+
+<main>
+    <div class="slideshow-container" data-aos="fade-left">
+        <div class="slide1 fade">
+            <a href="/googenmetal">
+                <img src="images/image1.png" alt="Kim loại" class="slide-img">
+
+            </a>
+            <a class="prev" onclick="plusSlides1(-1)">&#10094;</a>
+            <a class="next" onclick="plusSlides1(1)">&#10095;</a>
+        </div>
+        <div class="slide1 fade">
+            <a href="/products-list">
+                <img src="/images/image2.png" alt="Cửa" class="slide-img">
+
+            </a>
+            <a class="prev" onclick="plusSlides1(-1)">&#10094;</a>
+            <a class="next" onclick="plusSlides1(1)">&#10095;</a>
+        </div>
+        <div class="slide1 fade">
+            <a href="/">
+                <img src="images/image3.png" alt="Goonamvina" class="slide-img">
+
+            </a>
+            <a class="prev" onclick="plusSlides1(-1)">&#10094;</a>
+            <a class="next" onclick="plusSlides1(1)">&#10095;</a>
+        </div>
+        <!-- Nút điều khiển bên trái -->
+    </div>
+
+    <section class="hero">
+        <div class="container">
+
+                <div class="welcome-message"data-aos="fade-up">
+                    <h1 th:text="#{welcome.title}"></h1>
+                    <h2 th:text="#{company.name}"></h2>
+                    <p th:text="#{company.description.part1}"></p>
+                    <p th:text="#{company.description.part2}"></p>
+                    <p th:text="#{company.description.part3}"></p>
+                </div>
+                <section class="services"data-aos="fade-left">
+                    <h2 th:text="#{service.title}"></h2>
+                    <p th:text="#{service.description}"></p>
+                    <div class="service-images">
+                        <img src="images/dichvu/c.jpg" alt="Dịch vụ 1" class="service-image">
+                        <img src="images/dichvu/k.jpg" alt="Dịch vụ 2" class="service-image">
+                    </div>
+                </section>
+
+            <h2 th:text="#{project.title}"></h2>
+            <div class="projects" data-aos="fade-up">
+                <div class="project-column" id="column-1">
+                    <h3 th:text="#{project.apartment.title}"></h3>
+                    <div class="arrow-container">
+                        <button class="arrow-left" data-column="column-1">‹</button>
+                        <button class="arrow-right" data-column="column-1">›</button>
+                    </div>
+                    <div class="project-info">
+                        <a href="#" style="text-decoration: none;color: #333;">
+                            <div class="project-item" data-aos="zoom-in">
+                                <img src="images/chungcu/project1.jpg" alt="Dự án 1" class="project-image">
+                                <h4 th:text="#{project.apartment.project1.title}"></h4>
+                                <p><strong th:text="#{project.apartment.project1.investor}"></strong></p>
+                                <p><strong th:text="#{project.apartment.project1.location}"></strong></p>
+                                <p><strong th:text="#{project.apartment.project1.scope}"></strong></p>
+                                <p><strong th:text="#{project.apartment.project1.completion}"></strong></p>
+                            </div>
+                        </a>
+                        <a href="#" style="text-decoration: none;color: #333;">
+                            <div class="project-item" data-aos="zoom-in">
+                                <img src="images/chungcu/project2.jpg" alt="Dự án 2" class="project-image">
+                                <h4 th:text="#{project.apartment.project2.title}"></h4>
+                                <p><strong th:text="#{project.apartment.project2.investor}"></strong></p>
+                                <p><strong th:text="#{project.apartment.project2.location}"></strong></p>
+                                <p><strong th:text="#{project.apartment.project2.scope}"></strong></p>
+                                <p><strong th:text="#{project.apartment.project2.completion}"></strong></p>
+                            </div>
+                        </a>
+                        <a href="#" style="text-decoration: none;color: #333;">
+                            <div class="project-item" data-aos="zoom-in">
+                                <img src="images/chungcu/project3.jpg" alt="Dự án 3" class="project-image">
+                                <h4 th:text="#{project.apartment.project3.title}"></h4>
+                                <p><strong th:text="#{project.apartment.project3.investor}"></strong></p>
+                                <p><strong th:text="#{project.apartment.project3.location}"></strong></p>
+                                <p><strong th:text="#{project.apartment.project3.scope}"></strong></p>
+                                <p><strong th:text="#{project.apartment.project3.completion}"></strong></p>
+                            </div>
+                        </a>
+                        <a href="#" style="text-decoration: none;color: #333;">
+                            <div class="project-item" data-aos="zoom-in">
+                                <img src="images/chungcu/project4.jpg" alt="Dự án 4" class="project-image">
+                                <h4 th:text="#{project.apartment.project4.title}"></h4>
+                                <p><strong th:text="#{project.apartment.project4.investor}"></strong></p>
+                                <p><strong th:text="#{project.apartment.project4.location}"></strong></p>
+                                <p><strong th:text="#{project.apartment.project4.scope}"></strong></p>
+                                <p><strong th:text="#{project.apartment.project4.completion}"></strong></p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="project-column" id="column-2">
+                    <h3 th:text="#{project.hotel.title}"></h3>
+                    <div class="arrow-container">
+                        <button class="arrow-left" data-column="column-1">‹</button>
+                        <button class="arrow-right" data-column="column-1">›</button>
+                    </div>
+                    <div class="project-info">
+                        <a href="#" style="text-decoration: none;color: #333;">
+                            <div class="project-item" data-aos="zoom-in">
+                                <img src="images/khachsan-resort/project1.jpg" alt="Dự án 1" class="project-image">
+                                <h4 th:text="#{project.hotel.project1.title}"></h4>
+                                <p><strong th:text="#{project.hotel.project1.investor}"></strong></p>
+                                <p><strong th:text="#{project.hotel.project1.location}"></strong></p>
+                                <p><strong th:text="#{project.hotel.project1.scope}"></strong></p>
+                                <p><strong th:text="#{project.hotel.project1.completion}"></strong></p>
+                            </div>
+                        </a>
+                        <a href="#" style="text-decoration: none;color: #333;">
+                            <div class="project-item" data-aos="zoom-in">
+                                <img src="images/khachsan-resort/project2.jpg" alt="Dự án 2" class="project-image">
+                                <h4 th:text="#{project.hotel.project2.title}"></h4>
+                                <p><strong th:text="#{project.hotel.project2.investor}"></strong></p>
+                                <p><strong th:text="#{project.hotel.project2.location}"></strong></p>
+                                <p><strong th:text="#{project.hotel.project2.scope}"></strong></p>
+                                <p><strong th:text="#{project.hotel.project2.completion}"></strong></p>
+                            </div>
+                        </a>
+                        <a href="#" style="text-decoration: none;color: #333;">
+                            <div class="project-item" data-aos="zoom-in">
+                                <img src="images/khachsan-resort/project3.jpg" alt="Dự án 2" class="project-image">
+                                <h4 th:text="#{project.hotel.project3.title}"></h4>
+                                <p><strong th:text="#{project.hotel.project3.investor}"></strong></p>
+                                <p><strong th:text="#{project.hotel.project3.location}"></strong></p>
+                                <p><strong th:text="#{project.hotel.project3.scope}"></strong></p>
+                                <p><strong th:text="#{project.hotel.project3.completion}"></strong></p>
+                            </div>
+                        </a>
+                        <a href="#" style="text-decoration: none;color: #333;">
+                            <div class="project-item" data-aos="zoom-in">
+                                <img src="images/khachsan-resort/project4.jpg" alt="Dự án 2" class="project-image">
+                                <h4 th:text="#{project.hotel.project4.title}"></h4>
+                                <p><strong th:text="#{project.hotel.project4.investor}"></strong></p>
+                                <p><strong th:text="#{project.hotel.project4.location}"></strong></p>
+                                <p><strong th:text="#{project.hotel.project4.scope}"></strong></p>
+                                <p><strong th:text="#{project.hotel.project4.completion}"></strong></p>
+                            </div>
+                        </a>
+                        <!-- Thêm các dự án tương tự -->
+                    </div>
+                </div>
+
+                <div class="project-column" id="column-3">
+                    <h3 th:text="#{project.hospital.title}"></h3>
+                    <div class="arrow-container">
+                        <button class="arrow-left" data-column="column-1">‹</button>
+                        <button class="arrow-right" data-column="column-1">›</button>
+                    </div>
+                    <div class="project-info">
+                        <a href="#" style="text-decoration: none;color: #333;">
+                            <div class="project-item" data-aos="zoom-in">
+                                <img src="images/benhvien-truonghoc/project1.jpg" alt="Dự án 1" class="project-image">
+                                <h4 th:text="#{project.hospital.project1.title}"></h4>
+                                <p><strong th:text="#{project.hospital.project1.investor}"></strong></p>
+                                <p><strong th:text="#{project.hospital.project1.location}"></strong></p>
+                                <p><strong th:text="#{project.hospital.project1.scope}"></strong></p>
+                                <p><strong th:text="#{project.hospital.project1.completion}"></strong></p>
+                            </div>
+                        </a>
+                        <a href="#" style="text-decoration: none;color: #333;">
+                            <div class="project-item" data-aos="zoom-in">
+                                <img src="images/benhvien-truonghoc/project2.jpg" alt="Dự án 2" class="project-image">
+                                <h4 th:text="#{project.hospital.project2.title}"></h4>
+                                <p><strong th:text="#{project.hospital.project2.investor}"></strong></p>
+                                <p><strong th:text="#{project.hospital.project2.location}"></strong></p>
+                                <p><strong th:text="#{project.hospital.project2.scope}"></strong></p>
+                                <p><strong th:text="#{project.hospital.project2.completion}"></strong></p>
+                            </div>
+                        </a>
+                        <a href="#" style="text-decoration: none;color: #333;">
+                            <div class="project-item" data-aos="zoom-in">
+                                <img src="images/benhvien-truonghoc/project3.jpg" alt="Dự án 2" class="project-image">
+                                <h4 th:text="#{project.hospital.project3.title}"></h4>
+                                <p><strong th:text="#{project.hospital.project3.investor}"></strong></p>
+                                <p><strong th:text="#{project.hospital.project3.location}"></strong></p>
+                                <p><strong th:text="#{project.hospital.project3.scope}"></strong></p>
+                                <p><strong th:text="#{project.hospital.project3.completion}"></strong></p>
+                            </div>
+                        </a>
+                        <a href="#" style="text-decoration: none;color: #333;">
+                            <div class="project-item" data-aos="zoom-in">
+                                <img src="images/benhvien-truonghoc/project4.jpg" alt="Dự án 2" class="project-image">
+                                <h4 th:text="#{project.hospital.project4.title}"></h4>
+                                <p><strong th:text="#{project.hospital.project4.investor}"></strong></p>
+                                <p><strong th:text="#{project.hospital.project4.location}"></strong></p>
+                                <p><strong th:text="#{project.hospital.project4.scope}"></strong></p>
+                                <p><strong th:text="#{project.hospital.project4.completion}"></strong></p>
+                            </div>
+                        </a>
+                        <!-- Thêm các dự án tương tự -->
+                    </div>
+                </div>
+
+                <div class="project-column" id="column-4">
+                    <h3 th:text="#{project.factory.title}"></h3>
+                    <div class="arrow-container">
+                        <button class="arrow-left" data-column="column-1">‹</button>
+                        <button class="arrow-right" data-column="column-1">›</button>
+                    </div>
+                    <div class="project-info">
+                        <a href="#" style="text-decoration: none;color: #333;">
+                            <div class="project-item" data-aos="zoom-in">
+                                <img src="images/nhaxuong/project1.jpg" alt="Dự án 4" class="project-image">
+                                <h4 th:text="#{project.factory.project1.title}"></h4>
+                                <p><strong th:text="#{project.factory.project1.investor}"></strong></p>
+                                <p><strong th:text="#{project.factory.project1.location}"></strong></p>
+                                <p><strong th:text="#{project.factory.project1.scope}"></strong></p>
+                                <p><strong th:text="#{project.factory.project1.completion}"></strong></p>
+                            </div>
+                        </a>
+                        <a href="#" style="text-decoration: none;color: #333;">
+                            <div class="project-item" data-aos="zoom-in">
+                                <img src="images/nhaxuong/project2.jpg" alt="Dự án 4" class="project-image">
+                                <h4 th:text="#{project.factory.project2.title}"></h4>
+                                <p><strong th:text="#{project.factory.project2.investor}"></strong></p>
+                                <p><strong th:text="#{project.factory.project2.location}"></strong></p>
+                                <p><strong th:text="#{project.factory.project2.scope}"></strong></p>
+                                <p><strong th:text="#{project.factory.project2.completion}"></strong></p>
+                            </div>
+                        </a>
+                        <a href="#" style="text-decoration: none;color: #333;">
+                            <div class="project-item" data-aos="zoom-in">
+                                <img src="images/nhaxuong/project3.jpg" alt="Dự án 4" class="project-image">
+                                <h4 th:text="#{project.factory.project3.title}"></h4>
+                                <p><strong th:text="#{project.factory.project3.investor}"></strong></p>
+                                <p><strong th:text="#{project.factory.project3.location}"></strong></p>
+                                <p><strong th:text="#{project.factory.project3.scope}"></strong></p>
+                                <p><strong th:text="#{project.factory.project3.completion}"></strong></p>
+                            </div>
+                        </a>
+                        <a href="#" style="text-decoration: none;color: #333;">
+                            <div class="project-item" data-aos="zoom-in">
+                                <img src="images/nhaxuong/project4.jpg" alt="Dự án 4" class="project-image">
+                                <h4 th:text="#{project.factory.project2.title}"></h4>
+                                <p><strong th:text="#{project.factory.project4.investor}"></strong></p>
+                                <p><strong th:text="#{project.factory.project4.location}"></strong></p>
+                                <p><strong th:text="#{project.factory.project4.scope}"></strong></p>
+                                <p><strong th:text="#{project.factory.project4.completion}"></strong></p>
+                            </div>
+                        </a>
+                        <!-- Thêm các dự án tương tự -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="partners" >
+        <h2 th:text="#{partners.title}"></h2>
+        <div class="partner-logo-container">
+            <img src="images/doitac/logodoitac-01.jpg" alt="Đối tác 1" class="partner-logo" data-aos="fade-up">
+            <img src="images/doitac/logodoitac-02.jpg" alt="Đối tác 2" class="partner-logo" data-aos="fade-up">
+            <img src="images/doitac/logodoitac-03.jpg" alt="Đối tác 3" class="partner-logo" data-aos="fade-up">
+            <img src="images/doitac/logodoitac-04.jpg" alt="Đối tác 4" class="partner-logo" data-aos="fade-up">
+            <img src="images/doitac/logodoitac-05.jpg" alt="Đối tác 5" class="partner-logo" data-aos="fade-up">
+            <img src="images/doitac/logodoitac-06.jpg" alt="Đối tác 6" class="partner-logo" data-aos="fade-up">
+            <img src="images/doitac/logodoitac-07.jpg" alt="Đối tác 7" class="partner-logo" data-aos="fade-up">
+            <img src="images/doitac/logodoitac-08.jpg" alt="Đối tác 8" class="partner-logo" data-aos="fade-up">
+            <img src="images/doitac/logodoitac-09.jpg" alt="Đối tác 9" class="partner-logo" data-aos="fade-up">
+            <img src="images/doitac/logodoitac-10.jpg" alt="Đối tác 10" class="partner-logo" data-aos="fade-up">
+
+            <img src="images/doitac/logodoitac-11.jpg" alt="Đối tác 11" class="partner-logo" data-aos="fade-up">
+            <img src="images/doitac/logodoitac-12.jpg" alt="Đối tác 12" class="partner-logo" data-aos="fade-up">
+            <img src="images/doitac/logodoitac-13.jpg" alt="Đối tác 13" class="partner-logo" data-aos="fade-up">
+            <img src="images/doitac/logodoitac-14.jpg" alt="Đối tác 14" class="partner-logo" data-aos="fade-up">
+            <img src="images/doitac/logodoitac-15.jpg" alt="Đối tác 15" class="partner-logo" data-aos="fade-up">
+            <img src="images/doitac/logodoitac-16.jpg" alt="Đối tác 16" class="partner-logo" data-aos="fade-up">
+            <img src="images/doitac/logodoitac-17.jpg" alt="Đối tác 17" class="partner-logo" data-aos="fade-up">
+            <img src="images/doitac/logodoitac-18.jpg" alt="Đối tác 18" class="partner-logo" data-aos="fade-up">
+            <img src="images/doitac/logodoitac-19.jpg" alt="Đối tác 19" class="partner-logo" data-aos="fade-up">
+            <img src="images/doitac/logodoitac-20.jpg" alt="Đối tác 20" class="partner-logo" data-aos="fade-up">
+
+            <img src="images/doitac/logodoitac-21.jpg" alt="Đối tác 21" class="partner-logo" data-aos="fade-up">
+            <img src="images/doitac/logodoitac-22.jpg" alt="Đối tác 22" class="partner-logo" data-aos="fade-up">
+            <img src="images/doitac/logodoitac-23.jpg" alt="Đối tác 23" class="partner-logo" data-aos="fade-up">
+            <img src="images/doitac/logodoitac-24.jpg" alt="Đối tác 24" class="partner-logo" data-aos="fade-up">
+            <img src="images/doitac/logodoitac-25.jpg" alt="Đối tác 25" class="partner-logo" data-aos="fade-up">
+            <img src="images/doitac/logodoitac-26.jpg" alt="Đối tác 26" class="partner-logo" data-aos="fade-up">
+            <img src="images/doitac/logodoitac-27.jpg" alt="Đối tác 27" class="partner-logo" data-aos="fade-up">
+            <img src="images/doitac/logodoitac-28.jpg" alt="Đối tác 28" class="partner-logo" data-aos="fade-up">
+            <img src="images/doitac/logodoitac-29.jpg" alt="Đối tác 29" class="partner-logo" data-aos="fade-up">
+
+            <img src="images/doitac/logodoitac-03.jpg" alt="Đối tác 3" class="partner-logo" data-aos="fade-up">
+            <img src="images/doitac/logodoitac-13.jpg" alt="Đối tác 13" class="partner-logo" data-aos="fade-up">
+
+
+            <!-- Tiếp tục thêm các logo khác -->
+        </div>
+
+    </section>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+        <span class="close" onclick="closeLightbox()">&times;</span>
+        <img class="lightbox-content" id="lightbox-img">
+    </div>
+
+    <h2 class="leaders" th:text="#{leadership.title}"></h2>
+    <section class="leadership" data-aos="fade-up">
+        <div class="leader">
+            <img src="images/banlanhdao/nguoihanquoc.jpg" alt="Byun HeeMan">
+            <div class="leader-info">
+                <h3 th:text="#{leadership.leader1.name}"></h3>
+                <p th:text="#{leadership.leader1.position}"></p>
+                <p th:text="#{leadership.leader1.phone}"></p>
+            </div>
+        </div>
+        <div class="leader">
+            <img src="images/banlanhdao/daominhtuan.jpg" alt="Đào Minh Tuấn">
+            <div class="leader-info">
+                <h3 th:text="#{leadership.leader2.name}"></h3>
+                <p th:text="#{leadership.leader2.position}"></p>
+                <p th:text="#{leadership.leader2.phone}"></p>
+            </div>
+        </div>
+    </section>
+</main>
+<footer layout:include="layout/footer :: footer" data-aos="fade-up">
+
+</footer>
+<script src="js/script.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<script>
+        AOS.init(); // Khởi động AOS
+    </script>
+
+<script src="js/giaychungnhan.js"></script>
+<script src="js/changelanguage.js"></script>
+</body>
+
+</html>

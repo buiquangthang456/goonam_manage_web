@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+  <meta charset="UTF-8">
+  <title>GoonamVina</title>
+  <link rel="stylesheet" type="text/css" th:href="@{/css-admin/productcategory.css}"/>
+  <link rel="stylesheet" type="text/css" th:href="@{/css-admin/dashboard.css}"/>
+</head>
+<body>
+<div class="dashboard">
+  <div th:replace="admin/layout-admin/sidebar :: sidebarFragment"></div>
+  <div class="main-content">
+    <header>
+      <button class="toggle-btn" id="toggle-btn">&#9776;</button>
+      <h1 th:text="${project_category.id != null} ? 'Edit Project Category' : 'Add a New Project Category'"></h1>
+      <div class="user-info">
+        <span>Welcome, [User]</span>
+        <a href="/admin/logout" class="btn">Logout</a>
+      </div>
+    </header>
+    <section class="content">
+      <!-- Thêm phần hiển thị thông báo lỗi -->
+      <div th:if="${error}" class="alert alert-danger">
+        <p th:text="${error}"></p>
+      </div>
+      <div th:if="${message}" class="alert alert-success">
+        <p th:text="${message}"></p>
+      </div>
+
+
+
+      <div class="category-form">
+        <h2 th:text="${project_category.id != null} ? 'Edit Project Category' : 'Add a New Project Category'"></h2>
+        <form id="category-form" th:action="@{${project_category.id != null} ? '/admin/update-projectcategory/' + ${project_category.id} : '/admin/project-category'}"
+              th:object="${project_category}" method="POST" enctype="multipart/form-data">
+          <input type="hidden" th:field="*{id}" />
+          <div class="form-group">
+            <label for="category-name-vi">Category Name (Vietnamese)</label>
+            <input type="text" id="category-name-vi" th:field="*{nameVi}" required>
+          </div>
+
+          <!-- Tên danh mục tiếng Anh -->
+          <div class="form-group">
+            <label for="category-name-en">Category Name (English)</label>
+            <input type="text" id="category-name-en" th:field="*{nameEn}" required>
+          </div>
+
+          <div class="form-group">
+            <label for="project-image">Upload Image</label>
+            <input type="file" id="project-image" name="project-image" accept="image/*" th:attr="required=${project_category.imageProjectCategory == null}">
+            <div th:if="${project_category.imageProjectCategory != null}">
+              <label>Current Image:</label>
+              <img th:src="@{'/uploads/images/' + ${project_category.imageProjectCategory}}" alt="Project Category Image" style="width: 100px; height: auto;"/>
+            </div>
+          </div>
+          <button type="submit" class="btn" th:text="${project_category.id != null} ? 'Update Category' : 'Add Category'"></button>
+        </form>
+      </div>
+      <div class="category-table">
+        <h2>Category List</h2>
+        <table id="category-table">
+          <thead>
+          <tr>
+            <th>Category Name (Vietnamese)</th>
+            <th>Category Name (English)</th>
+            <th>Description</th>
+            <th>Action</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr th:each="category : ${project_categories}">
+            <td th:text="${category.nameVi}"></td>
+            <td th:text="${category.nameEn}"></td>
+            <td>
+              <img th:src="@{'/uploads/images/' + ${category.imageProjectCategory}}" alt="No Image" style="max-width: 100px;"/>
+            </td>
+            <td>
+              <a th:href="@{'/admin/edit-projectcategory/' + ${category.id}}">Edit</a> |
+              <a th:href="@{'/admin/delete-projectcategory/' + ${category.id}}" onclick="return confirm('Are you sure?')">Delete</a>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </div>
+</div>
+<script src="/js-admin/admin.js"></script>
+</body>
+</html>

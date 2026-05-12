@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <title>GoonamVina</title>
+  <link rel="stylesheet" type="text/css" th:href="@{/css-admin/media.css}"/>
+  <link rel="stylesheet" type="text/css" th:href="@{/css-admin/dashboard.css}"/>
+
+</head>
+<body>
+<div class="dashboard">
+  <div th:replace="admin/layout-admin/sidebar :: sidebarFragment"></div>
+  <div class="main-content" id="main-content">
+    <header>
+      <button class="toggle-btn" id="toggle-btn">&#9776;</button>
+      <h1>Media</h1>
+      <div class="user-info">
+        <span>Welcome, [User]</span>
+        <a href="/admin/logout" class="btn">Logout</a>
+      </div>
+    </header>
+    <section class="content">
+      <div class="media-gallery">
+        <h2>Media Gallery</h2>
+        <div class="media-items">
+          <div th:each="file : ${files}" class="media-item">
+            <img th:src="@{${file}}" alt="Image">
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+<script src="/js-admin/admin.js"></script>
+</body>
+</html>

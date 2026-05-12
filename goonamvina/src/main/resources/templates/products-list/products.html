@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <title>GoonamVina</title>
+
+    <link rel="stylesheet" type="text/css" th:href="@{/css/homepage.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/products.css}"/>
+</head>
+<body>
+
+<header layout:include="layout/menu :: header"></header>
+<main>
+    <h2 th:text="${lang == 'vi' ? subProductCategory.nameVi : subProductCategory.nameEn}"></h2>
+
+    <!-- Nếu danh mục là 'Cửa thép/Cửa thép chống cháy' -->
+    <div th:if="${subProductCategory.nameVi == 'Cửa thép/Cửa thép chống cháy'}">
+
+        <!-- Sơn đơn màu -->
+        <div id="son-don-mau" class="sub-category">
+            <h4 th:text="${lang == 'vi' ? 'Sơn đơn màu' : 'Solid Color Paint'}"></h4>
+
+            <div class="title-product">
+                <!-- Nút Chọn Màu -->
+                <button class="color-select-button" onclick="toggleColorPicker()"
+                        th:text="${lang == 'vi' ? 'Chọn màu' : 'Select Color'}"></button>
+            </div>
+            <div class="navigate-buttons">
+                <button onclick="scrollToSection('son-don-mau')" class="button-custom"
+                        th:text="${lang == 'vi' ? 'Sơn đơn màu' : 'Solid Color Paint'}"></button>
+                <button onclick="scrollToSection('son-gia-go')" class="button-custom"
+                        th:text="${lang == 'vi' ? 'Sơn giả gỗ' : 'Wood Grain Paint'}"></button>
+                <button onclick="scrollToSection('dan-laminate')" class="button-custom"
+                        th:text="${lang == 'vi' ? 'Dán laminate' : 'Laminate Coating'}"></button>
+            </div>
+            <div class="products-list" id="category-sondo">
+                <div class="product-item" th:each="product, iterStat : ${sonDoProducts}"
+                     th:classappend="${iterStat.index > 3} ? 'hidden' : ''">
+                    <img th:src="@{'/uploads/images/' + ${product.imageP}}" alt="Sơn đơn màu">
+                    <div class="product-details">
+                        <p th:text="${lang == 'vi' ? product.nameVi : product.nameEn}"></p>
+                        <p th:text="${lang == 'vi' ? product.descriptionVi : product.descriptionEn}"></p>
+                    </div>
+                    <div class="product-buttons">
+                        <button class="product-button" onclick="showPhoneNumber(this)"
+                                th:text="${lang == 'vi' ? 'Chi tiết liên hệ' : 'Contact Details'}"></button>
+                        <p class="phone-number" style="display: none;" th:text="#{detail.contact.mt}"></p>
+                    </div>
+                </div>
+            </div>
+            <div class="load-more-container">
+                <button class="load-more-button" id="load-more-button-sondo"
+                        th:text="${lang == 'vi' ? 'Xem thêm Sơn đơn màu' : 'See more Solid Color Paint'}"></button>
+            </div>
+        </div>
+
+        <!-- Sơn giả gỗ -->
+        <div id="son-gia-go" class="sub-category">
+            <h4 th:text="${lang == 'vi' ? 'Sơn giả gỗ' : 'Wood Grain Paint'}"></h4>
+            <div class="title-product">
+                <button class="color-select-button" onclick="toggleColorPicker()"
+                        th:text="${lang == 'vi' ? 'Chọn màu' : 'Select Color'}"></button>
+            </div>
+            <div class="navigate-buttons">
+                <button onclick="scrollToSection('son-don-mau')" class="button-custom"
+                        th:text="${lang == 'vi' ? 'Sơn đơn màu' : 'Solid Color Paint'}"></button>
+                <button onclick="scrollToSection('son-gia-go')" class="button-custom"
+                        th:text="${lang == 'vi' ? 'Sơn giả gỗ' : 'Wood Grain Paint'}"></button>
+                <button onclick="scrollToSection('dan-laminate')" class="button-custom"
+                        th:text="${lang == 'vi' ? 'Dán laminate' : 'Laminate Coating'}"></button>
+            </div>
+            <div class="products-list" id="category-songia">
+                <div class="product-item" th:each="product, iterStat : ${sonGiaGoProducts}"
+                     th:classappend="${iterStat.index > 3} ? 'hidden' : ''">
+                    <img th:src="@{'/uploads/images/' + ${product.imageP}}" alt="Sơn giả gỗ">
+                    <div class="product-details">
+                        <p th:text="${lang == 'vi' ? product.nameVi : product.nameEn}"></p>
+                        <p th:text="${lang == 'vi' ? product.descriptionVi : product.descriptionEn}"></p>
+                    </div>
+                    <div class="product-buttons">
+                        <button class="product-button" onclick="showPhoneNumber(this)"
+                                th:text="${lang == 'vi' ? 'Chi tiết liên hệ' : 'Contact Details'}"></button>
+                        <p class="phone-number" style="display: none;" th:text="#{detail.contact.mt}"></p>
+                    </div>
+                </div>
+            </div>
+            <div class="load-more-container">
+                <button class="load-more-button" id="load-more-button-songia"
+                        th:text="${lang == 'vi' ? 'Xem thêm Sơn giả gỗ' : 'See more Wood Grain Paint'}"></button>
+            </div>
+        </div>
+
+        <!-- Dán laminate -->
+        <div id="dan-laminate" class="sub-category">
+            <h4 th:text="${lang == 'vi' ? 'Dán laminate' : 'Laminate Coating'}"></h4>
+            <div class="title-product">
+                <button class="color-select-button" onclick="toggleColorPicker()"
+                        th:text="${lang == 'vi' ? 'Chọn màu' : 'Select Color'}"></button>
+            </div>
+            <div class="navigate-buttons">
+                <button onclick="scrollToSection('son-don-mau')" class="button-custom"
+                        th:text="${lang == 'vi' ? 'Sơn đơn màu' : 'Solid Color Paint'}"></button>
+                <button onclick="scrollToSection('son-gia-go')" class="button-custom"
+                        th:text="${lang == 'vi' ? 'Sơn giả gỗ' : 'Wood Grain Paint'}"></button>
+                <button onclick="scrollToSection('dan-laminate')" class="button-custom"
+                        th:text="${lang == 'vi' ? 'Dán laminate' : 'Laminate Coating'}"></button>
+            </div>
+            <div class="products-list" id="category-laminate">
+                <div class="product-item" th:each="product, iterStat : ${danLaminateProducts}"
+                     th:classappend="${iterStat.index > 3} ? 'hidden' : ''">
+                    <img th:src="@{'/uploads/images/' + ${product.imageP}}" alt="Dán laminate">
+                    <div class="product-details">
+                        <p th:text="${lang == 'vi' ? product.nameVi : product.nameEn}"></p>
+                        <p th:text="${lang == 'vi' ? product.descriptionVi : product.descriptionEn}"></p>
+                    </div>
+                    <div class="product-buttons">
+                        <button class="product-button" onclick="showPhoneNumber(this)"
+                                th:text="${lang == 'vi' ? 'Chi tiết liên hệ' : 'Contact Details'}"></button>
+                        <p class="phone-number" style="display: none;" th:text="#{detail.contact.mt}"></p>
+                    </div>
+                </div>
+            </div>
+            <div class="load-more-container">
+                <button class="load-more-button" id="load-more-button-laminate"
+                        th:text="${lang == 'vi' ? 'Xem thêm Dán laminate' : 'See more Laminate Coating'}"></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Nếu danh mục không phải là 'Cửa thép' -->
+    <div th:if="${subProductCategory.nameVi != 'Cửa thép/Cửa thép chống cháy'}">
+        <div class="title-otherproduct">
+            <!-- Nút Chọn Màu -->
+            <button class="color-select-button" onclick="toggleColorPicker()"
+                    th:text="${lang == 'vi' ? 'Chọn màu' : 'Select Color'}"></button>
+        </div>
+        <div class="products-list" id="category-other">
+            <div class="product-item" th:each="product, iterStat : ${productList}"
+                 th:classappend="${iterStat.index > 3} ? 'hidden' : ''">
+                <img th:src="@{'/uploads/images/' + ${product.imageP}}" alt="Sản phẩm khác">
+                <div class="product-details">
+                    <p th:text="${lang == 'vi' ? product.nameVi : product.nameEn}"></p>
+                    <p th:text="${lang == 'vi' ? product.descriptionVi : product.descriptionEn}"></p>
+
+                </div>
+                <div class="product-buttons">
+                    <button class="product-button" onclick="showPhoneNumber(this)"
+                            th:text="${lang == 'vi' ? 'Chi tiết liên hệ' : 'Contact Details'}"></button>
+                    <p class="phone-number" style="display: none;">SĐT: 0902842784 (Phó GĐ Đào Minh Tuấn) <br>
+                        Email: info@goonamvina.com <br></p>
+                </div>
+            </div>
+        </div>
+        <div class="load-more-container">
+            <button class="load-more-button" id="load-more-button-other"
+                    th:text="${lang == 'vi' ? 'Xem thêm' : 'See more'}"></button>
+        </div>
+    </div>
+
+    <!-- Khu vực lớp phủ và bảng màu ẩn -->
+    <div class="overlay hidden" onclick="toggleColorPicker()"></div>
+    <div class="color-picker-container hidden">
+        <div class="color-picker-header">
+            <h4>Chọn màu</h4>
+            <div id="selected-colors" class="selected-colors"></div>
+        </div>
+        <div class="color-picker-body">
+            <!-- Các ô màu sẽ được thêm vào đây -->
+        </div>
+        <div class="color-picker-footer">
+            <button onclick="previousPage()" class="page-button">&laquo; Trang trước</button>
+            <button onclick="nextPage()" class="page-button">Trang sau &raquo;</button>
+            <button onclick="toggleColorPicker()" class="close-picker-button">Đóng</button>
+        </div>
+    </div>
+</main>
+<footer layout:include="layout/footer :: footer"></footer>
+
+<script src="/js/product.js"></script>
+<script src="/js/script.js"></script>
+<script src="/js/load-more.js"></script>
+<script src="/js/otherproduct.js"></script>
+<script>
+    function scrollToSection(sectionId) {
+        var section = document.getElementById(sectionId);
+        section.scrollIntoView({ behavior: 'smooth' });
+    }
+</script>
+<script src="/js/changelanguage.js"></script>
+</body>
+</html>

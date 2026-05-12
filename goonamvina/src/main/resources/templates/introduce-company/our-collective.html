@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+  <meta charset="UTF-8">
+  <title>GoonamVina</title>
+  <link rel="stylesheet" type="text/css" th:href="@{/css/collective.css}"/>
+  <link rel="stylesheet" type="text/css" th:href="@{/css/homepage.css}"/>
+</head>
+<body>
+
+<header layout:include="layout/menu :: header"></header>
+<main>
+  <div class="our-team">
+    <section class="operating-policy">
+      <h2 th:text="#{our_team.title}">TẬP THỂ CHÚNG TÔI</h2>
+      <h3 th:text="#{our_team.subtitle}">Là một tập thể với từng thành viên mang đậm Tinh thần Goonam – Tinh thần <span class="highlight">3T2K</span></h3>
+
+      <div class="policy-section">
+        <!-- Item 1 -->
+        <div class="policy-item" data-aos="fade-up">
+          <div class="number-with-border">
+            <span class="letter-highlight">1</span>
+          </div>
+          <div class="content">
+            <h4 th:text="#{our_team.1.title}">Tốc độ (Đáp ứng nhanh)</h4>
+            <p th:text="#{our_team.1.description}">Là điểm mạnh lớn nhất của Goonam Vina, đã kết tinh thành văn hóa Goonam trong suốt 20 năm qua...</p>
+          </div>
+        </div>
+
+        <!-- Item 2 -->
+        <div class="policy-item" data-aos="fade-up" data-aos-delay="100">
+          <div class="number-with-border">
+            <span class="letter-highlight">2</span>
+          </div>
+          <div class="content">
+            <h4 th:text="#{our_team.2.title}">Trách nhiệm</h4>
+            <p th:text="#{our_team.2.description}">Tinh thần Trách nhiệm ở mức cao nhất đó chính là “Tinh thần làm chủ”...</p>
+          </div>
+        </div>
+
+        <!-- Item 3 -->
+        <div class="policy-item" data-aos="fade-up" data-aos-delay="200">
+          <div class="number-with-border">
+            <span class="letter-highlight">3</span>
+          </div>
+          <div class="content">
+            <h4 th:text="#{our_team.3.title}">Tử tế</h4>
+            <p th:text="#{our_team.3.description}">Sự tử tế có nghĩa là sự cẩn thận, kĩ lưỡng, thận trọng, chu đáo trong công việc...</p>
+          </div>
+        </div>
+
+        <!-- Item 4 -->
+        <div class="policy-item" data-aos="fade-up" data-aos-delay="300">
+          <div class="number-with-border">
+            <span class="letter-highlight">4</span>
+          </div>
+          <div class="content">
+            <h4 th:text="#{our_team.4.title}">Khiêm tốn</h4>
+            <p th:text="#{our_team.4.description}">Đức tính khiêm tốn là biểu hiện xuyên suốt và khá rõ nét ở người Goonam...</p>
+          </div>
+        </div>
+
+        <!-- Item 5 -->
+        <div class="policy-item" data-aos="fade-up" data-aos-delay="400" >
+          <div class="number-with-border">
+            <span class="letter-highlight">5</span>
+          </div>
+          <div class="content">
+            <h4 th:text="#{our_team.5.title}">Khách hàng</h4>
+            <p th:text="#{our_team.5.description}">Mọi điều tốt đẹp là để phục vụ khách hàng...</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="video-container">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/iYUIjZLueA0" title="YouTube video player" frameborder="0" allowfullscreen></iframe>
+    </div>
+  </div>
+</main>
+<footer layout:include="layout/footer :: footer"></footer>
+
+<!-- AOS Library for animations -->
+<link href="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init({
+    duration: 1000,
+    once: true // Animation happens only once when scrolling
+  });
+</script>
+<script src="/js/script.js"></script>
+<script src="/js/changelanguage.js"></script>
+</body>
+</html>

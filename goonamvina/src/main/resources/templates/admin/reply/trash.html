@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <title>Trash Bin</title>
+    <link rel="stylesheet" type="text/css" href="/css-admin/dashboard.css"/>
+    <link rel="stylesheet" type="text/css" href="/css-admin/trash.css"/>
+    <meta name="csrf-token" th:content="${_csrf.token}"/>
+
+</head>
+<body>
+<div class="dashboard">
+    <div th:replace="admin/layout-admin/sidebar :: sidebarFragment"></div>
+    <div class="main-content">
+        <header>
+            <button class="toggle-btn" id="toggle-btn">&#9776;</button>
+            <h1>Thùng rác</h1>
+            <div class="user-info">
+                <span>Welcome, [User]</span>
+                <a href="/admin/logout" class="btn">Logout</a>
+            </div>
+        </header>
+        <section class="content">
+            <table>
+                <thead>
+                <tr>
+                    <th>Tên</th>
+                    <th>Email</th>
+                    <th>Nội dung</th>
+                    <th>Ngày bị đánh dấu</th>
+                    <th>Hành động</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="feedback : ${feedbacks}">
+                    <td th:text="${feedback.name}">Nguyễn Văn A</td>
+                    <td th:text="${feedback.email}">nguyenvana@example.com</td>
+                    <td th:text="${feedback.message}">Sản phẩm của bạn rất tuyệt vời!</td>
+                    <td th:text="${feedback.createdAt}">01/08/2024</td>
+                    <td>
+                        <button class="restore-btn" th:onclick="'restoreFeedback(' + ${feedback.id} + ')'">Khôi phục</button>
+
+                        <button class="delete-btn" th:onclick="'deleteForever(' + ${feedback.id} + ')'">Xóa vĩnh viễn</button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </section>
+    </div>
+</div>
+<script src="/js-admin/admin.js"></script>
+<script src="/js-admin/update-delete-feedback.js"></script>
+
+</body>
+</html>
