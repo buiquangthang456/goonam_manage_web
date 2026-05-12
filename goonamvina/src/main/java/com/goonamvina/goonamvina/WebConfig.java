@@ -19,13 +19,21 @@ public class WebConfig implements WebMvcConfigurer {
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        // Cấu hình để phục vụ các file từ thư mục "uploads/images/"
-        registry.addResourceHandler("/uploads/images/**")
-                .addResourceLocations("file:/domains/goonamvina.com/uploads/images/");
+        // Phục vụ ảnh upload: thử lần lượt thư mục trên server thật,
+        // rồi thư mục uploads/ trong working dir (local dev), rồi classpath static.
+        String userDir = System.getProperty("user.dir");
 
-        // Cấu hình để phục vụ các file từ thư mục "uploads/"
+        registry.addResourceHandler("/uploads/images/**")
+                .addResourceLocations(
+                        "file:/domains/goonamvina.com/uploads/images/",
+                        "file:" + userDir + "/uploads/images/",
+                        "classpath:/static/uploads/images/");
+
         registry.addResourceHandler("/uploads/**")
-                .addResourceLocations("file:/domains/goonamvina.com/uploads/");
+                .addResourceLocations(
+                        "file:/domains/goonamvina.com/uploads/",
+                        "file:" + userDir + "/uploads/",
+                        "classpath:/static/uploads/");
     }
     @Bean("messageSource")
     public MessageSource getMessageSource() {
