@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.servlet.support.RequestContextUtils;
 
 import java.util.List;
 
@@ -35,7 +36,7 @@ public class trangchu {
 
     @GetMapping("/")
     public String hello(Model model, HttpServletRequest request) {
-        String lang = request.getLocale() != null ? request.getLocale().getLanguage() : "vi";
+        String lang = RequestContextUtils.getLocale(request).getLanguage();
         model.addAttribute("lang", lang);
 
         List<ProductCategory> productCategoryList = pcService.getAllPC();

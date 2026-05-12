@@ -39,12 +39,25 @@
         .home-gm-btn-outline:hover{background:#fff;color:#1a1a1a}
         .home-gm-media{flex:1 1 340px}
         .home-gm-media img{width:100%;height:auto;border-radius:8px;display:block}
-        .home-gm-cats{max-width:1100px;margin:24px auto 0;display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:18px}
-        .home-gm-cat{background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,.08);text-decoration:none;color:#222}
-        .home-gm-cat img{width:100%;height:150px;object-fit:cover;display:block}
-        .home-gm-cat span{display:block;padding:12px 14px;font-weight:600}
-        .home-gm-cats-title{max-width:1100px;margin:30px auto 0;font-size:20px;color:#fff;text-align:center}
-        @media(max-width:600px){.home-gm-title{font-size:30px}}
+        .home-gm-cats-head{max-width:1100px;margin:42px auto 0;display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-bottom:14px;border-bottom:1px solid rgba(255,255,255,.12)}
+        .home-gm-cats-title{font-size:24px;font-weight:800;color:#fff;margin:0;letter-spacing:.5px;position:relative;padding-left:16px}
+        .home-gm-cats-title::before{content:"";position:absolute;left:0;top:50%;transform:translateY(-50%);width:5px;height:80%;background:#c9a14a;border-radius:3px}
+        .home-gm-cats-all{color:#c9a14a;font-weight:600;font-size:14px;text-decoration:none;white-space:nowrap}
+        .home-gm-cats-all:hover{text-decoration:underline}
+        .home-gm-cats{max-width:1100px;margin:22px auto 0;display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:22px}
+        .home-gm-cat{position:relative;background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,.18);text-decoration:none;color:#1a1a1a;display:flex;flex-direction:column;transition:transform .25s ease,box-shadow .25s ease}
+        .home-gm-cat:hover{transform:translateY(-6px);box-shadow:0 12px 28px rgba(0,0,0,.32)}
+        .home-gm-cat::after{content:"";position:absolute;left:0;bottom:0;width:100%;height:3px;background:#c9a14a;transform:scaleX(0);transform-origin:left;transition:transform .3s ease}
+        .home-gm-cat:hover::after{transform:scaleX(1)}
+        .home-gm-cat .img-wrap{display:block;height:170px;overflow:hidden}
+        .home-gm-cat .img-wrap img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease}
+        .home-gm-cat:hover .img-wrap img{transform:scale(1.08)}
+        .home-gm-cat .cat-body{padding:14px 16px 16px;display:flex;flex-direction:column;gap:8px}
+        .home-gm-cat .cat-name{font-weight:700;font-size:15px;line-height:1.35;color:#1a1a1a;display:block}
+        .home-gm-cat .cat-more{font-size:13px;font-weight:600;color:#b8862f;display:inline-flex;align-items:center;gap:5px}
+        .home-gm-cat .cat-more::after{content:"\2192";transition:transform .25s ease}
+        .home-gm-cat:hover .cat-more::after{transform:translateX(4px)}
+        @media(max-width:600px){.home-gm-title{font-size:30px}.home-gm-cats{grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:14px}.home-gm-cat .img-wrap{height:130px}}
     </style>
 </head>
 <body>
@@ -117,14 +130,19 @@
                             </a>
                         </div>
                     </div>
-                    <h3 class="home-gm-cats-title" th:if="${metalCategoryList != null and !metalCategoryList.isEmpty()}"
-                        th:text="#{home.googenmetal.products.title}">Danh mục sản phẩm Googen Metal</h3>
+                    <div class="home-gm-cats-head" th:if="${metalCategoryList != null and !metalCategoryList.isEmpty()}">
+                        <h3 class="home-gm-cats-title" th:text="#{home.googenmetal.products.title}">Danh mục sản phẩm Googen Metal</h3>
+                        <a href="/googenmetal" class="home-gm-cats-all" th:text="#{home.googenmetal.viewall}">Xem tất cả →</a>
+                    </div>
                     <div class="home-gm-cats" th:if="${metalCategoryList != null and !metalCategoryList.isEmpty()}">
                         <a th:each="category : ${metalCategoryList}"
                            th:href="@{/googenmetal/{slug}(slug=${category.slug})}" class="home-gm-cat">
-                            <img th:src="@{'/uploads/images/' + ${category.imageMC}}"
-                                 th:alt="${lang == 'vi' ? category.nameVi : category.nameEn}" alt="">
-                            <span th:text="${lang == 'vi' ? category.nameVi : category.nameEn}"></span>
+                            <span class="img-wrap"><img th:src="@{'/uploads/images/' + ${category.imageMC}}"
+                                 th:alt="${lang == 'vi' ? category.nameVi : category.nameEn}" alt=""></span>
+                            <span class="cat-body">
+                                <span class="cat-name" th:text="${lang == 'vi' ? category.nameVi : category.nameEn}"></span>
+                                <span class="cat-more" th:text="#{googenmetal.learn_more}">Tìm hiểu thêm</span>
+                            </span>
                         </a>
                     </div>
                 </section>
