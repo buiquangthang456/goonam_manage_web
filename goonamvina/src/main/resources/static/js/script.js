@@ -155,6 +155,7 @@ function plusSlides1(n) {
 function showSlides1(n) {
     let i;
     let slides = document.getElementsByClassName("slide1"); // Đảm bảo chỉ tác động đến slide1
+    if (slides.length === 0) return;
     if (n > slides.length) { slideIndex1 = 1 }
     if (n < 1) { slideIndex1 = slides.length }
     for (i = 0; i < slides.length; i++) {
