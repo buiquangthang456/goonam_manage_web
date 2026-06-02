@@ -1628,3 +1628,328 @@ body > footer { flex-shrink: 0; }
     footer { padding: 24px 16px !important; }
 }
 
+/* ============================================================
+   MENU GLOW-UP — desktop nav voi glass effect + gold accent
+   Mobile menu voi backdrop blur + stagger fade-in + close button
+   ============================================================ */
+
+/* --- DESKTOP NAVIGATION --- */
+@media (min-width: 1200px) {
+    .main-nav {
+        background: linear-gradient(135deg, #b71c1c 0%, #d32f2f 50%, #b71c1c 100%) !important;
+        background-size: 200% 200%;
+        animation: navGradient 12s ease infinite;
+        padding: 0 60px !important;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        box-shadow: 0 4px 20px rgba(0,0,0,.18);
+        border-bottom: 1px solid rgba(255,255,255,.08);
+        backdrop-filter: blur(8px);
+    }
+    @keyframes navGradient {
+        0%, 100% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+    }
+    .main-menu { gap: 4px; padding: 0; }
+    .main-menu > li { margin: 0 !important; }
+    .main-menu > li > a {
+        position: relative;
+        padding: 18px 22px !important;
+        font-size: 13.5px !important;
+        font-weight: 700 !important;
+        letter-spacing: 1.2px;
+        text-transform: uppercase;
+        color: #fff !important;
+        background: transparent !important;
+        overflow: hidden;
+        transition: color .35s ease, transform .35s ease;
+    }
+    /* Underline trượt từ trái khi hover */
+    .main-menu > li > a::before {
+        content: "";
+        position: absolute;
+        left: 22px; right: 22px; bottom: 12px;
+        height: 2px;
+        background: linear-gradient(90deg, #ffd76b, #c9a14a, #ffd76b);
+        background-size: 200% 100%;
+        transform: scaleX(0);
+        transform-origin: left center;
+        transition: transform .4s cubic-bezier(.65,.05,.36,1);
+    }
+    .main-menu > li:hover > a::before,
+    .main-menu > li:focus-within > a::before { transform: scaleX(1); }
+    .main-menu > li > a:hover { color: #ffd76b !important; transform: translateY(-2px); }
+
+    /* Glow nhẹ phía sau khi hover */
+    .main-menu > li > a::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(ellipse at center bottom, rgba(255,215,107,.25), transparent 70%);
+        opacity: 0;
+        transition: opacity .35s ease;
+        pointer-events: none;
+    }
+    .main-menu > li:hover > a::after { opacity: 1; }
+
+    /* Dropdown — frosted glass với slide-down */
+    .dropdown-menu {
+        background: rgba(28,28,28,.92) !important;
+        backdrop-filter: blur(16px) saturate(160%);
+        -webkit-backdrop-filter: blur(16px) saturate(160%);
+        border: 1px solid rgba(255,255,255,.08);
+        border-top: 2px solid #c9a14a;
+        border-radius: 0 0 10px 10px;
+        padding: 8px 0 !important;
+        margin-top: 0;
+        box-shadow: 0 18px 40px rgba(0,0,0,.35);
+        min-width: 230px;
+        transform: translateY(-10px);
+        transition: opacity .28s ease, transform .28s ease, visibility .28s !important;
+    }
+    .dropdown:hover > .dropdown-menu,
+    .dropdown:focus-within > .dropdown-menu {
+        transform: translateY(0);
+        visibility: visible;
+        opacity: 1;
+    }
+    .dropdown-menu li { border-bottom: none !important; }
+    .dropdown-menu li a {
+        padding: 11px 18px !important;
+        font-size: 13px !important;
+        letter-spacing: .4px;
+        font-weight: 500 !important;
+        color: #f0f0f0 !important;
+        background: transparent !important;
+        transition: background .2s ease, color .2s ease, padding-left .2s ease;
+        position: relative;
+        text-transform: none !important;
+    }
+    .dropdown-menu li a:hover {
+        background: rgba(201,161,74,.15) !important;
+        color: #ffd76b !important;
+        padding-left: 24px !important;
+    }
+    .dropdown-menu li a::before {
+        content: "›";
+        position: absolute;
+        left: 8px;
+        opacity: 0;
+        color: #c9a14a;
+        font-weight: 700;
+        transition: opacity .2s, left .2s;
+    }
+    .dropdown-menu li a:hover::before { opacity: 1; left: 12px; }
+
+    .nested-menu {
+        background: rgba(20,20,20,.95) !important;
+        border-top: 2px solid #c9a14a;
+        border-radius: 0 8px 8px 0;
+        margin-left: 4px;
+    }
+
+    /* Googen Metal item nổi bật */
+    .main-menu .custom-logo-text {
+        padding: 12px 22px !important;
+        animation: float 4s ease-in-out infinite !important;
+    }
+    .main-menu .custom-logo-text::before { display: none; }
+    .main-menu li:has(.custom-logo-text):hover .googen-text { filter: brightness(1.15); }
+
+    /* Language toggle - bo tròn glassy */
+    .main-nav .language-toggle,
+    .logo-mobile .language-toggle { display: none; }
+}
+
+/* --- MOBILE MENU GLOW-UP (≤1199.98px) --- */
+@media (max-width: 1199.98px) {
+    /* Hamburger animated 3 vạch */
+    .menu-toggle {
+        background: linear-gradient(135deg, #2c2c2c, #1a1a1a) !important;
+        color: transparent !important;
+        font-size: 0 !important;
+        box-shadow: 0 4px 14px rgba(0,0,0,.25);
+        transition: transform .25s ease, box-shadow .25s ease;
+    }
+    .menu-toggle:hover, .menu-toggle:active {
+        transform: scale(1.06);
+        box-shadow: 0 6px 18px rgba(201,161,74,.4);
+    }
+    .menu-toggle::before, .menu-toggle::after, .menu-toggle > span:first-child {
+        content: "";
+        position: absolute;
+        left: 50%;
+        width: 22px;
+        height: 2.5px;
+        background: #fff;
+        border-radius: 2px;
+        transform: translateX(-50%);
+        transition: transform .3s cubic-bezier(.65,.05,.36,1), opacity .25s, top .3s, background .3s;
+    }
+    .menu-toggle::before { top: 17px; }
+    .menu-toggle::after { bottom: 17px; }
+    .menu-toggle > span:first-child { top: 50%; margin-top: -1.25px; }
+    /* Biến hamburger thành X khi menu mở */
+    .menu-toggle.is-open { background: linear-gradient(135deg, #c9a14a, #b8902f) !important; }
+    .menu-toggle.is-open::before { top: 50%; margin-top: -1.25px; transform: translateX(-50%) rotate(45deg); }
+    .menu-toggle.is-open::after { bottom: auto; top: 50%; margin-top: -1.25px; transform: translateX(-50%) rotate(-45deg); }
+    .menu-toggle.is-open > span:first-child { opacity: 0; }
+
+    /* Overlay tối phía sau menu */
+    .menu-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(0,0,0,0);
+        backdrop-filter: blur(0);
+        -webkit-backdrop-filter: blur(0);
+        pointer-events: none;
+        z-index: 1000;
+        transition: background .35s ease, backdrop-filter .35s ease;
+    }
+    .menu-overlay.active {
+        background: rgba(0,0,0,.55);
+        backdrop-filter: blur(6px);
+        -webkit-backdrop-filter: blur(6px);
+        pointer-events: auto;
+    }
+
+    /* Mobile menu container — dark glass with gradient */
+    .mobile-menu {
+        background: linear-gradient(160deg, #1a1a1a 0%, #2a1010 55%, #1a1a1a 100%) !important;
+        box-shadow: 4px 0 40px rgba(0,0,0,.6) !important;
+        width: 82% !important;
+        max-width: 360px !important;
+        border-right: 1px solid rgba(201,161,74,.18);
+    }
+    /* Subtle pattern overlay */
+    .mobile-menu::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+            radial-gradient(circle at 20% 12%, rgba(201,161,74,.16), transparent 50%),
+            radial-gradient(circle at 80% 92%, rgba(211,47,47,.18), transparent 55%);
+        pointer-events: none;
+    }
+    .mobile-menu nav { padding: 18px 0 24px !important; position: relative; }
+
+    /* Logo nhỏ trên đầu menu mobile */
+    .mobile-menu nav::before {
+        content: "GOONAM VINA";
+        display: block;
+        text-align: center;
+        font-family: 'Montserrat', Arial, sans-serif;
+        font-weight: 800;
+        font-size: 13px;
+        letter-spacing: 4px;
+        color: #c9a14a;
+        padding: 0 0 14px;
+        margin: 0 18px 12px;
+        border-bottom: 1px solid rgba(201,161,74,.22);
+    }
+
+    .mobile-menu li {
+        border-bottom: none !important;
+        opacity: 0;
+        transform: translateX(-20px);
+        transition: opacity .4s ease, transform .4s ease;
+    }
+    .mobile-menu.show li,
+    .mobile-menu.open li {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    /* Stagger delay 7 items đầu */
+    .mobile-menu.show > nav > ul > li:nth-child(1),
+    .mobile-menu.open > nav > ul > li:nth-child(1) { transition-delay: .08s; }
+    .mobile-menu.show > nav > ul > li:nth-child(2),
+    .mobile-menu.open > nav > ul > li:nth-child(2) { transition-delay: .14s; }
+    .mobile-menu.show > nav > ul > li:nth-child(3),
+    .mobile-menu.open > nav > ul > li:nth-child(3) { transition-delay: .2s; }
+    .mobile-menu.show > nav > ul > li:nth-child(4),
+    .mobile-menu.open > nav > ul > li:nth-child(4) { transition-delay: .26s; }
+    .mobile-menu.show > nav > ul > li:nth-child(5),
+    .mobile-menu.open > nav > ul > li:nth-child(5) { transition-delay: .32s; }
+    .mobile-menu.show > nav > ul > li:nth-child(6),
+    .mobile-menu.open > nav > ul > li:nth-child(6) { transition-delay: .38s; }
+    .mobile-menu.show > nav > ul > li:nth-child(7),
+    .mobile-menu.open > nav > ul > li:nth-child(7) { transition-delay: .44s; }
+
+    .mobile-menu li a {
+        position: relative;
+        font-size: 14.5px !important;
+        font-weight: 600 !important;
+        letter-spacing: 1.5px;
+        padding: 15px 22px 15px 30px !important;
+        color: #f5f5f5 !important;
+        background: transparent !important;
+        transition: color .22s, background .22s, padding-left .22s;
+    }
+    .mobile-menu li a::before {
+        content: "";
+        position: absolute;
+        left: 18px;
+        top: 50%;
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+        background: #c9a14a;
+        transform: translateY(-50%) scale(0);
+        transition: transform .22s ease;
+    }
+    .mobile-menu li a:hover, .mobile-menu li a:active {
+        color: #ffd76b !important;
+        background: rgba(201,161,74,.1) !important;
+        padding-left: 36px !important;
+    }
+    .mobile-menu li a:hover::before, .mobile-menu li a:active::before { transform: translateY(-50%) scale(1); }
+
+    /* Sub-menu - background đậm hơn, padding tăng */
+    .mobile-menu ul ul {
+        background: rgba(0,0,0,.35) !important;
+        border-left: 2px solid rgba(201,161,74,.35);
+        margin: 4px 12px 8px 22px;
+        border-radius: 0 6px 6px 0;
+    }
+    .mobile-menu ul ul li a {
+        padding: 11px 18px 11px 24px !important;
+        font-size: 13px !important;
+        font-weight: 500 !important;
+        letter-spacing: .4px;
+        text-transform: none;
+    }
+
+    /* Mũi tên dropdown đẹp hơn */
+    .mobile-menu .vc-nav__expand {
+        width: 44px;
+        height: 44px;
+        top: 4px;
+        right: 6px;
+        border-radius: 50%;
+        transition: background .25s;
+    }
+    .mobile-menu .vc-nav__expand:hover { background: rgba(201,161,74,.18); }
+    .mobile-menu .vc-nav__expand::before {
+        top: 16px;
+        right: 17px;
+        border-color: #c9a14a;
+    }
+
+    /* Googen Metal item — gold accent badge */
+    .mobile-menu .custom-logo-text {
+        margin: 6px 14px !important;
+        padding: 13px 16px !important;
+        background: linear-gradient(135deg, rgba(201,161,74,.22), rgba(201,161,74,.08)) !important;
+        border: 1px solid rgba(201,161,74,.35);
+        border-radius: 8px;
+        box-shadow: 0 4px 14px rgba(0,0,0,.25);
+    }
+    .mobile-menu .custom-logo-text:hover, .mobile-menu .custom-logo-text:active {
+        background: linear-gradient(135deg, rgba(201,161,74,.35), rgba(201,161,74,.15)) !important;
+        padding-left: 16px !important;
+    }
+    .mobile-menu .custom-logo-text::before { display: none !important; }
+}
+
+
