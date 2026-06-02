@@ -200,86 +200,18 @@ text-align:center;}
     height: 24px;
 }
 @media only screen and (max-width: 1199.98px) {
-    .mobile-menu {
-        display: block;
-        position: relative;
-        left: -20px;
-        top: -33px;
-    }
-   header {
-           position: fixed;
-           top: 0;
-           width: 100%;
-           z-index: 1000;
-           padding: 0;
-           box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-           transition: all 0.5s cubic-bezier(0.25, 0.8, 0.5, 1);
-           transform: translateY(0);
-           opacity: 1;
-           height: 65px;
-       }
-    main {
-       padding-top: 68px;
-    }
-    .logo-mobile {
-        display: block;
-        position: relative;
-        top: -25px;
-        left: 98px;
-        /* width: 81px; */
-    }
-    .logo {
-        left: -5px;
-        max-width: 180px;
-        height: auto;
-        position: relative;
-        bottom: 20px;
-    }
+    /* Header / menu mobile da duoc xu ly trong homepage.css (RESPONSIVE CLEANUP) */
     .gm-slideshow-img {
         width: 100%;
-         height: auto;
+        height: auto;
         display: none;
         filter: grayscale(50%) contrast(120%);
         transition: filter 0.5s ease, transform 0.5s ease;
         border-radius: 15px;
     }
-   li a {
-              font-weight: bold;
-                      text-align: left;
-                      text-decoration: none;
-                      color: #fff;
-                      text-decoration: none;
-                      padding: 1em 1em;
-                      display: block;
-                      transition: background-color 0.3s ease;
-                      /* text-align: center; */
-                      font-size: 1rem;
-   }
-
-   .menu-toggle {
-           display: block;
-           background-color: #333;
-           color: #fff;
-           border: none;
-           font-size: 2em;
-           cursor: pointer;
-           margin-left: 20px;
-           padding: 10px;
-       }
-
-    .gm-hero-content h1 {
-        font-size: 1.5em;
-    }
-.gm-hero-content p {
-    font-size: 1em;
-    margin-bottom: 2em;
-}
-    .gm-cta-button {
-        font-size: 1em;
-    }
-
+    .gm-hero-content h1 { font-size: 1.5em; }
+    .gm-hero-content p { font-size: 1em; margin-bottom: 2em; }
+    .gm-cta-button { font-size: 1em; }
     .gm-product-item,
-    .gm-project-item {
-        margin: 1em 0;
-    }
+    .gm-project-item { margin: 1em 0; }
 }
