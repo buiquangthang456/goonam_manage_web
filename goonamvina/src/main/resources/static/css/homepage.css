@@ -1507,9 +1507,37 @@ li a {
     .mobile-menu li.expand > .vc-nav__expand::before,
     .mobile-menu .vc-nav__expand.rotate::before { transform:rotate(-135deg); top:13px; }
 
-    /* Ẩn cái "GOOGEN METAL" floating làm rối menu mobile (đã có item KIM LOẠI trong SẢN PHẨM rồi) */
-    .mobile-menu .custom-logo-text { display:none !important; }
-    .mobile-menu li:has(> .custom-logo-text) { display:none !important; }
+    /* "Googen Metal" trong menu mobile — hien thi nhu mot muc menu noi bat */
+    .mobile-menu .custom-logo-text {
+        display:flex !important;
+        align-items:center;
+        gap:10px;
+        padding:14px 18px !important;
+        text-transform:none;
+        animation:none !important;
+        background:rgba(0,0,0,.18);
+    }
+    .mobile-menu .custom-logo-text .googen-text {
+        display:inline !important;
+        font-size:16px !important;
+        line-height:1;
+        margin:0;
+        animation:gradientRun 3s infinite linear;
+        text-shadow:1px 1px 2px rgba(0,0,0,.3);
+    }
+    .mobile-menu .custom-logo-text .metal-text {
+        display:inline-block !important;
+        font-size:11px !important;
+        line-height:1;
+        margin:0;
+        padding:3px 6px;
+        background:#fff;
+        color:#d32f2f !important;
+        border-radius:4px;
+        animation:none !important;
+        text-shadow:none;
+        letter-spacing:.5px;
+    }
 
     /* Khoảng cách trên main để không bị header che */
     main, .gm-main-content { padding-top:70px !important; }
