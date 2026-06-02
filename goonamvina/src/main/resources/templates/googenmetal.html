@@ -69,6 +69,154 @@
             </div>
         </div>
     </section>
+    <!-- Why choose Googen Metal -->
+    <section class="gm-why">
+        <style>
+            .gm-why{padding:60px 20px;background:#f7f5f0}
+            .gm-why-inner{max-width:1100px;margin:0 auto}
+            .gm-section-title{text-align:center;font-size:28px;font-weight:800;color:#1a1a1a;margin:0 0 8px;letter-spacing:.3px}
+            .gm-section-title .gm-accent{color:#c9a14a}
+            .gm-section-sub{text-align:center;color:#666;margin:0 0 36px;font-size:15px}
+            .gm-why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+            .gm-why-card{background:#fff;border-radius:12px;padding:22px;box-shadow:0 2px 12px rgba(0,0,0,.06);transition:transform .25s,box-shadow .25s,border-color .25s;border-top:3px solid transparent}
+            .gm-why-card:hover{transform:translateY(-5px);box-shadow:0 12px 26px rgba(0,0,0,.12);border-top-color:#c9a14a}
+            .gm-why-icon{width:50px;height:50px;border-radius:12px;background:#fff5db;color:#c9a14a;display:flex;align-items:center;justify-content:center;margin-bottom:14px}
+            .gm-why-card h3{font-size:17px;font-weight:700;color:#1a1a1a;margin:0 0 8px}
+            .gm-why-card p{font-size:14px;line-height:1.6;color:#555;margin:0}
+        </style>
+        <div class="gm-why-inner">
+            <h2 class="gm-section-title">
+                <span th:text="#{gm.why.title.lead}">Tại sao chọn</span>
+                <span class="gm-accent">Googen Metal</span>?
+            </h2>
+            <p class="gm-section-sub" th:text="#{gm.why.subtitle}">Hơn cả một thương hiệu — là cam kết về chất lượng và thẩm mỹ</p>
+            <div class="gm-why-grid">
+                <div class="gm-why-card">
+                    <div class="gm-why-icon"><svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor" aria-hidden="true"><path d="M12 2 4 6v6c0 5 3.4 9.5 8 10 4.6-.5 8-5 8-10V6l-8-4Z"/></svg></div>
+                    <h3 th:text="#{gm.why.1.title}">Công nghệ Hàn Quốc</h3>
+                    <p th:text="#{gm.why.1.desc}">Máy CNC, cắt laser, gia công kim loại theo tiêu chuẩn công nghiệp Hàn Quốc với độ chính xác cao.</p>
+                </div>
+                <div class="gm-why-card">
+                    <div class="gm-why-icon"><svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor" aria-hidden="true"><path d="m9.7 14.4-2.1 2.1c-.4.4-.4 1 0 1.4l.5.5c.4.4 1 .4 1.4 0l2.1-2.1-1.9-1.9ZM3 21l3.5-.7L4.2 18l-1.2 3Zm14.7-10.7c.4-.4.4-1 0-1.4l-2.6-2.6c-.4-.4-1-.4-1.4 0l-1.4 1.4 4 4 1.4-1.4Zm-2.1 2.1-4-4-7 7 4 4 7-7Z"/></svg></div>
+                    <h3 th:text="#{gm.why.2.title}">Thiết kế tuỳ chỉnh</h3>
+                    <p th:text="#{gm.why.2.desc}">Thiết kế theo yêu cầu của kiến trúc sư và chủ đầu tư — từ phối màu tới kích thước và hình dạng.</p>
+                </div>
+                <div class="gm-why-card">
+                    <div class="gm-why-icon"><svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor" aria-hidden="true"><path d="M16 11c1.66 0 3-1.34 3-3S17.66 5 16 5s-3 1.34-3 3 1.34 3 3 3Zm-8 0c1.66 0 3-1.34 3-3S9.66 5 8 5 5 6.34 5 8s1.34 3 3 3Zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5Zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5Z"/></svg></div>
+                    <h3 th:text="#{gm.why.3.title}">Đội ngũ kinh nghiệm</h3>
+                    <p th:text="#{gm.why.3.desc}">Hơn 20 năm trong nghề với đội ngũ kỹ thuật đã thực hiện hàng trăm công trình lớn.</p>
+                </div>
+                <div class="gm-why-card">
+                    <div class="gm-why-icon"><svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8Z"/></svg></div>
+                    <h3 th:text="#{gm.why.4.title}">Tiến độ nhanh</h3>
+                    <p th:text="#{gm.why.4.desc}">Tinh thần "ppali-ppali" của Hàn Quốc — cam kết tiến độ, không trễ hẹn với khách hàng.</p>
+                </div>
+                <div class="gm-why-card">
+                    <div class="gm-why-icon"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 4 7v6c0 5 3.4 9 8 10 4.6-1 8-5 8-10V7l-8-4Z"/><path d="m9 12.5 2.5 2.5L15 10.5"/></svg></div>
+                    <h3 th:text="#{gm.why.5.title}">Bảo hành dài hạn</h3>
+                    <p th:text="#{gm.why.5.desc}">Cam kết bảo hành sản phẩm và hỗ trợ kỹ thuật sau lắp đặt, đồng hành dài lâu cùng công trình.</p>
+                </div>
+                <div class="gm-why-card">
+                    <div class="gm-why-icon"><svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor" aria-hidden="true"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27Z"/></svg></div>
+                    <h3 th:text="#{gm.why.6.title}">Chất lượng quốc tế</h3>
+                    <p th:text="#{gm.why.6.desc}">Vật liệu nhập khẩu cao cấp, sơn tĩnh điện, inox mạ PVD đạt chuẩn xuất khẩu.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects CTA -->
+    <section class="gm-projects-cta">
+        <style>
+            .gm-projects-cta{position:relative;padding:70px 20px;background:linear-gradient(rgba(20,20,20,.78),rgba(20,20,20,.78)),url('/images/goonamvinabanner.jpeg') center/cover no-repeat;color:#fff;text-align:center}
+            .gm-projects-cta h2{font-size:30px;font-weight:800;margin:0 0 10px;letter-spacing:.3px}
+            .gm-projects-cta p{font-size:16px;color:#e2e2e2;max-width:680px;margin:0 auto 24px;line-height:1.6}
+            .gm-projects-cta a{display:inline-block;padding:13px 30px;background:#c9a14a;color:#1a1a1a;border-radius:6px;font-weight:700;text-decoration:none;transition:transform .2s,background .2s}
+            .gm-projects-cta a:hover{background:#e0b75c;transform:translateY(-2px)}
+        </style>
+        <h2 th:text="#{gm.projects.cta.title}">Công trình tiêu biểu</h2>
+        <p th:text="#{gm.projects.cta.desc}">Hàng trăm dự án từ chung cư cao cấp, khách sạn 5 sao đến nhà máy đã tin tưởng Goonam Vina &amp; Googen Metal.</p>
+        <a href="/projects" th:text="#{gm.projects.cta.button}">Xem các dự án →</a>
+    </section>
+
+    <!-- Certifications -->
+    <section class="gm-certs">
+        <style>
+            .gm-certs{padding:60px 20px;background:#fff}
+            .gm-certs-inner{max-width:1100px;margin:0 auto}
+            .gm-certs h2{text-align:center;font-size:26px;font-weight:800;color:#1a1a1a;margin:0 0 8px}
+            .gm-certs .sub{text-align:center;color:#666;margin:0 0 30px;font-size:15px}
+            .gm-certs-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:18px}
+            .gm-certs-grid img{width:100%;height:240px;object-fit:contain;background:#fafafa;border:1px solid #eee;border-radius:8px;padding:8px;transition:transform .25s,box-shadow .25s;cursor:zoom-in}
+            .gm-certs-grid img:hover{transform:scale(1.03);box-shadow:0 8px 22px rgba(0,0,0,.12)}
+        </style>
+        <div class="gm-certs-inner">
+            <h2 th:text="#{gm.certs.title}">Chứng nhận chất lượng</h2>
+            <p class="sub" th:text="#{gm.certs.subtitle}">Sản phẩm và quy trình đạt các tiêu chuẩn chất lượng nghiêm ngặt</p>
+            <div class="gm-certs-grid">
+                <img src="/images/giaychungnhan/giaychungnhan1.png" th:alt="#{gm.certs.title} 1" alt="Chứng nhận 1">
+                <img src="/images/giaychungnhan/giaychungnhan2.png" th:alt="#{gm.certs.title} 2" alt="Chứng nhận 2">
+                <img src="/images/giaychungnhan/giaychungnhan3.png" th:alt="#{gm.certs.title} 3" alt="Chứng nhận 3">
+                <img src="/images/giaychungnhan/giaychungnhan4.png" th:alt="#{gm.certs.title} 4" alt="Chứng nhận 4">
+                <img src="/images/giaychungnhan/giaychungnhan5.png" th:alt="#{gm.certs.title} 5" alt="Chứng nhận 5">
+            </div>
+        </div>
+    </section>
+
+    <!-- Quote request form -->
+    <section class="gm-quote" id="gm-quote">
+        <style>
+            .gm-quote{padding:60px 20px;background:linear-gradient(135deg,#1a1a1a 0%,#2c2c2c 70%);color:#fff}
+            .gm-quote-inner{max-width:1000px;margin:0 auto;display:grid;grid-template-columns:1fr 1.2fr;gap:40px;align-items:center}
+            .gm-quote-left h2{font-size:28px;font-weight:800;margin:0 0 14px;line-height:1.25}
+            .gm-quote-left h2 .gm-accent{color:#c9a14a}
+            .gm-quote-left p{color:#cfcfcf;line-height:1.7;margin:0 0 20px;font-size:15px}
+            .gm-quote-left .gm-quote-contact p{color:#c9a14a;font-weight:600;font-size:14px;margin:0 0 6px}
+            .gm-quote-form{background:#fff;color:#1a1a1a;border-radius:12px;padding:26px;box-shadow:0 10px 34px rgba(0,0,0,.4)}
+            .gm-quote-form .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+            .gm-quote-form label{display:block;font-size:13px;font-weight:600;margin:0 0 6px;color:#333}
+            .gm-quote-form .field{margin-bottom:14px}
+            .gm-quote-form input,.gm-quote-form textarea{width:100%;padding:10px 12px;border:1px solid #d6d6d6;border-radius:6px;font-size:14px;font-family:inherit;background:#fff;color:#1a1a1a;box-sizing:border-box}
+            .gm-quote-form input:focus,.gm-quote-form textarea:focus{outline:none;border-color:#c9a14a;box-shadow:0 0 0 3px rgba(201,161,74,.18)}
+            .gm-quote-form textarea{resize:vertical;min-height:90px}
+            .gm-quote-form button{width:100%;background:#c9a14a;color:#1a1a1a;border:none;padding:13px;border-radius:6px;font-weight:700;font-size:15px;cursor:pointer;transition:background .2s,transform .2s}
+            .gm-quote-form button:hover{background:#e0b75c;transform:translateY(-1px)}
+            @media(max-width:760px){.gm-quote-inner{grid-template-columns:1fr}.gm-quote-form .row{grid-template-columns:1fr}}
+        </style>
+        <div class="gm-quote-inner">
+            <div class="gm-quote-left">
+                <h2>
+                    <span th:text="#{gm.quote.title.lead}">Cần báo giá cho công trình của bạn?</span>
+                </h2>
+                <p th:text="#{gm.quote.desc}">Để lại thông tin, Googen Metal sẽ liên hệ trong 24h để tư vấn miễn phí và gửi báo giá phù hợp nhất với công trình của bạn.</p>
+                <div class="gm-quote-contact">
+                    <p>📞 0974 647 949 · 0902 84 27 84</p>
+                    <p>✉ info@goonamvina.com</p>
+                </div>
+            </div>
+            <form class="gm-quote-form" action="/contact" method="post">
+                <div class="row">
+                    <div class="field">
+                        <label for="gm-q-name" th:text="#{feedback.name}">Họ tên</label>
+                        <input id="gm-q-name" type="text" name="name" required>
+                    </div>
+                    <div class="field">
+                        <label for="gm-q-phone" th:text="#{feedback.phone}">Số điện thoại</label>
+                        <input id="gm-q-phone" type="tel" name="phone" required>
+                    </div>
+                </div>
+                <div class="field">
+                    <label for="gm-q-email" th:text="#{feedback.email}">Email</label>
+                    <input id="gm-q-email" type="email" name="email">
+                </div>
+                <div class="field">
+                    <label for="gm-q-msg" th:text="#{gm.quote.message.label}">Nội dung yêu cầu</label>
+                    <textarea id="gm-q-msg" name="message" th:placeholder="#{gm.quote.message.placeholder}" placeholder="Mô tả công trình, hạng mục, số lượng..." required>[Yêu cầu báo giá Googen Metal] </textarea>
+                </div>
+                <button type="submit" th:text="#{gm.quote.submit}">Gửi yêu cầu báo giá</button>
+            </form>
+        </div>
+    </section>
 
 
 </main>
