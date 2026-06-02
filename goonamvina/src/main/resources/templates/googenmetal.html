@@ -83,6 +83,22 @@
             .gm-why-icon{width:50px;height:50px;border-radius:12px;background:#fff5db;color:#c9a14a;display:flex;align-items:center;justify-content:center;margin-bottom:14px}
             .gm-why-card h3{font-size:17px;font-weight:700;color:#1a1a1a;margin:0 0 8px}
             .gm-why-card p{font-size:14px;line-height:1.6;color:#555;margin:0}
+            @media(max-width:900px){
+                .gm-why{padding:48px 16px}
+                .gm-why-grid{grid-template-columns:repeat(2,1fr);gap:14px}
+                .gm-section-title{font-size:24px}
+                .gm-section-sub{font-size:14px;margin-bottom:26px}
+            }
+            @media(max-width:560px){
+                .gm-why{padding:36px 14px}
+                .gm-why-grid{grid-template-columns:1fr;gap:12px}
+                .gm-why-card{padding:18px}
+                .gm-why-icon{width:44px;height:44px;margin-bottom:10px}
+                .gm-section-title{font-size:21px;line-height:1.3}
+                .gm-section-sub{font-size:13.5px;margin-bottom:22px}
+                .gm-why-card h3{font-size:16px}
+                .gm-why-card p{font-size:13.5px}
+            }
         </style>
         <div class="gm-why-inner">
             <h2 class="gm-section-title">
@@ -133,6 +149,17 @@
             .gm-projects-cta p{font-size:16px;color:#e2e2e2;max-width:680px;margin:0 auto 24px;line-height:1.6}
             .gm-projects-cta a{display:inline-block;padding:13px 30px;background:#c9a14a;color:#1a1a1a;border-radius:6px;font-weight:700;text-decoration:none;transition:transform .2s,background .2s}
             .gm-projects-cta a:hover{background:#e0b75c;transform:translateY(-2px)}
+            @media(max-width:900px){
+                .gm-projects-cta{padding:56px 18px}
+                .gm-projects-cta h2{font-size:26px}
+                .gm-projects-cta p{font-size:15px}
+            }
+            @media(max-width:560px){
+                .gm-projects-cta{padding:44px 16px}
+                .gm-projects-cta h2{font-size:22px;line-height:1.3}
+                .gm-projects-cta p{font-size:14px;margin-bottom:20px}
+                .gm-projects-cta a{padding:12px 24px;font-size:14.5px}
+            }
         </style>
         <h2 th:text="#{gm.projects.cta.title}">Công trình tiêu biểu</h2>
         <p th:text="#{gm.projects.cta.desc}">Hàng trăm dự án từ chung cư cao cấp, khách sạn 5 sao đến nhà máy đã tin tưởng Goonam Vina &amp; Googen Metal.</p>
@@ -157,7 +184,25 @@
             .gm-quote-form textarea{resize:vertical;min-height:90px}
             .gm-quote-form button{width:100%;background:#c9a14a;color:#1a1a1a;border:none;padding:13px;border-radius:6px;font-weight:700;font-size:15px;cursor:pointer;transition:background .2s,transform .2s}
             .gm-quote-form button:hover{background:#e0b75c;transform:translateY(-1px)}
-            @media(max-width:760px){.gm-quote-inner{grid-template-columns:1fr}.gm-quote-form .row{grid-template-columns:1fr}}
+            @media(max-width:900px){
+                .gm-quote{padding:50px 18px}
+                .gm-quote-inner{gap:28px}
+                .gm-quote-left h2{font-size:24px}
+                .gm-quote-left p{font-size:14.5px}
+            }
+            @media(max-width:760px){
+                .gm-quote-inner{grid-template-columns:1fr;gap:24px}
+                .gm-quote-form .row{grid-template-columns:1fr}
+            }
+            @media(max-width:560px){
+                .gm-quote{padding:38px 14px}
+                .gm-quote-left h2{font-size:21px;line-height:1.3}
+                .gm-quote-left p{font-size:14px;margin-bottom:16px}
+                .gm-quote-left .gm-quote-contact p{font-size:13.5px}
+                .gm-quote-form{padding:20px;border-radius:10px}
+                .gm-quote-form input,.gm-quote-form textarea{font-size:14px;padding:10px}
+                .gm-quote-form button{padding:12px;font-size:14.5px}
+            }
         </style>
         <div class="gm-quote-inner">
             <div class="gm-quote-left">
