@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head><meta charset="UTF-8"><title>Page Promo</title></head>
+<body>
+
+<div layout:fragment="page-promo" th:fragment="page-promo">
+    <style>
+        .page-promo-wrap{margin:60px 0 0;padding:0;font-family:Arial,sans-serif}
+        /* === STATS BAR === */
+        .promo-stats{
+            background:linear-gradient(135deg,#b71c1c 0%,#d32f2f 50%,#a31515 100%);
+            padding:36px 20px;color:#fff;
+            display:grid;grid-template-columns:repeat(4,1fr);gap:20px;
+            max-width:none;text-align:center;
+            box-shadow:inset 0 -3px 0 #c9a14a;
+        }
+        .promo-stat{padding:6px 10px;border-right:1px solid rgba(255,255,255,.18)}
+        .promo-stat:last-child{border-right:none}
+        .promo-stat .num{font-size:38px;font-weight:800;color:#fff;line-height:1;letter-spacing:.5px}
+        .promo-stat .num span{color:#ffd76b}
+        .promo-stat .label{font-size:13px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.92);margin-top:8px;display:block}
+        @media(max-width:760px){
+            .promo-stats{grid-template-columns:repeat(2,1fr);gap:14px;padding:28px 14px}
+            .promo-stat{border-right:none}
+            .promo-stat .num{font-size:30px}
+            .promo-stat .label{font-size:11px}
+        }
+
+        /* === GOOGEN METAL PROMO BLOCK === */
+        .promo-gm{
+            background:linear-gradient(135deg,#0f0f0f 0%,#1a1a1a 45%,#2a1010 75%,#1a1a1a 100%);
+            color:#fff;padding:64px 20px;position:relative;overflow:hidden;
+        }
+        .promo-gm::before{
+            content:"";position:absolute;inset:0;pointer-events:none;
+            background:
+                radial-gradient(circle at 15% 20%,rgba(201,161,74,.18),transparent 45%),
+                radial-gradient(circle at 85% 80%,rgba(211,47,47,.18),transparent 50%);
+        }
+        .promo-gm-inner{position:relative;z-index:1;max-width:1180px;margin:0 auto;display:grid;grid-template-columns:1.1fr 1fr;gap:48px;align-items:center}
+        .promo-gm-label{display:inline-block;font-size:12px;letter-spacing:2.5px;text-transform:uppercase;color:#c9a14a;border:1px solid #c9a14a;padding:5px 14px;border-radius:20px;margin-bottom:14px}
+        .promo-gm-title{font-size:42px;font-weight:800;margin:6px 0 14px;line-height:1.15;letter-spacing:.5px}
+        .promo-gm-title .accent{color:#c9a14a}
+        .promo-gm-slogan{font-size:17px;color:#e0e0e0;font-style:italic;margin:0 0 18px}
+        .promo-gm-desc{font-size:15px;line-height:1.75;color:#cfcfcf;margin:0 0 24px;max-width:560px}
+        .promo-gm-actions{display:flex;gap:14px;flex-wrap:wrap}
+        .promo-gm-btn{display:inline-block;padding:13px 26px;border-radius:6px;font-weight:600;text-decoration:none;transition:.22s ease;font-size:14px;letter-spacing:.4px}
+        .promo-gm-btn.primary{background:#c9a14a;color:#1a1a1a;box-shadow:0 6px 18px rgba(201,161,74,.35)}
+        .promo-gm-btn.primary:hover{background:#e0b75c;transform:translateY(-2px);box-shadow:0 10px 26px rgba(201,161,74,.55)}
+        .promo-gm-btn.outline{border:1px solid #fff;color:#fff}
+        .promo-gm-btn.outline:hover{background:#fff;color:#1a1a1a}
+        .promo-gm-media{position:relative}
+        .promo-gm-media img{width:100%;height:auto;border-radius:12px;display:block;box-shadow:0 20px 50px rgba(0,0,0,.55)}
+        .promo-gm-media .badge{
+            position:absolute;top:14px;left:14px;
+            background:#c9a14a;color:#1a1a1a;
+            font-size:11px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;
+            padding:6px 12px;border-radius:4px;
+            box-shadow:0 4px 14px rgba(0,0,0,.35);
+        }
+        .promo-gm-features{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:18px 0 24px}
+        .promo-gm-feature{display:flex;align-items:flex-start;gap:10px;font-size:13.5px;color:#e0e0e0}
+        .promo-gm-feature .ico{
+            flex:0 0 28px;height:28px;border-radius:50%;
+            background:rgba(201,161,74,.18);color:#c9a14a;
+            display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;
+        }
+        @media(max-width:900px){
+            .promo-gm-inner{grid-template-columns:1fr;gap:32px}
+            .promo-gm-title{font-size:32px}
+            .promo-gm{padding:48px 18px}
+        }
+
+        /* === CONTACT STRIP === */
+        .promo-cta{
+            background:#f7f5f0;padding:32px 20px;
+            display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;
+            border-top:3px solid #c9a14a;
+        }
+        .promo-cta-text{flex:1 1 320px;min-width:0}
+        .promo-cta-text h3{margin:0 0 6px;font-size:22px;color:#1a1a1a;font-weight:800}
+        .promo-cta-text p{margin:0;font-size:14.5px;color:#555;line-height:1.55}
+        .promo-cta-actions{display:flex;gap:12px;flex-wrap:wrap}
+        .promo-cta-btn{padding:13px 24px;border-radius:6px;font-weight:600;text-decoration:none;font-size:14px;transition:.22s;display:inline-flex;align-items:center;gap:8px}
+        .promo-cta-btn.call{background:#1aab2c;color:#fff}
+        .promo-cta-btn.call:hover{background:#168f25;transform:translateY(-2px)}
+        .promo-cta-btn.contact{background:#d32f2f;color:#fff}
+        .promo-cta-btn.contact:hover{background:#b71c1c;transform:translateY(-2px)}
+        @media(max-width:600px){
+            .promo-cta{padding:24px 16px;gap:16px}
+            .promo-cta-text h3{font-size:18px}
+            .promo-cta-actions{width:100%}
+            .promo-cta-btn{flex:1;justify-content:center}
+        }
+    </style>
+    <section class="page-promo-wrap">
+        <div class="promo-stats">
+            <div class="promo-stat">
+                <div class="num">20<span>+</span></div>
+                <span class="label" th:text="#{promo.stats.years}">Năm Kinh Nghiệm</span>
+            </div>
+            <div class="promo-stat">
+                <div class="num">200<span>+</span></div>
+                <span class="label" th:text="#{promo.stats.projects}">Dự Án Hoàn Thành</span>
+            </div>
+            <div class="promo-stat">
+                <div class="num">50<span>+</span></div>
+                <span class="label" th:text="#{promo.stats.partners}">Đối Tác Tin Cậy</span>
+            </div>
+            <div class="promo-stat">
+                <div class="num">100<span>%</span></div>
+                <span class="label" th:text="#{promo.stats.commitment}">Cam Kết Chất Lượng</span>
+            </div>
+        </div>
+
+        <div class="promo-gm">
+            <div class="promo-gm-inner">
+                <div class="promo-gm-text">
+                    <span class="promo-gm-label" th:text="#{promo.gm.label}">Thương hiệu của Goonam Vina</span>
+                    <h2 class="promo-gm-title"><span class="accent">Googen</span> Metal</h2>
+                    <p class="promo-gm-slogan" th:text="#{promo.gm.slogan}">Nghệ thuật từ kim loại - Kỹ thuật Hàn Quốc</p>
+                    <p class="promo-gm-desc" th:text="#{promo.gm.desc}">Googen Metal mang đến giải pháp kim loại cao cấp cho các công trình kiến trúc với công nghệ Hàn Quốc, đội ngũ kỹ thuật giàu kinh nghiệm và cam kết chất lượng bền vững.</p>
+                    <div class="promo-gm-features">
+                        <div class="promo-gm-feature"><span class="ico">✓</span><span th:text="#{promo.gm.feature.1}">Công nghệ Hàn Quốc tiên tiến</span></div>
+                        <div class="promo-gm-feature"><span class="ico">✓</span><span th:text="#{promo.gm.feature.2}">Thiết kế tuỳ chỉnh chuyên nghiệp</span></div>
+                        <div class="promo-gm-feature"><span class="ico">✓</span><span th:text="#{promo.gm.feature.3}">Bảo hành dài hạn</span></div>
+                        <div class="promo-gm-feature"><span class="ico">✓</span><span th:text="#{promo.gm.feature.4}">Tiến độ đúng cam kết</span></div>
+                    </div>
+                    <div class="promo-gm-actions">
+                        <a href="/googenmetal" class="promo-gm-btn primary" th:text="#{promo.gm.cta.explore}">Khám phá Googen Metal</a>
+                        <a href="/contact" class="promo-gm-btn outline" th:text="#{promo.gm.cta.quote}">Yêu cầu báo giá</a>
+                    </div>
+                </div>
+                <div class="promo-gm-media">
+                    <span class="badge" th:text="#{promo.gm.badge}">Premium Brand</span>
+                    <a href="/googenmetal"><img src="/images/googenmetalbanner.jpeg" alt="Googen Metal"></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="promo-cta">
+            <div class="promo-cta-text">
+                <h3 th:text="#{promo.cta.title}">Cần tư vấn cho công trình của bạn?</h3>
+                <p th:text="#{promo.cta.desc}">Liên hệ ngay với chúng tôi để được hỗ trợ và báo giá miễn phí trong 24h.</p>
+            </div>
+            <div class="promo-cta-actions">
+                <a href="tel:0974647949" class="promo-cta-btn call">📞 0974 647 949</a>
+                <a href="/contact" class="promo-cta-btn contact" th:text="#{promo.cta.button}">Liên hệ ngay</a>
+            </div>
+        </div>
+    </section>
+</div>
+
+</body>
+</html>
