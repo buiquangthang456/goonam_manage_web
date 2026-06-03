@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html th:lang="${lang}" lang="vi" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${(lang == 'vi' ? project.nameVi : project.nameEn) + ' | Goonam Vina'}">Chi tiết dự án | Goonam Vina</title>
+    <meta name="description" th:content="${lang == 'vi' ? project.descriptionVi : project.descriptionEn}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/homepage.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/project-detail.css}"/>
+</head>
+<body>
+
+<header layout:include="layout/menu :: header"></header>
+
+<main>
+    <div class="pd-wrap">
+
+        <!-- Breadcrumb -->
+        <nav class="pd-breadcrumb" aria-label="Breadcrumb">
+            <a href="/" th:text="#{menu.home}">Trang chủ</a>
+            <span class="sep">›</span>
+            <a href="/projects" th:text="#{menu.projects}">Dự án</a>
+            <span class="sep">›</span>
+            <a th:href="@{/projects/{slug}(slug=${project.projectCategory.slug})}"
+               th:text="${lang == 'vi' ? project.projectCategory.nameVi : project.projectCategory.nameEn}">Danh mục</a>
+            <span class="sep">›</span>
+            <span class="current" th:text="${lang == 'vi' ? project.nameVi : project.nameEn}">Tên dự án</span>
+        </nav>
+
+        <!-- Hero: ảnh chính + info card -->
+        <section class="pd-hero">
+            <div class="pd-hero-image">
+                <span class="category-badge"
+                      th:text="${lang == 'vi' ? project.projectCategory.nameVi : project.projectCategory.nameEn}">Danh mục</span>
+                <img th:src="@{'/uploads/images/' + ${project.imageProject}}"
+                     th:alt="${lang == 'vi' ? project.nameVi : project.nameEn}"
+                     alt="Ảnh dự án">
+            </div>
+
+            <aside class="pd-info">
+                <span class="pd-info-eyebrow" th:text="#{project.detail.eyebrow}">Dự án tiêu biểu</span>
+                <h1 th:text="${lang == 'vi' ? project.nameVi : project.nameEn}">Tên dự án</h1>
+
+                <ul class="pd-info-list">
+                    <li class="pd-info-row" th:if="${project.investorVi != null and !#strings.isEmpty(project.investorVi)}">
+                        <span class="ico">👤</span>
+                        <div>
+                            <span class="label" th:text="#{project.detail.investor}">Chủ đầu tư</span>
+                            <span class="value" th:text="${lang == 'vi' ? project.investorVi : project.investorEn}"></span>
+                        </div>
+                    </li>
+                    <li class="pd-info-row" th:if="${project.locationVi != null and !#strings.isEmpty(project.locationVi)}">
+                        <span class="ico">📍</span>
+                        <div>
+                            <span class="label" th:text="#{project.detail.location}">Địa điểm</span>
+                            <span class="value" th:text="${lang == 'vi' ? project.locationVi : project.locationEn}"></span>
+                        </div>
+                    </li>
+                    <li class="pd-info-row">
+                        <span class="ico">🏗️</span>
+                        <div>
+                            <span class="label" th:text="#{project.detail.category}">Hạng mục</span>
+                            <span class="value" th:text="${lang == 'vi' ? project.projectCategory.nameVi : project.projectCategory.nameEn}"></span>
+                        </div>
+                    </li>
+                    <li class="pd-info-row" th:if="${project.startYear != null or project.completionYear != null}">
+                        <span class="ico">📅</span>
+                        <div>
+                            <span class="label" th:text="#{project.detail.timeline}">Thời gian thực hiện</span>
+                            <span class="value">
+                                <span th:if="${project.startYear != null and !#strings.isEmpty(project.startYear)}" th:text="${project.startYear}"></span>
+                                <span th:if="${project.startYear != null and project.completionYear != null and !#strings.isEmpty(project.startYear) and !#strings.isEmpty(project.completionYear)}"> — </span>
+                                <span th:if="${project.completionYear != null and !#strings.isEmpty(project.completionYear)}" th:text="${project.completionYear}"></span>
+                            </span>
+                        </div>
+                    </li>
+                </ul>
+
+                <div class="pd-info-actions">
+                    <a href="/contact" class="pd-btn pd-btn-primary">
+                        <span th:text="#{project.detail.cta.quote}">Yêu cầu báo giá</span>
+                        <span aria-hidden="true">→</span>
+                    </a>
+                    <a th:href="@{/projects/{slug}(slug=${project.projectCategory.slug})}" class="pd-btn pd-btn-ghost">
+                        ← <span th:text="#{project.detail.cta.back}">Quay lại danh sách</span>
+                    </a>
+                </div>
+            </aside>
+        </section>
+
+        <!-- Mô tả chi tiết -->
+        <section class="pd-section" th:if="${project.descriptionVi != null and !#strings.isEmpty(project.descriptionVi)}">
+            <div class="pd-section-head">
+                <h2 th:text="#{project.detail.about}">Mô tả dự án</h2>
+                <p th:text="#{project.detail.about.sub}">Tổng quan và điểm nhấn của công trình</p>
+            </div>
+            <div class="pd-desc" th:text="${lang == 'vi' ? project.descriptionVi : project.descriptionEn}"></div>
+        </section>
+
+        <!-- Hạng mục thi công / công việc đã thực hiện -->
+        <section class="pd-section">
+            <div class="pd-section-head">
+                <h2 th:text="#{project.detail.scope}">Hạng mục thi công</h2>
+                <p th:text="#{project.detail.scope.sub}">Các công việc Goonam Vina đã thực hiện trong dự án này</p>
+            </div>
+            <div class="pd-scope-grid">
+                <div class="pd-scope-item"><span class="ico">✓</span><span class="txt" th:text="#{project.detail.scope.1}">Khảo sát hiện trạng & tư vấn giải pháp kỹ thuật</span></div>
+                <div class="pd-scope-item"><span class="ico">✓</span><span class="txt" th:text="#{project.detail.scope.2}">Thiết kế chi tiết theo yêu cầu của chủ đầu tư</span></div>
+                <div class="pd-scope-item"><span class="ico">✓</span><span class="txt" th:text="#{project.detail.scope.3}">Gia công kim loại trên dây chuyền CNC chính xác cao</span></div>
+                <div class="pd-scope-item"><span class="ico">✓</span><span class="txt" th:text="#{project.detail.scope.4}">Vận chuyển và thi công lắp đặt tại công trình</span></div>
+                <div class="pd-scope-item"><span class="ico">✓</span><span class="txt" th:text="#{project.detail.scope.5}">Kiểm tra chất lượng và nghiệm thu cùng chủ đầu tư</span></div>
+                <div class="pd-scope-item"><span class="ico">✓</span><span class="txt" th:text="#{project.detail.scope.6}">Bảo hành & bảo trì dài hạn sau khi bàn giao</span></div>
+            </div>
+        </section>
+
+        <!-- Thư viện hình ảnh -->
+        <section class="pd-section" th:if="${gallery != null and !gallery.isEmpty()}">
+            <div class="pd-section-head">
+                <h2 th:text="#{project.detail.gallery}">Thư viện hình ảnh</h2>
+                <p th:text="#{project.detail.gallery.sub}">Các góc nhìn và hạng mục thi công trong dự án</p>
+            </div>
+            <div class="pd-gallery">
+                <div class="pd-gallery-item" th:each="img : ${gallery}">
+                    <img th:src="@{'/uploads/images/' + ${img}}"
+                         th:attr="data-full=@{'/uploads/images/' + ${img}}"
+                         alt="Ảnh dự án">
+                </div>
+            </div>
+        </section>
+
+        <!-- Lightbox -->
+        <div class="pd-lightbox" id="pd-lightbox" aria-hidden="true">
+            <button class="pd-lightbox-close" id="pd-lightbox-close" aria-label="Close">×</button>
+            <button class="pd-lightbox-nav prev" id="pd-lightbox-prev" aria-label="Previous">‹</button>
+            <img id="pd-lightbox-img" src="" alt="">
+            <button class="pd-lightbox-nav next" id="pd-lightbox-next" aria-label="Next">›</button>
+        </div>
+
+        <!-- Dự án liên quan -->
+        <section class="pd-section" th:if="${relatedProjects != null and !relatedProjects.isEmpty()}">
+            <div class="pd-section-head">
+                <h2 th:text="#{project.detail.related}">Dự án liên quan</h2>
+                <p th:text="#{project.detail.related.sub}">Những dự án khác cùng hạng mục</p>
+            </div>
+            <div class="pd-related-grid">
+                <a th:each="r : ${relatedProjects}"
+                   th:href="@{/projects/detail/{id}(id=${r.id})}"
+                   class="pd-related-card">
+                    <div class="pd-related-img">
+                        <img th:src="@{'/uploads/images/' + ${r.imageProject}}" alt="Dự án">
+                    </div>
+                    <div class="pd-related-body">
+                        <h4 th:text="${lang == 'vi' ? r.nameVi : r.nameEn}">Tên dự án</h4>
+                        <p class="pd-related-meta" th:if="${r.locationVi != null and !#strings.isEmpty(r.locationVi)}">
+                            📍 <span th:text="${lang == 'vi' ? r.locationVi : r.locationEn}"></span>
+                        </p>
+                        <span class="pd-related-arrow" th:text="#{project.detail.view}">Xem chi tiết →</span>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <!-- Footer back nav -->
+        <div class="pd-bottom-nav">
+            <span th:text="#{project.detail.bottom.text}">Khám phá thêm các dự án khác của Goonam Vina</span>
+            <a th:href="@{/projects/{slug}(slug=${project.projectCategory.slug})}" class="pd-btn pd-btn-primary">
+                ← <span th:text="#{project.detail.cta.back}">Quay lại danh sách</span>
+            </a>
+        </div>
+    </div>
+</main>
+
+<footer layout:include="layout/footer :: footer"></footer>
+
+<script src="/js/script.js"></script>
+<script src="/js/project-detail.js"></script>
+<script src="/js/changelanguage.js"></script>
+</body>
+</html>

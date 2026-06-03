@@ -18,6 +18,7 @@ public class SitemapController {
     @Autowired private PSCService pscService;
     @Autowired private MetalCategoryService metalCategoryService;
     @Autowired private ProjectCategoryService projectCategoryService;
+    @Autowired private ProjectService projectService;
     @Autowired private NewsService newsService;
 
     @GetMapping(value = "/sitemap.xml", produces = MediaType.APPLICATION_XML_VALUE)
@@ -44,6 +45,9 @@ public class SitemapController {
         });
         projectCategoryService.getAllProjectCategory().forEach(pc -> {
             if (pc.getSlug() != null) addUrl(sb, "/projects/" + pc.getSlug(), today, "monthly", "0.7");
+        });
+        projectService.getAllProject().forEach(p -> {
+            if (p.getId() != null) addUrl(sb, "/projects/detail/" + p.getId(), today, "monthly", "0.65");
         });
         newsService.getAllNews().forEach(n -> {
             if (n.getSlug() != null) addUrl(sb, "/news/" + n.getSlug(), today, "weekly", "0.6");

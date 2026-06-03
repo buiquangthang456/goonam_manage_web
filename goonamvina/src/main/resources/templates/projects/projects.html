@@ -14,7 +14,9 @@
     <main>
         <div id="category-project">
             <h2 th:text="${lang == 'vi' ? projectCategory.nameVi : projectCategory.nameEn}"></h2>
-            <div class="project-item" th:each="project : ${projectList}">
+            <a class="project-item" th:each="project : ${projectList}"
+               th:href="@{/projects/detail/{id}(id=${project.id})}"
+               style="text-decoration:none;color:inherit;display:flex;cursor:pointer">
                 <img th:src="@{'/uploads/images/' + ${project.imageProject}}" alt="Dự án">
                 <div class="project-details">
                     <h3>
@@ -41,8 +43,9 @@
                         <span th:text="#{project.location}"></span>
                         <span th:text="${lang == 'vi' ? project.locationVi : project.locationEn}"></span>
                     </p>
+                    <span class="project-cta" th:text="#{project.detail.view}">Xem chi tiết →</span>
                 </div>
-            </div>
+            </a>
         </div>
         <div class="load-more-container">
             <button class="load-more-button" id="load-more-button-project" th:text="${lang == 'vi' ? 'Xem thêm' : 'Load more'}"></button>

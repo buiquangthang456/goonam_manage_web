@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.support.RequestContextUtils;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
@@ -40,6 +41,44 @@ public class ProjectController {
 
 
         return "projects/projects-list";  // Tên template cho danh mục dự án
+    }
+
+    @GetMapping("/detail/{id}")
+    public String projectDetail(@PathVariable Long id, Model model, HttpServletRequest request) {
+        Locale locale = RequestContextUtils.getLocale(request);
+        String lang = locale.getLanguage();
+
+        Project project = projectService.getProjectById(id);
+        if (project == null) {
+            return "error/404";
+        }
+
+        // Du an khac trong cung danh muc (du an lien quan + nguon anh gallery)
+        List<Project> sameCategoryProjects = projectService.getProjectsByCategoryId(
+                project.getProjectCategory().getId());
+
+        List<Project> relatedProjects = new ArrayList<>();
+        List<String> gallery = new ArrayList<>();
+        if (project.getImageProject() != null) gallery.add(project.getImageProject());
+
+        for (Project p : sameCategoryProjects) {
+            if (!p.getId().equals(id)) {
+                if (relatedProjects.size() < 3) relatedProjects.add(p);
+                if (gallery.size() < 6 && p.getImageProject() != null) gallery.add(p.getImageProject());
+            }
+        }
+
+        List<ProductCategory> productCategoryList = pcService.getAllPC();
+        List<ProjectCategory> projectCategoryList = projectCategoryService.getAllProjectCategory();
+
+        model.addAttribute("project", project);
+        model.addAttribute("relatedProjects", relatedProjects);
+        model.addAttribute("gallery", gallery);
+        model.addAttribute("lang", lang);
+        model.addAttribute("productCategoryList", productCategoryList);
+        model.addAttribute("projectCategoryList", projectCategoryList);
+
+        return "projects/project-detail";
     }
 
     @GetMapping("/{slug}")
