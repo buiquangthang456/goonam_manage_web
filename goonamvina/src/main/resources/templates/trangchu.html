@@ -97,6 +97,181 @@
             .home-gm-cat .img-wrap{height:200px}
             .home-gm-cats-head{margin-top:36px}
         }
+
+        /* ===== MODERN PROJECTS SHOWCASE ===== */
+        .hero > .container > h2:nth-of-type(2),
+        .hero > .container > section + h2,
+        .projects-heading{
+            font-family:'Montserrat',Arial,sans-serif;
+            font-size:38px !important;
+            font-weight:800 !important;
+            color:#1a1a1a !important;
+            letter-spacing:1.5px;
+            text-transform:uppercase;
+            text-align:center;
+            margin:60px 0 8px !important;
+            position:relative;
+            display:inline-block;
+            padding:0 18px;
+        }
+        .hero > .container{position:relative}
+        .projects-subtitle{text-align:center;color:#666;font-size:15px;margin:0 auto 36px;max-width:600px;line-height:1.6;font-style:italic}
+        .projects-divider{display:flex;align-items:center;justify-content:center;gap:14px;margin:0 auto 40px}
+        .projects-divider .line{width:50px;height:2px;background:linear-gradient(90deg,transparent,#c9a14a,transparent)}
+        .projects-divider .dot{width:10px;height:10px;background:#c9a14a;border-radius:50%;box-shadow:0 0 0 4px rgba(201,161,74,.18)}
+
+        .projects{
+            background:linear-gradient(180deg,#fafafa 0%,#f0eee9 100%) !important;
+            padding:0 !important;
+            display:grid !important;
+            grid-template-columns:repeat(4,1fr) !important;
+            gap:24px !important;
+            max-width:1320px;
+            margin:0 auto 40px !important;
+        }
+        .project-column{
+            background:#fff !important;
+            border-radius:14px !important;
+            box-shadow:0 6px 22px rgba(0,0,0,.08) !important;
+            overflow:hidden;
+            margin:0 !important;
+            padding:0 !important;
+            display:flex;
+            flex-direction:column;
+            position:relative;
+            transition:transform .35s ease,box-shadow .35s ease;
+        }
+        .project-column:hover{transform:translateY(-8px);box-shadow:0 18px 38px rgba(0,0,0,.16)}
+
+        /* Category badge ở đầu card */
+        .project-column > h3{
+            margin:0 !important;
+            padding:18px 20px 14px !important;
+            font-size:14px !important;
+            font-weight:800 !important;
+            color:#fff !important;
+            background:linear-gradient(135deg,#b71c1c 0%,#d32f2f 100%);
+            text-transform:uppercase;
+            letter-spacing:1.3px;
+            position:relative;
+            text-align:center;
+            box-shadow:inset 0 -2px 0 #c9a14a;
+        }
+        .project-column:nth-child(1) > h3::before{content:"🏙️ ";font-size:16px}
+        .project-column:nth-child(2) > h3::before{content:"🏨 ";font-size:16px}
+        .project-column:nth-child(3) > h3::before{content:"🏥 ";font-size:16px}
+        .project-column:nth-child(4) > h3::before{content:"🏭 ";font-size:16px}
+
+        /* Arrow container - mũi tên carousel hiện đại */
+        .arrow-container{
+            position:absolute !important;
+            top:60px !important;
+            left:0 !important;
+            right:0 !important;
+            display:flex;
+            justify-content:space-between;
+            padding:0 10px;
+            z-index:5;
+            pointer-events:none;
+        }
+        .arrow-left,.arrow-right{
+            pointer-events:auto;
+            width:36px;height:36px;
+            border-radius:50%;
+            border:none !important;
+            background:rgba(255,255,255,.95) !important;
+            color:#b71c1c !important;
+            font-size:20px !important;
+            font-weight:700;
+            cursor:pointer;
+            box-shadow:0 4px 12px rgba(0,0,0,.18);
+            display:flex;align-items:center;justify-content:center;
+            transition:background .2s,color .2s,transform .2s;
+        }
+        .arrow-left:hover,.arrow-right:hover{
+            background:#c9a14a !important;
+            color:#fff !important;
+            transform:scale(1.1);
+        }
+        .arrow-left{margin-left:0}
+        .arrow-right{margin-right:0}
+
+        /* Project info - tiles inside column */
+        .project-info{margin:0 !important;display:block;position:relative;flex:1}
+        .project-info > a{display:block;text-decoration:none}
+        .project-item{
+            margin:0 !important;
+            padding:0 !important;
+            border:none !important;
+            border-radius:0 !important;
+            background:#fff !important;
+            position:relative;
+            overflow:hidden;
+            display:flex !important;
+            flex-direction:column;
+        }
+        .project-image{
+            width:100% !important;
+            height:200px !important;
+            object-fit:cover !important;
+            border-radius:0 !important;
+            margin:0 !important;
+            transition:transform .6s ease !important;
+            display:block;
+        }
+        .project-column:hover .project-image{transform:scale(1.08)}
+
+        /* Title overlay phủ lên ảnh */
+        .project-item::before{
+            content:"";
+            position:absolute;
+            top:0;left:0;right:0;height:200px;
+            background:linear-gradient(180deg,transparent 60%,rgba(0,0,0,.55) 100%);
+            pointer-events:none;
+            z-index:1;
+        }
+        .project-item h4{
+            position:absolute !important;
+            top:160px !important;
+            left:14px;right:14px;
+            color:#fff !important;
+            font-size:15px !important;
+            font-weight:700 !important;
+            line-height:1.3 !important;
+            margin:0 !important;
+            z-index:2;
+            text-shadow:0 2px 8px rgba(0,0,0,.5);
+        }
+
+        /* Info paragraphs - bên dưới ảnh, có icon */
+        .project-item p{
+            margin:0 !important;
+            padding:8px 18px !important;
+            font-size:13px !important;
+            color:#555 !important;
+            line-height:1.45 !important;
+            display:flex;
+            align-items:flex-start;
+            gap:8px;
+            border-top:1px solid #f0f0f0;
+        }
+        .project-item p strong{font-weight:500 !important;color:#1a1a1a}
+        .project-item p:nth-of-type(1){padding-top:14px !important}
+        .project-item p:nth-of-type(1)::before{content:"👤";flex-shrink:0;font-size:14px}
+        .project-item p:nth-of-type(2)::before{content:"📍";flex-shrink:0;font-size:14px}
+        .project-item p:nth-of-type(3)::before{content:"🔧";flex-shrink:0;font-size:14px}
+        .project-item p:nth-of-type(4)::before{content:"📅";flex-shrink:0;font-size:14px}
+        .project-item p:last-of-type{padding-bottom:18px !important}
+
+        @media(max-width:1100px){
+            .projects{grid-template-columns:repeat(2,1fr) !important;gap:20px !important;max-width:780px}
+        }
+        @media(max-width:600px){
+            .projects{grid-template-columns:1fr !important;gap:18px !important;max-width:440px;padding:0 4px !important}
+            .project-image{height:220px !important}
+            .project-item::before{height:220px}
+            .project-item h4{top:180px !important}
+        }
     </style>
 </head>
 <body>
@@ -186,7 +361,11 @@
                     </div>
                 </section>
 
-            <h2 th:text="#{project.title}"></h2>
+            <div class="projects-header" data-aos="fade-up">
+                <h2 class="projects-heading" th:text="#{project.title}"></h2>
+                <div class="projects-divider"><span class="line"></span><span class="dot"></span><span class="line"></span></div>
+                <p class="projects-subtitle" th:text="#{project.subtitle}">Những công trình tiêu biểu Goonam Vina đã đồng hành cùng các chủ đầu tư lớn trên cả nước</p>
+            </div>
             <div class="projects" data-aos="fade-up">
                 <div class="project-column" id="column-1">
                     <h3 th:text="#{project.apartment.title}"></h3>
