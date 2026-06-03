@@ -199,6 +199,8 @@
         /* Project info - tiles inside column */
         .project-info{margin:0 !important;display:block;position:relative;flex:1}
         .project-info > a{display:block;text-decoration:none}
+        /* An cac slide khong active de tranh flicker truoc khi JS chay */
+        .project-info > a:nth-child(n+2) .project-item{display:none}
         .project-item{
             margin:0 !important;
             padding:0 !important;
@@ -207,8 +209,6 @@
             background:#fff !important;
             position:relative;
             overflow:hidden;
-            display:flex !important;
-            flex-direction:column;
         }
         .project-image{
             width:100% !important;
