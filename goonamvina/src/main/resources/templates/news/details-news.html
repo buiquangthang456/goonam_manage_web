@@ -3,49 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GoonamVina</title>
-  <link rel="stylesheet" type="text/css" th:href="@{/css/homepage.css}"/>
-  <link rel="stylesheet" type="text/css" th:href="@{/css/details-news.css}"/>
-  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
-
-
+    <title th:text="${(lang == 'vi' ? news.titleVi : news.titleEn) + ' | Goonam Vina'}">GoonamVina</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/homepage.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/details-news.css}"/>
 </head>
 <body>
 <header layout:include="layout/menu :: header"></header>
 
 <main>
-  <article class="news-detail">
-    <h1 th:text="${lang == 'vi' ? news.titleVi : news.titleEn}"></h1>
-    <p th:utext="${lang == 'vi' ?   news.shortContentVi :  news.shortContentEn}"></p>
-    <!-- Sử dụng thông tin ngắn (shortContent) để hiển thị hoặc bạn có thể tùy chỉnh theo ý muốn -->
-    <img th:src="@{'/uploads/images/' + ${news.imageName}}" th:alt="${lang == 'vi' ? news.titleVi : news.titleEn}">
-    <div th:utext="${lang == 'vi' ? news.contentVi : news.contentEn}"></div>
-  </article>
-  <div class="related-posts">
-    <h2 th:text="${lang == 'vi' ? 'Bài viết liên quan' : 'Related Posts'}"></h2>
-    <div class="swiper-container">
-      <div class="swiper-wrapper">
-        <div th:each="relatedNewsItem : ${relatedNewsList}" class="swiper-slide">
-          <div class="related-item">
-            <img th:src="@{'/uploads/images/' + ${relatedNewsItem.imageName}}" th:alt="${relatedNewsItem.titleVi}">
-            <h3> <a th:href="@{'/news/' + ${relatedNewsItem.slug}}" th:text="${lang == 'vi' ? relatedNewsItem.titleVi : relatedNewsItem.titleEn}"></a>
-            </h3>
-          </div>
+    <article class="news-detail">
+        <h1 th:text="${lang == 'vi' ? news.titleVi : news.titleEn}"></h1>
+        <p th:utext="${lang == 'vi' ? news.shortContentVi : news.shortContentEn}"></p>
+        <img th:src="@{'/uploads/images/' + ${news.imageName}}"
+             th:alt="${lang == 'vi' ? news.titleVi : news.titleEn}">
+        <div class="news-body" th:utext="${lang == 'vi' ? news.contentVi : news.contentEn}"></div>
+    </article>
+
+    <section class="related-posts" th:if="${relatedNewsList != null and !relatedNewsList.isEmpty()}">
+        <h2 th:text="${lang == 'vi' ? 'Bài viết liên quan' : 'Related Posts'}">Bài viết liên quan</h2>
+        <div class="related-grid">
+            <a th:each="relatedNewsItem : ${relatedNewsList}"
+               th:href="@{'/news/' + ${relatedNewsItem.slug}}"
+               class="related-item">
+                <div class="ri-img">
+                    <img th:src="@{'/uploads/images/' + ${relatedNewsItem.imageName}}"
+                         th:alt="${lang == 'vi' ? relatedNewsItem.titleVi : relatedNewsItem.titleEn}">
+                </div>
+                <div class="ri-body">
+                    <h3 th:text="${lang == 'vi' ? relatedNewsItem.titleVi : relatedNewsItem.titleEn}"></h3>
+                    <span class="ri-cta" th:text="${lang == 'vi' ? 'Đọc thêm →' : 'Read more →'}">Đọc thêm →</span>
+                </div>
+            </a>
         </div>
-      </div>
-      <div class="swiper-button-next"></div>
-      <div class="swiper-button-prev"></div>
-    </div>
-  </div>
+    </section>
 </main>
 
 <footer layout:include="layout/footer :: footer"></footer>
 
-
-<script src="/js/swiper-details-news.js"></script>
 <script src="/js/script.js"></script>
-<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 <script src="/js/changelanguage.js"></script>
 </body>
-
 </html>
