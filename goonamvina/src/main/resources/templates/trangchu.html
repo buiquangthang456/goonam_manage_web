@@ -55,6 +55,21 @@
         .home-gm-title .gm-g{color:#c9a14a}
         .home-gm-slogan{font-size:20px;color:#e0e0e0;margin-bottom:18px;font-style:italic}
         .home-gm-desc{font-size:16px;line-height:1.8;color:#cfcfcf;margin-bottom:28px;max-width:620px}
+        .home-gm-features{display:grid;grid-template-columns:1fr 1fr;gap:14px 22px;margin:0 0 28px;max-width:620px}
+        .home-gm-feature{
+            display:flex;align-items:center;gap:12px;font-size:13.5px;color:#e0e0e0;
+            padding:10px 14px;background:rgba(255,255,255,.04);border-radius:8px;
+            border:1px solid rgba(255,255,255,.05);
+            transition:background .25s,border-color .25s,transform .25s;
+        }
+        .home-gm-feature:hover{background:rgba(201,161,74,.08);border-color:rgba(201,161,74,.3);transform:translateY(-2px)}
+        .home-gm-feature .ico{
+            flex:0 0 30px;height:30px;border-radius:50%;
+            background:linear-gradient(135deg,rgba(201,161,74,.3),rgba(201,161,74,.1));
+            color:#ffd76b;
+            display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;
+            box-shadow:0 0 0 1px rgba(201,161,74,.3),inset 0 0 8px rgba(201,161,74,.2);
+        }
         .home-gm-actions{display:flex;gap:14px;flex-wrap:wrap}
         .home-gm-btn{display:inline-block;padding:14px 28px;border-radius:6px;font-weight:600;text-decoration:none;transition:.25s}
         .home-gm-btn-primary{background:#c9a14a;color:#1a1a1a;box-shadow:0 6px 18px rgba(201,161,74,.35)}
@@ -96,6 +111,7 @@
             .home-gm-cats{grid-template-columns:1fr;gap:16px;max-width:420px}
             .home-gm-cat .img-wrap{height:200px}
             .home-gm-cats-head{margin-top:36px}
+            .home-gm-features{grid-template-columns:1fr;gap:10px}
         }
 
         /* ===== MODERN PROJECTS SHOWCASE ===== */
@@ -357,6 +373,12 @@
                             <h2 class="home-gm-title"><span class="gm-g">Googen</span> Metal</h2>
                             <p class="home-gm-slogan" th:text="#{home.googenmetal.slogan}">Nghệ thuật từ kim loại - Kỹ thuật Hàn Quốc</p>
                             <p class="home-gm-desc" th:text="#{home.googenmetal.description}"></p>
+                            <div class="home-gm-features">
+                                <div class="home-gm-feature"><span class="ico">✓</span><span th:text="#{promo.gm.feature.1}">Công nghệ Hàn Quốc tiên tiến</span></div>
+                                <div class="home-gm-feature"><span class="ico">✓</span><span th:text="#{promo.gm.feature.2}">Thiết kế tuỳ chỉnh chuyên nghiệp</span></div>
+                                <div class="home-gm-feature"><span class="ico">✓</span><span th:text="#{promo.gm.feature.3}">Bảo hành dài hạn</span></div>
+                                <div class="home-gm-feature"><span class="ico">✓</span><span th:text="#{promo.gm.feature.4}">Tiến độ đúng cam kết</span></div>
+                            </div>
                             <div class="home-gm-actions">
                                 <a href="/googenmetal" class="home-gm-btn home-gm-btn-primary" th:text="#{home.googenmetal.cta.explore}">Khám phá Googen Metal</a>
                                 <a href="/contact" class="home-gm-btn home-gm-btn-outline" th:text="#{home.googenmetal.cta.quote}">Yêu cầu báo giá</a>
