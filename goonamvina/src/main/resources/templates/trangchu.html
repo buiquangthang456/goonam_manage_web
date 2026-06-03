@@ -68,16 +68,16 @@
         .home-gm-cats-title::before{content:"";position:absolute;left:0;top:50%;transform:translateY(-50%);width:5px;height:80%;background:#c9a14a;border-radius:3px}
         .home-gm-cats-all{color:#c9a14a;font-weight:600;font-size:14px;text-decoration:none;white-space:nowrap}
         .home-gm-cats-all:hover{text-decoration:underline}
-        .home-gm-cats{max-width:1280px;width:100%;margin:22px auto 0;display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:22px}
+        .home-gm-cats{max-width:1280px;width:100%;margin:22px auto 0;display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
         .home-gm-cat{position:relative;background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,.18);text-decoration:none;color:#1a1a1a;display:flex;flex-direction:column;transition:transform .25s ease,box-shadow .25s ease}
         .home-gm-cat:hover{transform:translateY(-6px);box-shadow:0 12px 28px rgba(0,0,0,.32)}
         .home-gm-cat::after{content:"";position:absolute;left:0;bottom:0;width:100%;height:3px;background:#c9a14a;transform:scaleX(0);transform-origin:left;transition:transform .3s ease}
         .home-gm-cat:hover::after{transform:scaleX(1)}
-        .home-gm-cat .img-wrap{display:block;height:170px;overflow:hidden}
+        .home-gm-cat .img-wrap{display:block;height:240px;overflow:hidden}
         .home-gm-cat .img-wrap img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease}
         .home-gm-cat:hover .img-wrap img{transform:scale(1.08)}
-        .home-gm-cat .cat-body{padding:14px 16px 16px;display:flex;flex-direction:column;gap:8px}
-        .home-gm-cat .cat-name{font-weight:700;font-size:15px;line-height:1.35;color:#1a1a1a;display:block}
+        .home-gm-cat .cat-body{padding:18px 20px 20px;display:flex;flex-direction:column;gap:8px}
+        .home-gm-cat .cat-name{font-weight:700;font-size:17px;line-height:1.35;color:#1a1a1a;display:block}
         .home-gm-cat .cat-more{font-size:13px;font-weight:600;color:#b8862f;display:inline-flex;align-items:center;gap:5px}
         .home-gm-cat .cat-more::after{content:"\2192";transition:transform .25s ease}
         .home-gm-cat:hover .cat-more::after{transform:translateX(4px)}
@@ -87,12 +87,14 @@
             .home-gm-title{font-size:38px}
             .home-gm-slogan{font-size:17px}
             .home-gm-desc{font-size:15px}
+            .home-gm-cats{grid-template-columns:repeat(2,1fr);gap:20px}
+            .home-gm-cat .img-wrap{height:200px}
         }
         @media(max-width:600px){
             .home-gm{padding:48px 18px}
             .home-gm-title{font-size:30px}
-            .home-gm-cats{grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:14px}
-            .home-gm-cat .img-wrap{height:130px}
+            .home-gm-cats{grid-template-columns:1fr;gap:16px;max-width:420px}
+            .home-gm-cat .img-wrap{height:200px}
             .home-gm-cats-head{margin-top:36px}
         }
     </style>
