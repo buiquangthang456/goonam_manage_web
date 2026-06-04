@@ -1954,5 +1954,17 @@ body > footer { flex-shrink: 0; }
     .mobile-menu .custom-logo-text::before { display: none !important; }
 }
 
+/* ============================================================
+   AN NUT CHUYEN NGON NGU (VN/EN) — site chi dung tieng Viet
+   ============================================================ */
+.language-toggle,
+.language-switch,
+.toggle-vn,
+.toggle-en,
+label.toggle {
+    display: none !important;
+}
+
+
 
 
