@@ -297,6 +297,248 @@
             .project-item::before{height:220px}
             .project-item h4{top:180px !important}
         }
+
+        /* ===================================================== */
+        /* ===== FEATURED PROJECTS SHOWCASE (Wow-factor) ===== */
+        /* ===================================================== */
+        .featured-showcase{
+            position:relative;
+            margin-left:calc(50% - 50vw);
+            margin-right:calc(50% - 50vw);
+            width:100vw;max-width:100vw;
+            padding:90px 5vw 110px;
+            background:
+                radial-gradient(circle at 80% 10%, rgba(211,47,47,.18), transparent 55%),
+                radial-gradient(circle at 10% 90%, rgba(201,161,74,.18), transparent 55%),
+                linear-gradient(135deg,#08080a 0%,#141416 45%,#1a1416 100%);
+            color:#fff;
+            overflow:hidden;
+            isolation:isolate;
+        }
+        .featured-showcase::before{
+            content:"";position:absolute;inset:0;pointer-events:none;
+            background-image:
+                linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
+                linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
+            background-size:60px 60px;
+            mask-image:radial-gradient(ellipse at center,#000 30%,transparent 75%);
+            -webkit-mask-image:radial-gradient(ellipse at center,#000 30%,transparent 75%);
+            z-index:0;
+        }
+        .featured-showcase::after{
+            content:"";position:absolute;left:-100px;top:50%;width:600px;height:600px;
+            background:radial-gradient(circle,rgba(201,161,74,.08),transparent 70%);
+            filter:blur(40px);transform:translateY(-50%);
+            animation:fs-float 14s ease-in-out infinite alternate;
+            z-index:0;pointer-events:none;
+        }
+        @keyframes fs-float{
+            0%{transform:translateY(-50%) translateX(0)}
+            100%{transform:translateY(-45%) translateX(80px)}
+        }
+        .fs-inner{position:relative;max-width:1320px;margin:0 auto;z-index:1}
+        .fs-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:42px}
+        .fs-head-text{max-width:680px}
+        .fs-eyebrow{
+            display:inline-flex;align-items:center;gap:10px;
+            font-size:12px;letter-spacing:3px;text-transform:uppercase;
+            color:#c9a14a;font-weight:600;margin-bottom:14px;
+        }
+        .fs-eyebrow::before{
+            content:"";width:36px;height:1px;background:linear-gradient(90deg,transparent,#c9a14a);
+        }
+        .fs-title{
+            font-size:46px;font-weight:800;letter-spacing:.5px;line-height:1.1;
+            margin:0 0 14px;color:#fff;
+        }
+        .fs-title .accent{
+            background:linear-gradient(135deg,#c9a14a 0%,#f0d77a 50%,#c9a14a 100%);
+            -webkit-background-clip:text;background-clip:text;color:transparent;
+            -webkit-text-fill-color:transparent;
+        }
+        .fs-sub{font-size:15px;color:#b5b5b5;line-height:1.7;margin:0;max-width:560px}
+        .fs-counter{
+            display:flex;align-items:baseline;gap:6px;font-family:'Courier New',monospace;
+            color:#fff;letter-spacing:2px;
+        }
+        .fs-counter .cur{font-size:46px;font-weight:800;background:linear-gradient(135deg,#c9a14a,#f0d77a);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+        .fs-counter .sep{font-size:24px;color:#666;margin:0 4px}
+        .fs-counter .tot{font-size:20px;color:#888}
+
+        .fs-stage{
+            position:relative;
+            display:grid;grid-template-columns:1.35fr 1fr;gap:0;
+            background:rgba(255,255,255,.02);
+            border:1px solid rgba(255,255,255,.06);
+            border-radius:22px;overflow:hidden;
+            box-shadow:0 30px 80px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.04);
+            min-height:560px;
+        }
+
+        /* Image side */
+        .fs-image-wrap{position:relative;overflow:hidden;min-height:480px;background:#0a0a0a}
+        .fs-slide{
+            position:absolute;inset:0;opacity:0;visibility:hidden;
+            transition:opacity 1.1s cubic-bezier(.4,0,.2,1),visibility 1.1s;
+        }
+        .fs-slide.active{opacity:1;visibility:visible}
+        .fs-slide img{
+            width:100%;height:100%;object-fit:cover;display:block;
+            transform:scale(1.08);
+            transition:transform 6.5s ease-out;
+        }
+        .fs-slide.active img{transform:scale(1.18)}
+        .fs-image-wrap::after{
+            content:"";position:absolute;inset:0;pointer-events:none;
+            background:linear-gradient(110deg,rgba(8,8,10,.85) 0%,rgba(8,8,10,.4) 40%,transparent 75%),
+                       linear-gradient(0deg,rgba(0,0,0,.45) 0%,transparent 35%);
+            z-index:2;
+        }
+        .fs-cat-tag{
+            position:absolute;top:24px;left:24px;z-index:4;
+            display:inline-flex;align-items:center;gap:8px;
+            padding:8px 16px;border-radius:50px;
+            background:rgba(211,47,47,.92);
+            color:#fff;font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;
+            backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+            box-shadow:0 6px 18px rgba(211,47,47,.4);
+        }
+        .fs-cat-tag .dot{width:6px;height:6px;border-radius:50%;background:#fff;animation:fs-pulse 1.8s ease-in-out infinite}
+        @keyframes fs-pulse{50%{opacity:.3;transform:scale(.6)}}
+
+        /* Info side */
+        .fs-info-wrap{
+            position:relative;padding:48px 44px;display:flex;flex-direction:column;justify-content:center;
+            background:linear-gradient(180deg,rgba(255,255,255,.02),rgba(255,255,255,0));
+            border-left:1px solid rgba(255,255,255,.05);
+        }
+        .fs-info{
+            position:absolute;inset:0;padding:48px 44px;
+            display:flex;flex-direction:column;justify-content:center;
+            opacity:0;transform:translateY(20px);visibility:hidden;
+            transition:opacity .6s ease,transform .6s ease,visibility .6s;
+        }
+        .fs-info.active{opacity:1;transform:translateY(0);visibility:visible;transition-delay:.3s}
+        .fs-info .fs-kind{
+            font-size:11px;letter-spacing:3px;text-transform:uppercase;color:#c9a14a;
+            font-weight:600;margin-bottom:10px;
+        }
+        .fs-info .fs-name{
+            font-size:36px;font-weight:800;line-height:1.1;color:#fff;margin:0 0 24px;
+            letter-spacing:.3px;
+        }
+        .fs-info .fs-name::after{
+            content:"";display:block;width:50px;height:3px;
+            background:linear-gradient(90deg,#d32f2f,#c9a14a);
+            margin-top:18px;border-radius:2px;
+        }
+        .fs-info ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:14px}
+        .fs-info li{display:flex;align-items:flex-start;gap:14px;font-size:14px;color:#d8d8d8;line-height:1.5}
+        .fs-info li .icn{
+            flex:0 0 32px;height:32px;border-radius:8px;
+            background:linear-gradient(135deg,rgba(201,161,74,.22),rgba(201,161,74,.06));
+            border:1px solid rgba(201,161,74,.25);
+            display:flex;align-items:center;justify-content:center;
+            color:#f0d77a;font-size:13px;
+        }
+        .fs-info li .lbl{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:#8c8c8c;display:block;margin-bottom:2px;font-weight:600}
+        .fs-info li .val{color:#fff;font-weight:500;display:block;font-size:14.5px}
+        .fs-info li .val .vnd{color:#f0d77a;font-weight:700}
+
+        /* Controls (prev/next + dots + progress) */
+        .fs-controls{
+            position:relative;max-width:1320px;margin:28px auto 0;
+            display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;
+        }
+        .fs-arrows{display:flex;gap:12px}
+        .fs-arrow{
+            width:54px;height:54px;border-radius:50%;
+            border:1px solid rgba(255,255,255,.15);
+            background:rgba(255,255,255,.04);
+            color:#fff;font-size:22px;cursor:pointer;
+            display:flex;align-items:center;justify-content:center;
+            transition:all .3s ease;backdrop-filter:blur(6px);
+        }
+        .fs-arrow:hover{
+            background:#c9a14a;border-color:#c9a14a;color:#1a1a1a;
+            transform:scale(1.08);box-shadow:0 8px 24px rgba(201,161,74,.4);
+        }
+        .fs-dots{display:flex;gap:14px;align-items:center;flex:1;justify-content:center}
+        .fs-dot{
+            position:relative;width:48px;height:4px;border-radius:4px;
+            background:rgba(255,255,255,.12);cursor:pointer;border:none;padding:0;
+            overflow:hidden;transition:background .3s;
+        }
+        .fs-dot::after{
+            content:"";position:absolute;left:0;top:0;height:100%;width:0;
+            background:linear-gradient(90deg,#d32f2f,#c9a14a);border-radius:4px;
+        }
+        .fs-dot.active::after{
+            animation:fs-progress 6s linear forwards;
+        }
+        .fs-dot.done::after{width:100%}
+        @keyframes fs-progress{0%{width:0}100%{width:100%}}
+        .fs-pause{
+            width:44px;height:44px;border-radius:50%;
+            border:1px solid rgba(255,255,255,.15);
+            background:rgba(255,255,255,.04);color:#c9a14a;
+            cursor:pointer;display:flex;align-items:center;justify-content:center;
+            transition:all .25s;font-size:14px;
+        }
+        .fs-pause:hover{background:rgba(201,161,74,.15);border-color:#c9a14a}
+
+        /* Thumbnails */
+        .fs-thumbs{
+            position:relative;max-width:1320px;margin:34px auto 0;
+            display:grid;grid-template-columns:repeat(5,1fr);gap:14px;
+        }
+        .fs-thumb{
+            position:relative;height:90px;border-radius:12px;overflow:hidden;cursor:pointer;
+            border:2px solid transparent;transition:all .35s ease;
+            opacity:.55;
+        }
+        .fs-thumb img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s}
+        .fs-thumb::after{
+            content:attr(data-label);
+            position:absolute;left:0;right:0;bottom:0;padding:8px 10px;
+            font-size:11px;font-weight:700;color:#fff;letter-spacing:.5px;
+            background:linear-gradient(180deg,transparent,rgba(0,0,0,.85));
+            text-transform:uppercase;
+        }
+        .fs-thumb:hover{opacity:1;transform:translateY(-4px)}
+        .fs-thumb:hover img{transform:scale(1.1)}
+        .fs-thumb.active{
+            opacity:1;border-color:#c9a14a;
+            box-shadow:0 8px 24px rgba(201,161,74,.35);
+        }
+
+        @media(max-width:1000px){
+            .featured-showcase{padding:70px 24px 90px}
+            .fs-title{font-size:36px}
+            .fs-stage{grid-template-columns:1fr;min-height:auto}
+            .fs-image-wrap{min-height:340px}
+            .fs-info-wrap{padding:36px 28px;min-height:380px}
+            .fs-info{padding:36px 28px}
+            .fs-info .fs-name{font-size:28px}
+            .fs-thumbs{grid-template-columns:repeat(5,1fr);gap:10px}
+            .fs-thumb{height:70px}
+            .fs-thumb::after{font-size:9px;padding:5px 6px}
+        }
+        @media(max-width:640px){
+            .featured-showcase{padding:54px 16px 76px}
+            .fs-head{margin-bottom:30px}
+            .fs-title{font-size:28px}
+            .fs-counter .cur{font-size:36px}
+            .fs-image-wrap{min-height:260px}
+            .fs-info-wrap,.fs-info{padding:28px 22px}
+            .fs-info .fs-name{font-size:22px;margin-bottom:18px}
+            .fs-info li{font-size:13px}
+            .fs-thumbs{grid-template-columns:repeat(5,1fr);gap:6px}
+            .fs-thumb{height:54px;border-radius:8px}
+            .fs-thumb::after{display:none}
+            .fs-arrow{width:46px;height:46px;font-size:18px}
+            .fs-dot{width:34px}
+        }
     </style>
 </head>
 <body>
@@ -391,6 +633,135 @@
                         </a>
                     </div>
                 </section>
+
+            <section class="featured-showcase" data-aos="fade-up">
+                <div class="fs-inner">
+                    <div class="fs-head">
+                        <div class="fs-head-text">
+                            <span class="fs-eyebrow" th:text="#{featured.eyebrow}">Dự án nổi bật mới nhất</span>
+                            <h2 class="fs-title"><span th:text="#{featured.title.part1}">Công trình</span> <span class="accent" th:text="#{featured.title.part2}">tiêu biểu</span></h2>
+                            <p class="fs-sub" th:text="#{featured.sub}">Hành trình kiến tạo nên dấu ấn — Goonam Vina đồng hành cùng những dự án quy mô lớn, đẳng cấp quốc tế trên khắp Việt Nam.</p>
+                        </div>
+                        <div class="fs-counter">
+                            <span class="cur" id="fsCounterCur">01</span>
+                            <span class="sep">/</span>
+                            <span class="tot" id="fsCounterTot">05</span>
+                        </div>
+                    </div>
+
+                    <div class="fs-stage" id="fsStage">
+                        <div class="fs-image-wrap">
+                            <span class="fs-cat-tag"><span class="dot"></span><span id="fsCatTag" th:text="#{featured.p1.cat}">Khu dân cư</span></span>
+
+                            <div class="fs-slide active" data-idx="0">
+                                <img src="images/duan-tieu-bieu/thaisonlongan.jpg" alt="Thái Sơn Long An" onerror="this.onerror=null;this.src='images/chungcu/project1.jpg'">
+                            </div>
+                            <div class="fs-slide" data-idx="1">
+                                <img src="images/duan-tieu-bieu/rivierapoint.jpg" alt="Riviera Point" onerror="this.onerror=null;this.src='images/chungcu/project2.jpg'">
+                            </div>
+                            <div class="fs-slide" data-idx="2">
+                                <img src="images/duan-tieu-bieu/habitat.jpg" alt="Habitat" onerror="this.onerror=null;this.src='images/chungcu/project3.jpg'">
+                            </div>
+                            <div class="fs-slide" data-idx="3">
+                                <img src="images/duan-tieu-bieu/sanbaylongthanh.jpg" alt="Sân bay Long Thành" onerror="this.onerror=null;this.src='images/chungcu/project4.jpg'">
+                            </div>
+                            <div class="fs-slide" data-idx="4">
+                                <img src="images/duan-tieu-bieu/elysian.jpg" alt="Elysian" onerror="this.onerror=null;this.src='images/chungcu/project1.jpg'">
+                            </div>
+                        </div>
+
+                        <div class="fs-info-wrap">
+                            <div class="fs-info active" data-idx="0">
+                                <span class="fs-kind" th:text="#{featured.p1.cat}">Dự án khu dân cư</span>
+                                <h3 class="fs-name" th:text="#{featured.p1.name}">Thái Sơn Long An</h3>
+                                <ul>
+                                    <li><span class="icn"><i class="fas fa-building"></i></span><span><span class="lbl" th:text="#{featured.label.contractor}">Đơn vị giao thầu</span><span class="val" th:text="#{featured.p1.contractor}">Công ty CP ĐT Xây dựng Newtecons</span></span></li>
+                                    <li><span class="icn"><i class="fas fa-cogs"></i></span><span><span class="lbl" th:text="#{featured.label.items}">Hạng mục</span><span class="val" th:text="#{featured.p1.items}">Cửa thép vân gỗ (kim loại)</span></span></li>
+                                    <li><span class="icn"><i class="fas fa-coins"></i></span><span><span class="lbl" th:text="#{featured.label.value}">Giá trị gói thầu</span><span class="val"><span class="vnd" th:text="#{featured.p1.value}">7.841.768.800 VNĐ</span> <span th:text="#{featured.label.vat}">(chưa bao gồm thuế GTGT)</span></span></span></li>
+                                    <li><span class="icn"><i class="fas fa-calendar-check"></i></span><span><span class="lbl" th:text="#{featured.label.year}">Năm hoàn thành</span><span class="val">2024</span></span></li>
+                                </ul>
+                            </div>
+
+                            <div class="fs-info" data-idx="1">
+                                <span class="fs-kind" th:text="#{featured.p2.cat}">Dự án chung cư – phức hợp</span>
+                                <h3 class="fs-name" th:text="#{featured.p2.name}">Riviera Point</h3>
+                                <ul>
+                                    <li><span class="icn"><i class="fas fa-building"></i></span><span><span class="lbl" th:text="#{featured.label.contractor}">Đơn vị giao thầu</span><span class="val" th:text="#{featured.p2.contractor}">Công ty CP Xây dựng Coteccons</span></span></li>
+                                    <li><span class="icn"><i class="fas fa-cogs"></i></span><span><span class="lbl" th:text="#{featured.label.items}">Hạng mục</span><span class="val" th:text="#{featured.p2.items}">Cửa thép chống cháy</span></span></li>
+                                    <li><span class="icn"><i class="fas fa-coins"></i></span><span><span class="lbl" th:text="#{featured.label.value}">Giá trị gói thầu</span><span class="val"><span class="vnd" th:text="#{featured.p2.value}">9.730.803.000 VNĐ</span> <span th:text="#{featured.label.vat}">(chưa bao gồm thuế GTGT)</span></span></span></li>
+                                    <li><span class="icn"><i class="fas fa-calendar-check"></i></span><span><span class="lbl" th:text="#{featured.label.year}">Năm hoàn thành</span><span class="val">2025</span></span></li>
+                                </ul>
+                            </div>
+
+                            <div class="fs-info" data-idx="2">
+                                <span class="fs-kind" th:text="#{featured.p3.cat}">Dự án chung cư – phức hợp</span>
+                                <h3 class="fs-name" th:text="#{featured.p3.name}">Habitat</h3>
+                                <ul>
+                                    <li><span class="icn"><i class="fas fa-building"></i></span><span><span class="lbl" th:text="#{featured.label.contractor}">Đơn vị giao thầu</span><span class="val" th:text="#{featured.p3.contractor}">Công ty CP Xây dựng số 1 Việt Quang</span></span></li>
+                                    <li><span class="icn"><i class="fas fa-cogs"></i></span><span><span class="lbl" th:text="#{featured.label.items}">Hạng mục</span><span class="val" th:text="#{featured.p3.items}">Cửa thép chống cháy</span></span></li>
+                                    <li><span class="icn"><i class="fas fa-coins"></i></span><span><span class="lbl" th:text="#{featured.label.value}">Giá trị gói thầu</span><span class="val"><span class="vnd" th:text="#{featured.p3.value}">15.681.586.375 VNĐ</span> <span th:text="#{featured.label.vat}">(chưa bao gồm thuế GTGT)</span></span></span></li>
+                                    <li><span class="icn"><i class="fas fa-calendar-check"></i></span><span><span class="lbl" th:text="#{featured.label.year}">Năm hoàn thành</span><span class="val">2026</span></span></li>
+                                </ul>
+                            </div>
+
+                            <div class="fs-info" data-idx="3">
+                                <span class="fs-kind" th:text="#{featured.p4.cat}">Dự án hạ tầng giao thông</span>
+                                <h3 class="fs-name" th:text="#{featured.p4.name}">Sân bay Long Thành</h3>
+                                <ul>
+                                    <li><span class="icn"><i class="fas fa-building"></i></span><span><span class="lbl" th:text="#{featured.label.contractor}">Đơn vị giao thầu</span><span class="val" th:text="#{featured.p4.contractor}">Liên danh Vietur</span></span></li>
+                                    <li><span class="icn"><i class="fas fa-cogs"></i></span><span><span class="lbl" th:text="#{featured.label.items}">Hạng mục</span><span class="val" th:text="#{featured.p4.items}">Cửa thép chống cháy</span></span></li>
+                                    <li><span class="icn"><i class="fas fa-coins"></i></span><span><span class="lbl" th:text="#{featured.label.value}">Giá trị gói thầu</span><span class="val"><span class="vnd" th:text="#{featured.p4.value}">49.464.342.468 VNĐ</span> <span th:text="#{featured.label.vat}">(chưa bao gồm thuế GTGT)</span></span></span></li>
+                                    <li><span class="icn"><i class="fas fa-calendar-check"></i></span><span><span class="lbl" th:text="#{featured.label.year}">Năm hoàn thành</span><span class="val">2026</span></span></li>
+                                </ul>
+                            </div>
+
+                            <div class="fs-info" data-idx="4">
+                                <span class="fs-kind" th:text="#{featured.p5.cat}">Dự án chung cư – phức hợp</span>
+                                <h3 class="fs-name" th:text="#{featured.p5.name}">Elysian</h3>
+                                <ul>
+                                    <li><span class="icn"><i class="fas fa-building"></i></span><span><span class="lbl" th:text="#{featured.label.contractor}">Đơn vị giao thầu</span><span class="val" th:text="#{featured.p5.contractor}">Công ty CP ĐT Xây dựng Ricons</span></span></li>
+                                    <li><span class="icn"><i class="fas fa-cogs"></i></span><span><span class="lbl" th:text="#{featured.label.items}">Hạng mục</span><span class="val" th:text="#{featured.p5.items}">Kim loại</span></span></li>
+                                    <li><span class="icn"><i class="fas fa-coins"></i></span><span><span class="lbl" th:text="#{featured.label.value}">Giá trị gói thầu</span><span class="val"><span class="vnd" th:text="#{featured.p5.value}">6.390.921.456 VNĐ</span> <span th:text="#{featured.label.vat}">(chưa bao gồm thuế GTGT)</span></span></span></li>
+                                    <li><span class="icn"><i class="fas fa-calendar-check"></i></span><span><span class="lbl" th:text="#{featured.label.year}">Năm hoàn thành</span><span class="val">2026</span></span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="fs-controls">
+                        <div class="fs-arrows">
+                            <button class="fs-arrow" id="fsPrev" aria-label="Previous">‹</button>
+                            <button class="fs-arrow" id="fsNext" aria-label="Next">›</button>
+                        </div>
+                        <div class="fs-dots" id="fsDots">
+                            <button class="fs-dot active" data-idx="0" aria-label="Slide 1"></button>
+                            <button class="fs-dot" data-idx="1" aria-label="Slide 2"></button>
+                            <button class="fs-dot" data-idx="2" aria-label="Slide 3"></button>
+                            <button class="fs-dot" data-idx="3" aria-label="Slide 4"></button>
+                            <button class="fs-dot" data-idx="4" aria-label="Slide 5"></button>
+                        </div>
+                        <button class="fs-pause" id="fsPause" aria-label="Pause/Play"><i class="fas fa-pause"></i></button>
+                    </div>
+
+                    <div class="fs-thumbs">
+                        <button class="fs-thumb active" data-idx="0" data-label="Thái Sơn Long An">
+                            <img src="images/duan-tieu-bieu/thaisonlongan.jpg" alt="Thái Sơn Long An" onerror="this.onerror=null;this.src='images/chungcu/project1.jpg'">
+                        </button>
+                        <button class="fs-thumb" data-idx="1" data-label="Riviera Point">
+                            <img src="images/duan-tieu-bieu/rivierapoint.jpg" alt="Riviera Point" onerror="this.onerror=null;this.src='images/chungcu/project2.jpg'">
+                        </button>
+                        <button class="fs-thumb" data-idx="2" data-label="Habitat">
+                            <img src="images/duan-tieu-bieu/habitat.jpg" alt="Habitat" onerror="this.onerror=null;this.src='images/chungcu/project3.jpg'">
+                        </button>
+                        <button class="fs-thumb" data-idx="3" data-label="Long Thành Airport">
+                            <img src="images/duan-tieu-bieu/sanbaylongthanh.jpg" alt="Sân bay Long Thành" onerror="this.onerror=null;this.src='images/chungcu/project4.jpg'">
+                        </button>
+                        <button class="fs-thumb" data-idx="4" data-label="Elysian">
+                            <img src="images/duan-tieu-bieu/elysian.jpg" alt="Elysian" onerror="this.onerror=null;this.src='images/chungcu/project1.jpg'">
+                        </button>
+                    </div>
+                </div>
+            </section>
 
             <div class="projects-header" data-aos="fade-up">
                 <h2 class="projects-heading" th:text="#{project.title}"></h2>
@@ -685,6 +1056,90 @@
 
 <script src="js/giaychungnhan.js"></script>
 <script src="js/changelanguage.js"></script>
+<script>
+    (function(){
+        const stage = document.getElementById('fsStage');
+        if(!stage) return;
+        const slides = stage.querySelectorAll('.fs-slide');
+        const infos  = stage.querySelectorAll('.fs-info');
+        const dots   = document.querySelectorAll('#fsDots .fs-dot');
+        const thumbs = document.querySelectorAll('.fs-thumb');
+        const catTag = document.getElementById('fsCatTag');
+        const curEl  = document.getElementById('fsCounterCur');
+        const totEl  = document.getElementById('fsCounterTot');
+        const prevBtn= document.getElementById('fsPrev');
+        const nextBtn= document.getElementById('fsNext');
+        const pauseBtn=document.getElementById('fsPause');
+        const DURATION = 6000;
+        let idx = 0, timer = null, paused = false;
+        const total = slides.length;
+        totEl.textContent = String(total).padStart(2,'0');
+
+        function go(n){
+            const next = (n + total) % total;
+            slides.forEach(s=>s.classList.remove('active'));
+            infos.forEach(s=>s.classList.remove('active'));
+            dots.forEach((d,i)=>{
+                d.classList.remove('active','done');
+                if(i < next) d.classList.add('done');
+            });
+            thumbs.forEach(t=>t.classList.remove('active'));
+            slides[next].classList.add('active');
+            infos[next].classList.add('active');
+            dots[next].classList.add('active');
+            thumbs[next].classList.add('active');
+            const kind = infos[next].querySelector('.fs-kind');
+            if(kind && catTag) catTag.textContent = kind.textContent;
+            curEl.textContent = String(next+1).padStart(2,'0');
+            idx = next;
+        }
+        function startTimer(){
+            stopTimer();
+            if(paused) return;
+            timer = setTimeout(()=>go(idx+1), DURATION);
+        }
+        function stopTimer(){ if(timer){clearTimeout(timer); timer=null;} }
+        function reset(){
+            stopTimer();
+            // Restart progress animation on active dot by toggling class
+            const a = document.querySelector('#fsDots .fs-dot.active');
+            if(a){ a.classList.remove('active'); void a.offsetWidth; a.classList.add('active'); }
+            startTimer();
+        }
+
+        prevBtn.addEventListener('click', ()=>{ go(idx-1); reset(); });
+        nextBtn.addEventListener('click', ()=>{ go(idx+1); reset(); });
+        dots.forEach(d=>d.addEventListener('click', ()=>{ go(+d.dataset.idx); reset(); }));
+        thumbs.forEach(t=>t.addEventListener('click', ()=>{ go(+t.dataset.idx); reset(); }));
+
+        pauseBtn.addEventListener('click', ()=>{
+            paused = !paused;
+            pauseBtn.innerHTML = paused ? '<i class="fas fa-play"></i>' : '<i class="fas fa-pause"></i>';
+            const a = document.querySelector('#fsDots .fs-dot.active');
+            if(paused){ stopTimer(); if(a) a.style.animationPlayState='paused'; }
+            else { if(a) a.style.animationPlayState='running'; startTimer(); }
+        });
+
+        // Pause on hover
+        stage.addEventListener('mouseenter', ()=>{ if(!paused) stopTimer(); });
+        stage.addEventListener('mouseleave', ()=>{ if(!paused) startTimer(); });
+
+        // Pause when tab hidden
+        document.addEventListener('visibilitychange', ()=>{
+            if(document.hidden) stopTimer(); else if(!paused) startTimer();
+        });
+
+        // Keyboard arrows
+        document.addEventListener('keydown',(e)=>{
+            const rect = stage.getBoundingClientRect();
+            if(rect.bottom < 0 || rect.top > window.innerHeight) return;
+            if(e.key==='ArrowLeft'){ go(idx-1); reset(); }
+            if(e.key==='ArrowRight'){ go(idx+1); reset(); }
+        });
+
+        startTimer();
+    })();
+</script>
 </body>
 
 </html>
