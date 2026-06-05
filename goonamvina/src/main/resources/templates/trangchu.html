@@ -546,33 +546,134 @@
 <header layout:include="layout/menu :: header" ></header>
 
 <main>
-    <div class="slideshow-container" data-aos="fade-left">
-        <div class="slide1 fade">
-            <a href="/googenmetal">
-                <img src="images/image1.png" alt="Kim loại" class="slide-img">
+    <section class="featured-showcase" data-aos="fade-up">
+        <div class="fs-inner">
+            <div class="fs-head">
+                <div class="fs-head-text">
+                    <span class="fs-eyebrow">Dấu ấn Goonam Vina</span>
+                    <h2 class="fs-title">Dự án <span class="accent">tiêu biểu</span></h2>
+                    <p class="fs-sub">Hành trình kiến tạo nên thương hiệu — Goonam Vina tự hào đồng hành cùng những công trình quy mô lớn, đẳng cấp quốc tế trên khắp Việt Nam.</p>
+                </div>
+                <div class="fs-counter">
+                    <span class="cur" id="fsCounterCur">01</span>
+                    <span class="sep">/</span>
+                    <span class="tot" id="fsCounterTot">05</span>
+                </div>
+            </div>
 
-            </a>
-            <a class="prev" onclick="plusSlides1(-1)">&#10094;</a>
-            <a class="next" onclick="plusSlides1(1)">&#10095;</a>
-        </div>
-        <div class="slide1 fade">
-            <a href="/products-list">
-                <img src="/images/image2.png" alt="Cửa" class="slide-img">
+            <div class="fs-stage" id="fsStage">
+                <div class="fs-image-wrap">
+                    <span class="fs-cat-tag"><span class="dot"></span><span id="fsCatTag">Dự án khu dân cư</span></span>
 
-            </a>
-            <a class="prev" onclick="plusSlides1(-1)">&#10094;</a>
-            <a class="next" onclick="plusSlides1(1)">&#10095;</a>
-        </div>
-        <div class="slide1 fade">
-            <a href="/">
-                <img src="images/image3.png" alt="Goonamvina" class="slide-img">
+                    <div class="fs-slide active" data-idx="0">
+                        <img src="/uploads/images/thaisonlongan.jpg" alt="Thái Sơn Long An" onerror="this.onerror=null;this.src='images/chungcu/project1.jpg'">
+                    </div>
+                    <div class="fs-slide" data-idx="1">
+                        <img src="/uploads/images/rivierapoint.jpg" alt="Riviera Point" onerror="this.onerror=null;this.src='images/chungcu/project2.jpg'">
+                    </div>
+                    <div class="fs-slide" data-idx="2">
+                        <img src="/uploads/images/habitat.jpg" alt="Habitat" onerror="this.onerror=null;this.src='images/chungcu/project3.jpg'">
+                    </div>
+                    <div class="fs-slide" data-idx="3">
+                        <img src="/uploads/images/sanbaylongthanh.jpg" alt="Sân bay Long Thành" onerror="this.onerror=null;this.src='images/chungcu/project4.jpg'">
+                    </div>
+                    <div class="fs-slide" data-idx="4">
+                        <img src="/uploads/images/elysian.jpg" alt="Elysian" onerror="this.onerror=null;this.src='images/chungcu/project1.jpg'">
+                    </div>
+                </div>
 
-            </a>
-            <a class="prev" onclick="plusSlides1(-1)">&#10094;</a>
-            <a class="next" onclick="plusSlides1(1)">&#10095;</a>
+                <div class="fs-info-wrap">
+                    <div class="fs-info active" data-idx="0">
+                        <span class="fs-kind">Dự án khu dân cư</span>
+                        <h3 class="fs-name">Thái Sơn Long An</h3>
+                        <ul>
+                            <li><span class="icn"><i class="fas fa-building"></i></span><span><span class="lbl">Đơn vị giao thầu</span><span class="val">Công ty Cổ phần Đầu tư Xây dựng Newtecons</span></span></li>
+                            <li><span class="icn"><i class="fas fa-cogs"></i></span><span><span class="lbl">Hạng mục</span><span class="val">Cửa thép vân gỗ (kim loại)</span></span></li>
+                            <li><span class="icn"><i class="fas fa-coins"></i></span><span><span class="lbl">Giá trị gói thầu</span><span class="val"><span class="vnd">7.841.768.800 VNĐ</span> (chưa bao gồm thuế GTGT)</span></span></li>
+                            <li><span class="icn"><i class="fas fa-calendar-check"></i></span><span><span class="lbl">Năm hoàn thành</span><span class="val">2024</span></span></li>
+                        </ul>
+                    </div>
+
+                    <div class="fs-info" data-idx="1">
+                        <span class="fs-kind">Dự án chung cư – phức hợp</span>
+                        <h3 class="fs-name">Riviera Point</h3>
+                        <ul>
+                            <li><span class="icn"><i class="fas fa-building"></i></span><span><span class="lbl">Đơn vị giao thầu</span><span class="val">Công ty Cổ phần Xây dựng Coteccons</span></span></li>
+                            <li><span class="icn"><i class="fas fa-cogs"></i></span><span><span class="lbl">Hạng mục</span><span class="val">Cửa thép chống cháy</span></span></li>
+                            <li><span class="icn"><i class="fas fa-coins"></i></span><span><span class="lbl">Giá trị gói thầu</span><span class="val"><span class="vnd">9.730.803.000 VNĐ</span> (chưa bao gồm thuế GTGT)</span></span></li>
+                            <li><span class="icn"><i class="fas fa-calendar-check"></i></span><span><span class="lbl">Năm hoàn thành</span><span class="val">2025</span></span></li>
+                        </ul>
+                    </div>
+
+                    <div class="fs-info" data-idx="2">
+                        <span class="fs-kind">Dự án chung cư – phức hợp</span>
+                        <h3 class="fs-name">Habitat</h3>
+                        <ul>
+                            <li><span class="icn"><i class="fas fa-building"></i></span><span><span class="lbl">Đơn vị giao thầu</span><span class="val">Công ty Cổ phần Xây dựng số 1 Việt Quang</span></span></li>
+                            <li><span class="icn"><i class="fas fa-cogs"></i></span><span><span class="lbl">Hạng mục</span><span class="val">Cửa thép chống cháy</span></span></li>
+                            <li><span class="icn"><i class="fas fa-coins"></i></span><span><span class="lbl">Giá trị gói thầu</span><span class="val"><span class="vnd">15.681.586.375 VNĐ</span> (chưa bao gồm thuế GTGT)</span></span></li>
+                            <li><span class="icn"><i class="fas fa-calendar-check"></i></span><span><span class="lbl">Năm hoàn thành</span><span class="val">2026</span></span></li>
+                        </ul>
+                    </div>
+
+                    <div class="fs-info" data-idx="3">
+                        <span class="fs-kind">Dự án hạ tầng giao thông</span>
+                        <h3 class="fs-name">Sân bay Long Thành</h3>
+                        <ul>
+                            <li><span class="icn"><i class="fas fa-building"></i></span><span><span class="lbl">Đơn vị giao thầu</span><span class="val">Liên danh Vietur</span></span></li>
+                            <li><span class="icn"><i class="fas fa-cogs"></i></span><span><span class="lbl">Hạng mục</span><span class="val">Cửa thép chống cháy</span></span></li>
+                            <li><span class="icn"><i class="fas fa-coins"></i></span><span><span class="lbl">Giá trị gói thầu</span><span class="val"><span class="vnd">49.464.342.468 VNĐ</span> (chưa bao gồm thuế GTGT)</span></span></li>
+                            <li><span class="icn"><i class="fas fa-calendar-check"></i></span><span><span class="lbl">Năm hoàn thành</span><span class="val">2026</span></span></li>
+                        </ul>
+                    </div>
+
+                    <div class="fs-info" data-idx="4">
+                        <span class="fs-kind">Dự án chung cư – phức hợp</span>
+                        <h3 class="fs-name">Elysian</h3>
+                        <ul>
+                            <li><span class="icn"><i class="fas fa-building"></i></span><span><span class="lbl">Đơn vị giao thầu</span><span class="val">Công ty Cổ phần Đầu tư Xây dựng Ricons</span></span></li>
+                            <li><span class="icn"><i class="fas fa-cogs"></i></span><span><span class="lbl">Hạng mục</span><span class="val">Kim loại</span></span></li>
+                            <li><span class="icn"><i class="fas fa-coins"></i></span><span><span class="lbl">Giá trị gói thầu</span><span class="val"><span class="vnd">6.390.921.456 VNĐ</span> (chưa bao gồm thuế GTGT)</span></span></li>
+                            <li><span class="icn"><i class="fas fa-calendar-check"></i></span><span><span class="lbl">Năm hoàn thành</span><span class="val">2026</span></span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="fs-controls">
+                <div class="fs-arrows">
+                    <button class="fs-arrow" id="fsPrev" aria-label="Previous">‹</button>
+                    <button class="fs-arrow" id="fsNext" aria-label="Next">›</button>
+                </div>
+                <div class="fs-dots" id="fsDots">
+                    <button class="fs-dot active" data-idx="0" aria-label="Slide 1"></button>
+                    <button class="fs-dot" data-idx="1" aria-label="Slide 2"></button>
+                    <button class="fs-dot" data-idx="2" aria-label="Slide 3"></button>
+                    <button class="fs-dot" data-idx="3" aria-label="Slide 4"></button>
+                    <button class="fs-dot" data-idx="4" aria-label="Slide 5"></button>
+                </div>
+                <button class="fs-pause" id="fsPause" aria-label="Pause/Play"><i class="fas fa-pause"></i></button>
+            </div>
+
+            <div class="fs-thumbs">
+                <button class="fs-thumb active" data-idx="0" data-label="Thái Sơn Long An">
+                    <img src="/uploads/images/thaisonlongan.jpg" alt="Thái Sơn Long An" onerror="this.onerror=null;this.src='images/chungcu/project1.jpg'">
+                </button>
+                <button class="fs-thumb" data-idx="1" data-label="Riviera Point">
+                    <img src="/uploads/images/rivierapoint.jpg" alt="Riviera Point" onerror="this.onerror=null;this.src='images/chungcu/project2.jpg'">
+                </button>
+                <button class="fs-thumb" data-idx="2" data-label="Habitat">
+                    <img src="/uploads/images/habitat.jpg" alt="Habitat" onerror="this.onerror=null;this.src='images/chungcu/project3.jpg'">
+                </button>
+                <button class="fs-thumb" data-idx="3" data-label="Long Thành Airport">
+                    <img src="/uploads/images/sanbaylongthanh.jpg" alt="Sân bay Long Thành" onerror="this.onerror=null;this.src='images/chungcu/project4.jpg'">
+                </button>
+                <button class="fs-thumb" data-idx="4" data-label="Elysian">
+                    <img src="/uploads/images/elysian.jpg" alt="Elysian" onerror="this.onerror=null;this.src='images/chungcu/project1.jpg'">
+                </button>
+            </div>
         </div>
-        <!-- Nút điều khiển bên trái -->
-    </div>
+    </section>
 
     <section class="hero">
         <div class="container">
@@ -633,135 +734,6 @@
                         </a>
                     </div>
                 </section>
-
-            <section class="featured-showcase" data-aos="fade-up">
-                <div class="fs-inner">
-                    <div class="fs-head">
-                        <div class="fs-head-text">
-                            <span class="fs-eyebrow" th:text="#{featured.eyebrow}">Dự án nổi bật mới nhất</span>
-                            <h2 class="fs-title"><span th:text="#{featured.title.part1}">Công trình</span> <span class="accent" th:text="#{featured.title.part2}">tiêu biểu</span></h2>
-                            <p class="fs-sub" th:text="#{featured.sub}">Hành trình kiến tạo nên dấu ấn — Goonam Vina đồng hành cùng những dự án quy mô lớn, đẳng cấp quốc tế trên khắp Việt Nam.</p>
-                        </div>
-                        <div class="fs-counter">
-                            <span class="cur" id="fsCounterCur">01</span>
-                            <span class="sep">/</span>
-                            <span class="tot" id="fsCounterTot">05</span>
-                        </div>
-                    </div>
-
-                    <div class="fs-stage" id="fsStage">
-                        <div class="fs-image-wrap">
-                            <span class="fs-cat-tag"><span class="dot"></span><span id="fsCatTag" th:text="#{featured.p1.cat}">Khu dân cư</span></span>
-
-                            <div class="fs-slide active" data-idx="0">
-                                <img src="images/duan-tieu-bieu/thaisonlongan.jpg" alt="Thái Sơn Long An" onerror="this.onerror=null;this.src='images/chungcu/project1.jpg'">
-                            </div>
-                            <div class="fs-slide" data-idx="1">
-                                <img src="images/duan-tieu-bieu/rivierapoint.jpg" alt="Riviera Point" onerror="this.onerror=null;this.src='images/chungcu/project2.jpg'">
-                            </div>
-                            <div class="fs-slide" data-idx="2">
-                                <img src="images/duan-tieu-bieu/habitat.jpg" alt="Habitat" onerror="this.onerror=null;this.src='images/chungcu/project3.jpg'">
-                            </div>
-                            <div class="fs-slide" data-idx="3">
-                                <img src="images/duan-tieu-bieu/sanbaylongthanh.jpg" alt="Sân bay Long Thành" onerror="this.onerror=null;this.src='images/chungcu/project4.jpg'">
-                            </div>
-                            <div class="fs-slide" data-idx="4">
-                                <img src="images/duan-tieu-bieu/elysian.jpg" alt="Elysian" onerror="this.onerror=null;this.src='images/chungcu/project1.jpg'">
-                            </div>
-                        </div>
-
-                        <div class="fs-info-wrap">
-                            <div class="fs-info active" data-idx="0">
-                                <span class="fs-kind" th:text="#{featured.p1.cat}">Dự án khu dân cư</span>
-                                <h3 class="fs-name" th:text="#{featured.p1.name}">Thái Sơn Long An</h3>
-                                <ul>
-                                    <li><span class="icn"><i class="fas fa-building"></i></span><span><span class="lbl" th:text="#{featured.label.contractor}">Đơn vị giao thầu</span><span class="val" th:text="#{featured.p1.contractor}">Công ty CP ĐT Xây dựng Newtecons</span></span></li>
-                                    <li><span class="icn"><i class="fas fa-cogs"></i></span><span><span class="lbl" th:text="#{featured.label.items}">Hạng mục</span><span class="val" th:text="#{featured.p1.items}">Cửa thép vân gỗ (kim loại)</span></span></li>
-                                    <li><span class="icn"><i class="fas fa-coins"></i></span><span><span class="lbl" th:text="#{featured.label.value}">Giá trị gói thầu</span><span class="val"><span class="vnd" th:text="#{featured.p1.value}">7.841.768.800 VNĐ</span> <span th:text="#{featured.label.vat}">(chưa bao gồm thuế GTGT)</span></span></span></li>
-                                    <li><span class="icn"><i class="fas fa-calendar-check"></i></span><span><span class="lbl" th:text="#{featured.label.year}">Năm hoàn thành</span><span class="val">2024</span></span></li>
-                                </ul>
-                            </div>
-
-                            <div class="fs-info" data-idx="1">
-                                <span class="fs-kind" th:text="#{featured.p2.cat}">Dự án chung cư – phức hợp</span>
-                                <h3 class="fs-name" th:text="#{featured.p2.name}">Riviera Point</h3>
-                                <ul>
-                                    <li><span class="icn"><i class="fas fa-building"></i></span><span><span class="lbl" th:text="#{featured.label.contractor}">Đơn vị giao thầu</span><span class="val" th:text="#{featured.p2.contractor}">Công ty CP Xây dựng Coteccons</span></span></li>
-                                    <li><span class="icn"><i class="fas fa-cogs"></i></span><span><span class="lbl" th:text="#{featured.label.items}">Hạng mục</span><span class="val" th:text="#{featured.p2.items}">Cửa thép chống cháy</span></span></li>
-                                    <li><span class="icn"><i class="fas fa-coins"></i></span><span><span class="lbl" th:text="#{featured.label.value}">Giá trị gói thầu</span><span class="val"><span class="vnd" th:text="#{featured.p2.value}">9.730.803.000 VNĐ</span> <span th:text="#{featured.label.vat}">(chưa bao gồm thuế GTGT)</span></span></span></li>
-                                    <li><span class="icn"><i class="fas fa-calendar-check"></i></span><span><span class="lbl" th:text="#{featured.label.year}">Năm hoàn thành</span><span class="val">2025</span></span></li>
-                                </ul>
-                            </div>
-
-                            <div class="fs-info" data-idx="2">
-                                <span class="fs-kind" th:text="#{featured.p3.cat}">Dự án chung cư – phức hợp</span>
-                                <h3 class="fs-name" th:text="#{featured.p3.name}">Habitat</h3>
-                                <ul>
-                                    <li><span class="icn"><i class="fas fa-building"></i></span><span><span class="lbl" th:text="#{featured.label.contractor}">Đơn vị giao thầu</span><span class="val" th:text="#{featured.p3.contractor}">Công ty CP Xây dựng số 1 Việt Quang</span></span></li>
-                                    <li><span class="icn"><i class="fas fa-cogs"></i></span><span><span class="lbl" th:text="#{featured.label.items}">Hạng mục</span><span class="val" th:text="#{featured.p3.items}">Cửa thép chống cháy</span></span></li>
-                                    <li><span class="icn"><i class="fas fa-coins"></i></span><span><span class="lbl" th:text="#{featured.label.value}">Giá trị gói thầu</span><span class="val"><span class="vnd" th:text="#{featured.p3.value}">15.681.586.375 VNĐ</span> <span th:text="#{featured.label.vat}">(chưa bao gồm thuế GTGT)</span></span></span></li>
-                                    <li><span class="icn"><i class="fas fa-calendar-check"></i></span><span><span class="lbl" th:text="#{featured.label.year}">Năm hoàn thành</span><span class="val">2026</span></span></li>
-                                </ul>
-                            </div>
-
-                            <div class="fs-info" data-idx="3">
-                                <span class="fs-kind" th:text="#{featured.p4.cat}">Dự án hạ tầng giao thông</span>
-                                <h3 class="fs-name" th:text="#{featured.p4.name}">Sân bay Long Thành</h3>
-                                <ul>
-                                    <li><span class="icn"><i class="fas fa-building"></i></span><span><span class="lbl" th:text="#{featured.label.contractor}">Đơn vị giao thầu</span><span class="val" th:text="#{featured.p4.contractor}">Liên danh Vietur</span></span></li>
-                                    <li><span class="icn"><i class="fas fa-cogs"></i></span><span><span class="lbl" th:text="#{featured.label.items}">Hạng mục</span><span class="val" th:text="#{featured.p4.items}">Cửa thép chống cháy</span></span></li>
-                                    <li><span class="icn"><i class="fas fa-coins"></i></span><span><span class="lbl" th:text="#{featured.label.value}">Giá trị gói thầu</span><span class="val"><span class="vnd" th:text="#{featured.p4.value}">49.464.342.468 VNĐ</span> <span th:text="#{featured.label.vat}">(chưa bao gồm thuế GTGT)</span></span></span></li>
-                                    <li><span class="icn"><i class="fas fa-calendar-check"></i></span><span><span class="lbl" th:text="#{featured.label.year}">Năm hoàn thành</span><span class="val">2026</span></span></li>
-                                </ul>
-                            </div>
-
-                            <div class="fs-info" data-idx="4">
-                                <span class="fs-kind" th:text="#{featured.p5.cat}">Dự án chung cư – phức hợp</span>
-                                <h3 class="fs-name" th:text="#{featured.p5.name}">Elysian</h3>
-                                <ul>
-                                    <li><span class="icn"><i class="fas fa-building"></i></span><span><span class="lbl" th:text="#{featured.label.contractor}">Đơn vị giao thầu</span><span class="val" th:text="#{featured.p5.contractor}">Công ty CP ĐT Xây dựng Ricons</span></span></li>
-                                    <li><span class="icn"><i class="fas fa-cogs"></i></span><span><span class="lbl" th:text="#{featured.label.items}">Hạng mục</span><span class="val" th:text="#{featured.p5.items}">Kim loại</span></span></li>
-                                    <li><span class="icn"><i class="fas fa-coins"></i></span><span><span class="lbl" th:text="#{featured.label.value}">Giá trị gói thầu</span><span class="val"><span class="vnd" th:text="#{featured.p5.value}">6.390.921.456 VNĐ</span> <span th:text="#{featured.label.vat}">(chưa bao gồm thuế GTGT)</span></span></span></li>
-                                    <li><span class="icn"><i class="fas fa-calendar-check"></i></span><span><span class="lbl" th:text="#{featured.label.year}">Năm hoàn thành</span><span class="val">2026</span></span></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="fs-controls">
-                        <div class="fs-arrows">
-                            <button class="fs-arrow" id="fsPrev" aria-label="Previous">‹</button>
-                            <button class="fs-arrow" id="fsNext" aria-label="Next">›</button>
-                        </div>
-                        <div class="fs-dots" id="fsDots">
-                            <button class="fs-dot active" data-idx="0" aria-label="Slide 1"></button>
-                            <button class="fs-dot" data-idx="1" aria-label="Slide 2"></button>
-                            <button class="fs-dot" data-idx="2" aria-label="Slide 3"></button>
-                            <button class="fs-dot" data-idx="3" aria-label="Slide 4"></button>
-                            <button class="fs-dot" data-idx="4" aria-label="Slide 5"></button>
-                        </div>
-                        <button class="fs-pause" id="fsPause" aria-label="Pause/Play"><i class="fas fa-pause"></i></button>
-                    </div>
-
-                    <div class="fs-thumbs">
-                        <button class="fs-thumb active" data-idx="0" data-label="Thái Sơn Long An">
-                            <img src="images/duan-tieu-bieu/thaisonlongan.jpg" alt="Thái Sơn Long An" onerror="this.onerror=null;this.src='images/chungcu/project1.jpg'">
-                        </button>
-                        <button class="fs-thumb" data-idx="1" data-label="Riviera Point">
-                            <img src="images/duan-tieu-bieu/rivierapoint.jpg" alt="Riviera Point" onerror="this.onerror=null;this.src='images/chungcu/project2.jpg'">
-                        </button>
-                        <button class="fs-thumb" data-idx="2" data-label="Habitat">
-                            <img src="images/duan-tieu-bieu/habitat.jpg" alt="Habitat" onerror="this.onerror=null;this.src='images/chungcu/project3.jpg'">
-                        </button>
-                        <button class="fs-thumb" data-idx="3" data-label="Long Thành Airport">
-                            <img src="images/duan-tieu-bieu/sanbaylongthanh.jpg" alt="Sân bay Long Thành" onerror="this.onerror=null;this.src='images/chungcu/project4.jpg'">
-                        </button>
-                        <button class="fs-thumb" data-idx="4" data-label="Elysian">
-                            <img src="images/duan-tieu-bieu/elysian.jpg" alt="Elysian" onerror="this.onerror=null;this.src='images/chungcu/project1.jpg'">
-                        </button>
-                    </div>
-                </div>
-            </section>
 
             <div class="projects-header" data-aos="fade-up">
                 <h2 class="projects-heading" th:text="#{project.title}"></h2>
@@ -1096,7 +1068,10 @@
         function startTimer(){
             stopTimer();
             if(paused) return;
-            timer = setTimeout(()=>go(idx+1), DURATION);
+            timer = setTimeout(function(){
+                go(idx+1);
+                startTimer();
+            }, DURATION);
         }
         function stopTimer(){ if(timer){clearTimeout(timer); timer=null;} }
         function reset(){
