@@ -425,6 +425,7 @@ h4{
 @media only screen and (max-width: 900px) {
     main {
         overflow-x: hidden;
+        padding-top: 96px !important;
     }
     h2 {
         font-size: 1.4em;
@@ -478,6 +479,9 @@ h4{
 @media only screen and (max-width: 600px) {
     body {
         margin-left: 0 !important;
+    }
+    main {
+        padding-top: 88px !important;
     }
     h2 {
         font-size: 1.2em;
