@@ -11,7 +11,9 @@
     color:crimson;
     text-align:center;
     word-wrap: break-word;
-    padding: 0 16px;
+    padding: 18px 16px 6px;
+    margin: 0;
+    line-height: 1.5;
 }
 .title-otherproduct{
 text-align:center;
@@ -19,6 +21,8 @@ text-align:center;
 h4{
         color:crimson;
         text-align: center;
+        line-height: 1.5;
+        padding-top: 6px;
 }
 @media (min-width: 1200px){
     h4{ padding-right: 115px; }
@@ -424,14 +428,16 @@ h4{
     }
     h2 {
         font-size: 1.4em;
-        padding: 0 16px;
-        margin: 18px 0 10px;
+        padding: 16px 16px 6px;
+        margin: 0;
+        line-height: 1.5;
         word-wrap: break-word;
     }
     h4 {
-        padding-right: 0;
+        padding: 8px 12px 0;
         font-size: 1.15em;
-        margin: 18px 12px 8px;
+        margin: 14px 0 8px;
+        line-height: 1.5;
     }
     .title-product,
     .title-otherproduct {
@@ -475,12 +481,15 @@ h4{
     }
     h2 {
         font-size: 1.2em;
-        padding: 0 12px;
-        line-height: 1.3;
+        padding: 14px 12px 4px;
+        margin: 0;
+        line-height: 1.5;
     }
     h4 {
         font-size: 1.05em;
-        margin: 14px 8px 6px;
+        margin: 12px 0 6px;
+        padding: 6px 8px 0;
+        line-height: 1.5;
     }
     .title-product,
     .title-otherproduct {
