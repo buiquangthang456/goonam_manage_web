@@ -32,8 +32,8 @@ html, body { overflow-x: hidden; }
 .pd-hero-image .category-badge{
     position:absolute;top:18px;left:18px;
     background:linear-gradient(135deg,#d32f2f,#b71c1c);
-    color:#fff;font-size:11.5px;font-weight:800;letter-spacing:1.5px;
-    text-transform:uppercase;padding:8px 16px;border-radius:4px;
+    color:#fff;font-size:13px;font-weight:500;letter-spacing:0;
+    padding:8px 16px;border-radius:4px;
     box-shadow:0 6px 18px rgba(0,0,0,.3);
 }
 
@@ -44,10 +44,10 @@ html, body { overflow-x: hidden; }
     padding:32px 30px;display:flex;flex-direction:column;
     border-top:4px solid #d32f2f;
 }
-.pd-info-eyebrow{font-size:12px;letter-spacing:2.5px;text-transform:uppercase;color:#c9a14a;font-weight:700;margin-bottom:8px}
+.pd-info-eyebrow{font-size:13px;letter-spacing:0;color:#c9a14a;font-weight:500;margin-bottom:8px}
 .pd-info h1{
-    font-size:30px;font-weight:800;color:#1a1a1a;margin:0 0 20px;
-    line-height:1.25;letter-spacing:.3px;
+    font-size:30px;font-weight:600;color:#1a1a1a;margin:0 0 20px;
+    line-height:1.25;letter-spacing:0;
 }
 .pd-info-list{list-style:none;padding:0;margin:0 0 24px;display:grid;gap:14px}
 .pd-info-row{display:flex;gap:14px;align-items:flex-start;font-size:14.5px;color:#333;line-height:1.55}
@@ -57,7 +57,7 @@ html, body { overflow-x: hidden; }
     color:#d32f2f;display:flex;align-items:center;justify-content:center;
     font-size:16px;font-weight:700;
 }
-.pd-info-row .label{display:block;font-size:11.5px;text-transform:uppercase;letter-spacing:1px;color:#888;font-weight:600;margin-bottom:2px}
+.pd-info-row .label{display:block;font-size:13px;letter-spacing:0;color:#888;font-weight:500;margin-bottom:2px}
 .pd-info-row .value{display:block;color:#1a1a1a;font-weight:600}
 .pd-info-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:auto;padding-top:14px;border-top:1px solid #eee}
 .pd-btn{
@@ -103,7 +103,7 @@ html, body { overflow-x: hidden; }
     flex:0 0 28px;height:28px;border-radius:50%;
     background:linear-gradient(135deg,rgba(201,161,74,.3),rgba(201,161,74,.1));
     color:#b8862f;display:flex;align-items:center;justify-content:center;
-    font-size:14px;font-weight:800;
+    font-size:14px;font-weight:600;
     box-shadow:inset 0 0 6px rgba(201,161,74,.18);
 }
 .pd-scope-item .txt{font-size:14px;color:#333;line-height:1.5;flex:1}
