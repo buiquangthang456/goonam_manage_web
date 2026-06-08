@@ -312,6 +312,8 @@ h4{
     font-size:13px;
     color:var(--c-text);
     line-height:1.65;
+    white-space:pre-line;
+    word-break:break-word;
 }
 
 /* ============================================

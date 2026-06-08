@@ -147,8 +147,7 @@
                 <div class="product-buttons">
                     <button class="product-button" onclick="showPhoneNumber(this)"
                             th:text="${lang == 'vi' ? 'Chi tiết liên hệ' : 'Contact Details'}"></button>
-                    <p class="phone-number" style="display: none;">SĐT: 0902842784 (Phó GĐ Đào Minh Tuấn) <br>
-                        Email: info@goonamvina.com <br></p>
+                    <p class="phone-number" style="display: none;" th:text="#{detail.contact.mt}"></p>
                 </div>
             </div>
         </div>
